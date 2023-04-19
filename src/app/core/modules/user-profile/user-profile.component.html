@@ -1,0 +1,163 @@
+<div fxLayout="row nowrap" fxLayoutAlign="center start" class="page-container">
+  <div
+    fxLayout="column"
+    ngClass.gt-xs="profile-container"
+    ngClass.xs="w-100 mx-20"
+    fxLayoutGap="20px"
+    *ngIf="user$ | async as user"
+  >
+    <swiper [config]="swiperConfig">
+      <div class="swiper-wrapper">
+        <ngx-avatars
+          class="avatar swiper-slide"
+          fxLayoutAlign="center center"
+          *ngFor="let img of getProfilePictures(user)"
+          [src]="img"
+          [name]="user.firstName"
+          [initialsSize]="1"
+          [size]="240"
+          [round]="false"
+        ></ngx-avatars>
+      </div>
+      <div class="swiper-pagination"></div>
+    </swiper>
+
+    <div fxLayout="column" ngClass.xs="mx-20" fxLayoutGap="20px">
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div class="badge text-2-semibold">Usuario Runrún</div>
+
+        <div fxLayout="row" fxLayoutGap="30px">
+          <span class="text-2-semibold-darkgray"
+            >{{ getProgress(user) }}% del perfil completado</span
+          >
+
+          <button
+            *ngIf="(currentUserId$ | async) === user.id"
+            class="simple-button text-2-semibold-darkgray"
+            [routerLink]="[userEditURL]"
+          >
+            Editar
+          </button>
+        </div>
+      </div>
+      <div fxLayout="row" fxLayoutAlign="space-between center">
+        <div fxLayout="column" fxLayoutGap="5px">
+          <span class="subtitle-1"
+            >{{ user.firstName }} {{ user.lastName }}</span
+          >
+
+          <div
+            fxLayout="row nowrap"
+            fxLayoutAlign="space-between"
+            fxLayoutGap="5px"
+          >
+            <span class="text-2-darkgray"
+              >{{ genderString(user.profile.gender) }},
+              {{ getAge(user.profile.birthday) }} años</span
+            >
+
+            <span *ngIf="user.profile.ocupationStudent" class="text-2-darkgray"
+              >Estudiante |
+            </span>
+
+            <span *ngIf="user.profile.ocupationWork" class="text-2-darkgray"
+              >Trabajador |
+            </span>
+            <span *ngIf="user.profile.ocupationOther" class="text-2-darkgray"
+              >Otro</span
+            >
+          </div>
+        </div>
+        <div fxLayout="column" fxFlexAlign="end">
+          <button
+            fxLayoutAlign="center center"
+            class="favorites-btn"
+            fxLayoutGap="10px"
+            [routerLink]="[userFavoritesURL]"
+          >
+            <mat-icon [svgIcon]="icons.BLACK_HEART"></mat-icon>
+            <span class="text-1-semibold">Mis favoritos</span>
+          </button>
+        </div>
+      </div>
+
+      <p class="text-1-semibold">{{ user.profile.presentation }}</p>
+
+      <div fxLayout="column" fxLayoutGap="10px">
+        <div
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          fxLayoutGap="5px"
+          *ngIf="user.profile.facebook"
+        >
+          <fa-icon [icon]="socialIcons.facebook"></fa-icon>
+
+          <a
+            [href]="'https://www.facebook.com/' + user.profile.facebook"
+            class="main-font-semibold-15"
+          >
+            facebook.com/{{ user.profile.facebook }}
+          </a>
+        </div>
+
+        <div
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          fxLayoutGap="5px"
+          *ngIf="user.profile.instagram"
+        >
+          <fa-icon [icon]="socialIcons.instagram"></fa-icon>
+
+          <a
+            [href]="'https://instagram.com/' + user.profile.instagram"
+            class="main-font-semibold-15"
+          >
+            instagram.com/{{ user.profile.instagram }}
+          </a>
+        </div>
+
+        <div
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          fxLayoutGap="5px"
+          *ngIf="user.profile.twitter"
+        >
+          <fa-icon [icon]="socialIcons.twitter"></fa-icon>
+
+          <a
+            [href]="'https://twitter.com/' + user.profile.twitter"
+            class="main-font-semibold-15"
+          >
+            twitter.com/{{ user.profile.twitter }}
+          </a>
+        </div>
+
+        <div
+          fxLayout="row"
+          fxLayoutAlign="start center"
+          fxLayoutGap="5px"
+          *ngIf="user.profile.linkedin"
+        >
+          <fa-icon [icon]="socialIcons.linkedIn"></fa-icon>
+
+          <a
+            [href]="'https://linkedin.com/' + user.profile.linkedin"
+            class="main-font-semibold-15"
+          >
+            linkedin.com/{{ user.profile.linkedin }}
+          </a>
+        </div>
+      </div>
+    </div>
+    <div
+      fxLayoutAlign="center"
+      fxFill
+      class="my-30"
+      *ngIf="(currentUserId$ | async) === user.id"
+    >
+      <button class="logout-btn text-1-semibold" [routerLink]="[logoutURL]">
+        Cerrar sesión
+      </button>
+    </div>
+  </div>
+</div>

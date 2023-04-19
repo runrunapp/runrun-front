@@ -1,0 +1,79 @@
+@import '../../../../styles/constants/colors';
+@import '../../../../styles/constants/constants';
+
+@mixin landing-btn {
+  background-color: $white;
+  border-radius: $big-border-radius;
+  border: 0;
+  padding: 20px;
+  height: 200px;
+
+  h4 {
+    font-family: 'RF main-font Extended';
+    font-weight: bold;
+  }
+}
+
+:host {
+  .search-button {
+    @include landing-btn;
+
+    color: $light-blue;
+
+    &:hover {
+      background-color: $light-blue;
+      color: $white;
+
+      .title-1,
+      .text-1 {
+        color: $light-green;
+      }
+    }
+    &:focus,
+    &:active {
+      border: none;
+      outline: none;
+    }
+  }
+  .publish-button {
+    @include landing-btn;
+
+    color: $red;
+
+    &:hover {
+      background-color: $red;
+      color: $white;
+    }
+    &:focus,
+    &:active {
+      border: none;
+      outline: none;
+    }
+  }
+  .search-button-navigator,
+  .publish-button-navigator {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 100%;
+    mat-icon {
+      width: 15px;
+      height: 18px;
+    }
+    ::ng-deep mat-icon svg path {
+      fill: $white;
+    }
+  }
+  .search-button-navigator {
+    background-color: $light-blue;
+    transform: translateY(-20px);
+  }
+  .publish-button-navigator {
+    background-color: $red;
+    transform: translateY(-20px);
+  }
+  ::ng-deep .mat-expansion-panel-spacing {
+    margin: 10px 0;
+  }
+}

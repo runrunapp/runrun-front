@@ -1,0 +1,79 @@
+<div fxLayout="row" fxLayoutAlign="center" class="page-container">
+  <div
+    fxLayout="column"
+    ngClass.xs="w-100 mx-10"
+    ngClass.gt-xs="w-60"
+    fxLayoutGap="20px"
+  >
+    <ng-container *ngIf="receipts$ | async as receipts">
+      <app-earnings-chart
+        *ngIf="receipts.length"
+        [receipts]="receipts"
+      ></app-earnings-chart>
+      <div
+        gdColumns.gt-xs="auto auto"
+        gdColumns.xs="auto"
+        gdGap.gt-xs="20px"
+        *ngIf="receipts$ | async as receipts"
+      >
+        <div class="receipt-card" *ngFor="let receipt of receipts">
+          <a [href]="receipt.file">
+            <div class="placeholder">
+              <img
+                *ngIf="
+                  receipt.file &&
+                  (receipt.file.endsWith('png') ||
+                    receipt.file.endsWith('jpg') ||
+                    receipt.file.endsWith('jpeg'))
+                "
+                [src]="receipt.file"
+              />
+            </div>
+            <span class="subtitle-1">{{ receipt.description }}</span>
+            <div fxLayout="row" fxLayoutAlign="space-between">
+              <span
+                [class.income]="receipt.amount > 0"
+                [class.outcome]="receipt.amount < 0"
+                class="text-1-darkgray"
+                >{{ receipt.amount }} {{ receipt.currency }}</span
+              >
+              <span class="text-2-darkgray">{{
+                receipt.createdAt | date
+              }}</span>
+            </div>
+          </a>
+        </div>
+        <ng-container *ngIf="info_receipts$ | async as info_receipts">
+          <div class="receipt-card" *ngFor="let receipt of info_receipts">
+            <a [href]="receipt.document">
+              <div class="placeholder">
+                <img
+                  *ngIf="
+                    receipt.document &&
+                    (receipt.document.endsWith('png') ||
+                      receipt.document.endsWith('jpg') ||
+                      receipt.document.endsWith('jpeg'))
+                  "
+                  [src]="receipt.document"
+                />
+              </div>
+              <span class="subtitle-1">{{ receipt.title }}</span>
+              <div fxLayout="row" fxLayoutAlign="space-between">
+                <span class="text-2-darkgray">{{
+                  receipt.creationDate | date
+                }}</span>
+              </div>
+            </a>
+          </div>
+        </ng-container>
+      </div>
+    </ng-container>
+
+    <ng-container *ngIf="manager$ | async as manager; else isTenant">
+      <button class="button-variant-filled" (click)="onAdd(false)">+</button>
+    </ng-container>
+    <ng-template #isTenant>
+      <button class="button-variant-filled" (click)="onAdd(true)">+</button>
+    </ng-template>
+  </div>
+</div>

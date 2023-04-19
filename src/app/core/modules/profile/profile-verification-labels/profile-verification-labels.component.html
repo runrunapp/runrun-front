@@ -1,0 +1,33 @@
+<div fxLayout="column" fxLayoutGap="20px">
+  <div
+    fxLayout="row nowrap"
+    class="label"
+    fxLayoutAlign=" center"
+    fxFlex
+    fxLayoutGap="10px"
+  >
+    <mat-icon svgIcon="verified"></mat-icon>
+    <!-- <img src="assets/icons/verified.svg" /> -->
+    <p class="main-font-reg-15">
+      El equipo de <span class="text-1">RUNRÚN</span> visitó el inmueble, tomó
+      las fotos, y verificó las comodidades y características del anuncio
+    </p>
+  </div>
+  <div
+    fxLayout="row nowrap"
+    class="label"
+    fxLayoutAlign=" center"
+    *ngIf="isPlus"
+    fxFlex
+    fxLayoutGap="10px"
+  >
+    <mat-icon svgIcon="plus"></mat-icon>
+    <!-- <img src="assets/icons/plus.svg" /> -->
+    <p class="main-font-reg-15">
+      Este alojamiento está gestionado íntegramente por el equipo de
+      <span class="text-1">RUNRÚN+</span>, nosotros garantizamos la seguridad y
+      estabilidad de la estancia en nuestros alojamientos, servicios de
+      mantenimiento y atención las 24 horas
+    </p>
+  </div>
+</div>

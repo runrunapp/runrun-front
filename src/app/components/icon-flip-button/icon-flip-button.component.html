@@ -1,0 +1,13 @@
+<button
+  fxLayout="row nowrap"
+  fxLayoutAlign="space-between center"
+  fxLayoutGap="10px"
+  class="container"
+  [class.active]="active"
+  [style.background-color]="active ? activeColor : color"
+  (click)="onClick()"
+>
+  <mat-icon class="icon" [svgIcon]="icon"></mat-icon>
+
+  <span class="main-font-semibold-15">{{ active ? labelActive : label }}</span>
+</button>

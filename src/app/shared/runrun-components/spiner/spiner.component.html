@@ -1,0 +1,36 @@
+<div
+  fxLayout="row nowrap"
+  [class.error]="hasError"
+  fxLayoutAlign="start center"
+  fxLayoutGap="5px"
+>
+  <button
+    type="button"
+    class="main-font-semibold-15"
+    [disabled]="disabled"
+    (click)="onDecrease()"
+  >
+    <mat-icon>remove</mat-icon>
+  </button>
+  <input
+    #input
+    class="main-font-semibold-15"
+    [type]="inputType"
+    [disabled]="disabled"
+    [value]="displayValue"
+    (input)="onInput($event)"
+    (blur)="onTouched()"
+    [step]="step"
+    [min]="minValue"
+    [max]="maxValue"
+  />
+  <button
+    type="button"
+    class="main-font-semibold-15"
+    [disabled]="disabled"
+    (click)="onIncrease()"
+  >
+    <mat-icon>add</mat-icon>
+  </button>
+</div>
+<span class="error main-font-reg-15" *ngIf="hasError">{{ errorMessage }}</span>

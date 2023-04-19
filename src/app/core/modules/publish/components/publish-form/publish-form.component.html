@@ -1,0 +1,70 @@
+<div fxLayout="row" fxLayoutAlign="center" class="page-container">
+  <div
+    class="information-wrapper"
+    ngClass.xs="w-100 px-10"
+    fxLayout="column"
+    fxLayoutAlign="space-evenly"
+  >
+    <form [formGroup]="publishForm">
+      <basic-details
+        *ngIf="step === 'basic'"
+        formGroupName="basic"
+        [states]="states"
+        (continue)="goToDetails()"
+      ></basic-details>
+
+      <ng-container *ngIf="step === 'detail'">
+        <ng-container
+          [ngSwitch]="publishForm.controls.basic.value.propertyType"
+        >
+          <house-details-form
+            *ngSwitchCase="PropertyType.HOUSE"
+            [form]="houseForm"
+            [formCommon]="commonForm"
+            (finished)="goToConditions()"
+            (back)="goToBasic()"
+          ></house-details-form>
+
+          <room-details-form
+            *ngSwitchCase="PropertyType.ROOM"
+            (finished)="goToConditions()"
+            (back)="goToBasic()"
+            [form]="roomForm"
+            [formCommon]="commonForm"
+          ></room-details-form>
+
+          <office-details-form
+            *ngSwitchCase="PropertyType.OFFICE"
+            (finished)="goToConditions()"
+            (back)="goToBasic()"
+            [form]="officeForm"
+            [formCommon]="commonForm"
+          ></office-details-form>
+
+          <local-details-form
+            *ngSwitchCase="PropertyType.LOCAL"
+            (finished)="goToConditions()"
+            (back)="goToBasic()"
+            [form]="localForm"
+            [formCommon]="commonForm"
+          ></local-details-form>
+
+          <garage-details-form
+            *ngSwitchCase="PropertyType.GARAGE"
+            (finished)="goToConditions()"
+            (back)="goToBasic()"
+            [form]="garageForm"
+            [formCommon]="commonForm"
+          ></garage-details-form>
+        </ng-container>
+      </ng-container>
+      <ng-container *ngIf="step === 'conditions'">
+        <app-publish-form-conditions
+          [formCommon]="commonForm"
+          (finished)="onSubmit($event)"
+          (back)="goToDetails()"
+        ></app-publish-form-conditions>
+      </ng-container>
+    </form>
+  </div>
+</div>

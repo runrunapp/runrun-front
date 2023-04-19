@@ -1,0 +1,21 @@
+<div fxLayout="column" fxLayoutGap="10px" [class.error]="hasError">
+  <span class="text-1" *ngIf="label">{{ label }}</span>
+  <mat-form-field class="select-form-field w-100">
+    <mat-label *ngIf="select.empty">{{ placeholder }}</mat-label>
+    <mat-select
+      #select
+      [ngClass]="{ opened: select.panelOpen }"
+      [value]="value"
+      (selectionChange)="selectionChanged($event)"
+      [disabled]="disabled"
+      panelClass="select-panel"
+    >
+      <mat-option *ngFor="let v of values" [value]="v.value">
+        {{ v.label }}
+      </mat-option>
+      <mat-option *ngIf="undefinedState" [value]="undefined">
+        {{ undefinedText }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

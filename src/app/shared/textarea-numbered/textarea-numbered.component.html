@@ -1,0 +1,15 @@
+<div class="wrapper">
+  <textarea
+    #ta
+    class="text-1"
+    [maxLength]="maxLenght"
+    value="{{ value }}"
+    (input)="onInput($event)"
+    [disabled]="disabled"
+    autosize
+  >
+  </textarea>
+  <span class="indicator main-font-reg-15">{{
+    ta.value.length + '/' + ta.maxLength
+  }}</span>
+</div>

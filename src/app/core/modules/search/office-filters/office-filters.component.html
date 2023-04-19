@@ -1,0 +1,60 @@
+<form [ngrxFormState]="formState">
+  <div fxLayout="column" fxLayoutGap="20px">
+    <runrun-select
+      label="Ubicación"
+      [ngrxFormControlState]="formState.controls.officeLocation"
+      [values]="officeLocation"
+      [hasError]="
+        formState.controls.officeLocation.isSubmitted &&
+        formState.controls.officeLocation.isInvalid
+      "
+    ></runrun-select>
+
+    <div fxLayout="column">
+      <span class="main-font-semibold-15">Metros cuadrados</span>
+      <mat-form-field appearance="outline">
+        <input
+          matInput
+          [ngrxFormControlState]="formStateCommon.controls.totalArea"
+          type="text"
+        />
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="column">
+      <span class="main-font-semibold-15">Número de Baños</span>
+      <app-spiner
+        [minValue]="-1"
+        [maxValue]="20"
+        [indeterminateValue]="-1"
+        [ngrxFormControlState]="formState.controls.bathNumber"
+        [hasError]="
+          formState.controls.bathNumber.isSubmitted &&
+          formState.controls.bathNumber.isInvalid
+        "
+      >
+      </app-spiner>
+    </div>
+
+    <!-- <app-checkgroup
+      [vertical]="true"
+      label="Otras características de la oficina"
+      [values]="[
+        {
+          value: 'Aire Acondicionado',
+          checked: formState.controls.airCondition
+        },
+        { value: 'Plaza de garaje', checked: formState.controls.parking },
+        { value: 'Luz natural', checked: formState.controls.naturalLight },
+        { value: 'Wifi', checked: formState.controls.wifi },
+        { value: 'Elevador', checked: formState.controls.elevator },
+        {
+          value: 'Sistema de seguridad',
+          checked: formState.controls.securitySystem
+        },
+        { value: 'Alarma', checked: formState.controls.alarms },
+        { value: 'Cocina equipada', checked: formState.controls.kitchen }
+      ]"
+    ></app-checkgroup> -->
+  </div>
+</form>

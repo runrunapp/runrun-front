@@ -1,0 +1,43 @@
+<form [formGroup]="formCommon">
+  <div fxLayout="column" fxLayoutGap="20px">
+    <h1 class="heading-2">3. Condiciones del alojamiento</h1>
+
+    <app-checkgroup
+      label="Condiciones de accesibilidad para personas con movilidad reducida"
+      [vertical]="true"
+      [formGroup]="formCommon"
+      [values]="[
+        {
+          value: 'Alojamiento a nivel de la calle',
+          checked: 'floorLevelAccesible'
+        },
+        {
+          value: 'Rampas de acceso / ascensor de seis plazas',
+          checked: 'entranceRamp'
+        },
+        {
+          value:
+            'Espacios interiores adaptados para sillas de ruedas. Puertas y pazillos amplios, barras abatibles y suelos antideslizantes',
+          checked: 'handicappedAccessible'
+        }
+      ]"
+    ></app-checkgroup>
+
+    <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px">
+      <button
+        class="text-1 button-variant-filled-gray"
+        type="button"
+        (click)="back.emit()"
+      >
+        Regresar
+      </button>
+      <button
+        class="main-font-semibold-15 button-variant-filled-gray"
+        type="button"
+        (click)="onSubmit($event)"
+      >
+        Finalizar
+      </button>
+    </div>
+  </div>
+</form>

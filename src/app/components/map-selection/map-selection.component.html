@@ -1,0 +1,8 @@
+<div
+  class="map"
+  leaflet
+  [leafletBaseLayers]="{'Street Maps': streetMaps}"
+  [leafletOptions]="options"
+  (leafletMapMove)="onMapMove($event)"
+  (leafletMapMoveEnd) = "onMapMoveEnd($event)"
+></div>

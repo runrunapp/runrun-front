@@ -1,0 +1,17 @@
+<div
+  class="container"
+  fxLayout="row"
+  fxLayoutGap="5px"
+  fxLayoutAlign="space-between"
+>
+  <app-image-form-field
+    *ngFor="let image of images.images; trackBy: imageTrackBy; let i = index"
+    [id]="'image-' + i"
+    [image]="image"
+    [addActive]="i == _currentIndex"
+    [allowDelete]="allowDelete"
+    [modifyActive]="i < _currentIndex"
+    (add)="modifyImage(i, $event)"
+    (remove)="removeImage(i)"
+  ></app-image-form-field>
+</div>

@@ -1,0 +1,35 @@
+@import "../../../../../../../styles/constants/colors";
+
+$width: 100%;
+$height: 2px;
+:host {
+  .wrapper {
+    div {
+      height: $height;
+      width: $width;
+      text-align: center;
+    }
+    &.active {
+      div {
+        background-color: $black;
+      }
+      span {
+        color: $black;
+      }
+    }
+    &:not(.active) {
+      cursor: pointer;
+
+      div {
+        background-color: $gray;
+      }
+      span {
+        color: $gray;
+      }
+    }
+    &, .disabled {
+      cursor: default !important
+    }
+
+  }
+}

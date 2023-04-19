@@ -1,0 +1,31 @@
+<div fxLayout="row" fxLayoutAlign="center" class="page-container">
+  <div
+    fxLayout="column"
+    ngClass.xs="w-100 mx-10"
+    ngClass.gt-xs="w-60"
+    fxLayoutGap="20px"
+  >
+    <div
+      gdColumns.gt-xs="auto auto"
+      gdColumns.xs="auto"
+      gdGap.gt-xs="20px"
+      *ngIf="legals$ | async as legals"
+    >
+      <app-document-card
+        *ngFor="let legal of legals"
+        [document]="legal"
+        (remove)="onRemove($event)"
+      ></app-document-card>
+    </div>
+    <ng-container *ngIf="user$ | async as user">
+      <ng-container *ngIf="manager$ | async as manager">
+        <app-add-document-form
+          [listing]="listing"
+          type="legal"
+          *ngIf="user.id === manager.owner.id"
+          (upload)="refresh()"
+        ></app-add-document-form>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

@@ -1,0 +1,24 @@
+<div class="dialog-container">
+  <div
+    fxLayout="column"
+    class="h-100"
+    fxLayoutGap="40px"
+    fxLayoutAlign="start center"
+  >
+    <span class="title-1">Publica en Runroomie</span>
+
+    <div>
+      <app-textarea-numbered
+        [(ngModel)]="data.text"
+        [maxLenght]="100"
+      ></app-textarea-numbered>
+      <span class="text-2"
+        >*Anuncios con comentarios discriminatorios serán eliminados</span
+      >
+    </div>
+
+    <button [mat-dialog-close]="data.text" class="black-regular">
+      Publicar
+    </button>
+  </div>
+</div>

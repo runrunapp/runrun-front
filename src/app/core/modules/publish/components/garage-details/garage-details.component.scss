@@ -1,0 +1,12 @@
+@import "../../../../../../styles/constants/colors";
+@import "../../../../../../styles/constants/constants";
+
+:host {
+  ::ng-deep .mat-flat-button.mat-accent,
+  .mat-raised-button.mat-accent,
+  .mat-fab.mat-accent,
+  .mat-mini-fab.mat-accent {
+    border: 2px solid $black;
+    border-radius: $small-border-radius;
+  }
+}

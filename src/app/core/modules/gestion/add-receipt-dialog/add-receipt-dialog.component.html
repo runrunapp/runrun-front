@@ -1,0 +1,53 @@
+<div fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="start start">
+  <div fxLayout="column">
+    <span class="text-1">Descripción</span>
+    <input type="text" class="runrun-input" [(ngModel)]="description" />
+    <mat-error class="error" *ngIf="submitted && !description"
+      >Este campo es requerido</mat-error
+    >
+  </div>
+
+  <div fxLayout="column">
+    <label for="file-upload" class="file-upload">
+      Adjuntar archivo
+      <input
+        id="file-upload"
+        type="file"
+        class="runrun-input"
+        (change)="onChangeDocument($event)"
+      />
+    </label>
+    <mat-error class="error" *ngIf="submitted && !file"
+      >Este campo es requerido</mat-error
+    >
+  </div>
+
+  <div fxLayoutAlign="start center" fxLayoutGap="10px" *ngIf="!data.isTenant">
+    <input type="checkbox" class="runrun-checkbox" [(ngModel)]="share" />
+    <span class="text-1">Compartir con inquilino</span>
+  </div>
+
+  <select [(ngModel)]="type" class="runrun-select w-100">
+    <option value="income">Ingreso</option>
+    <option ngValue="outcome">Gasto</option>
+    <option ngValue="info">Informacional</option>
+  </select>
+
+  <div fxLayout="column">
+    <span class="text-1">Importe</span>
+    <div fxLayoutAlign="start center" fxLayoutGap="10px">
+      <input type="number" class="runrun-input" [(ngModel)]="amount" />
+      <select class="runrun-select" style="width: 100px" [(ngModel)]="currency">
+        <option value="CUP">CUP</option>
+        <option value="USD">USD</option>
+        <option value="MLC">MLC</option>
+        <option value="EUR">EUR</option>
+      </select>
+    </div>
+  </div>
+
+  <div fxLayoutAlign="center center" fxLayoutGap="10px">
+    <button (click)="onClose()" class="button-variant-filled">Subir</button>
+    <button mat-dialog-close class="button-variant-filled">Cancelar</button>
+  </div>
+</div>

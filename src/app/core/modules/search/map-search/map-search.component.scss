@@ -1,0 +1,14 @@
+:host {
+  .map-container {
+    height: 100%;
+    width: 100%;
+  }
+  ::ng-deep .leaflet-popup-content-wrapper {
+    background: none !important;
+    box-shadow: none !important;
+  }
+  ::ng-deep .leaflet-popup-tip {
+    background: none !important;
+    box-shadow: none !important;
+  }
+}

@@ -1,0 +1,53 @@
+@import '../../../../../styles/constants/colors';
+
+:host {
+  .container {
+    max-width: 350px;
+    height: calc(100vh - 55px);
+    // margin-top: 30px;
+    // margin-right: 50px;
+    background-color: transparent;
+
+    position: -webkit-sticky; /* Safari */
+
+    position: sticky;
+    top: 0;
+    margin-left: auto;
+    // right: 50px;
+    padding-top: 30px;
+    padding-right: 50px;
+    padding-left: 50px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+  /* width */
+  ::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: $white;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: $black;
+  }
+  .container.active {
+    background-color: $white;
+  }
+  .container.on-map {
+    height: 0;
+    overflow: visible;
+  }
+
+  .mat-icon {
+    line-height: 0 !important;
+  }
+}

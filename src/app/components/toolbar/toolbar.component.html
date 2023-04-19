@@ -1,0 +1,157 @@
+<mat-toolbar ngClass.xs="mobile">
+  <div fxLayout="row nowrap" fxLayoutAlign="space-between center" fxFill>
+    <div fxLayout="row nowrap" fxLayoutAlign="start start" fxLayoutGap="30px">
+      <mat-icon
+        fxShow="false"
+        fxShow.xs="true"
+        svgIcon="logo"
+        [routerLink]="urls.landingPageURL"
+        class="logoSmall"
+      ></mat-icon>
+      <mat-icon
+        [routerLink]="urls.landingPageURL"
+        class="logoFull"
+        fxShow="false"
+        fxShow.gt-xs="true"
+        svgIcon="logo_full"
+      ></mat-icon>
+    </div>
+
+    <div
+      fxLayout="row nowrap"
+      fxLayoutGap="20px"
+      fxLayoutAlign="space-between center"
+    >
+      <button
+        mat-flat-button
+        class="toolbar-button text-2"
+        [routerLink]="urls.feedURL"
+      >
+        Buscar
+      </button>
+
+      <ng-container *ngIf="user$ | async as user; else authButtons">
+        <div
+          class="avatar-container"
+          fxLayoutAlign="center center"
+          matBadgeSize="small"
+          [matBadge]="unreadNotification"
+        >
+          <div class="avatar-icon" [routerLink]="[urls.notificationsURL]">
+            <ngx-avatars
+              class="avatar"
+              [src]="user.profile.profilePicture1"
+              [name]="user.firstName"
+              [initialsSize]="1"
+              [round]="true"
+              size="32px"
+            ></ngx-avatars>
+          </div>
+        </div>
+      </ng-container>
+      <button
+        class="menu-button"
+        [class.open]="isMenuOpen"
+        aria-label="Menu"
+        fxLayoutAlign="center center"
+        [matMenuTriggerFor]="menu"
+      >
+        <mat-icon [svgIcon]="icons.MENU"></mat-icon>
+      </button>
+      <mat-menu
+        class="float-menu"
+        #menu="matMenu"
+        [hasBackdrop]="true"
+        xPosition="after"
+      >
+        <div class="float-menu-content" fxLayout="column" fxLayoutGap="20px">
+          <ng-container *ngIf="user$ | async as user; else noAuthMenu">
+            <app-menu-button
+              text="Mi Perfil"
+              [routerLink]="[urls.userProfileURL, user.id]"
+            ></app-menu-button>
+            <app-menu-button
+              [routerLink]="[urls.chatURL]"
+              text="Chat"
+            ></app-menu-button>
+            <app-menu-button
+              text="Blog"
+              [routerLink]="urls.blogURL"
+              [outlined]="true"
+            ></app-menu-button>
+            <app-menu-button
+              text="Runrún+"
+              [routerLink]="urls.runrunplus"
+              [outlined]="true"
+            ></app-menu-button>
+            <app-menu-button
+              text="RUNROMMIE"
+              [routerLink]="urls.runroomie"
+              [outlined]="true"
+            ></app-menu-button>
+            <app-menu-button
+              text="Gestión"
+              [routerLink]="[urls.gestionURL]"
+            ></app-menu-button>
+            <app-menu-button
+              text="Huésped"
+              [routerLink]="[urls.tenantURL]"
+            ></app-menu-button>
+
+            <app-menu-button text="Ayuda" [routerLink]="urls.blogURL">
+            </app-menu-button>
+            <app-menu-button text="Cerrar sesión" [routerLink]="urls.logoutURL">
+            </app-menu-button>
+          </ng-container>
+
+          <ng-template #noAuthMenu>
+            <app-menu-button
+              text="Blog"
+              [routerLink]="urls.blogURL"
+              [outlined]="true"
+            ></app-menu-button>
+            <app-menu-button
+              text="Iniciar sesión"
+              [routerLink]="urls.loginURL"
+              [outlined]="true"
+            >
+            </app-menu-button>
+            <app-menu-button
+              text="Registrarme"
+              [routerLink]="urls.signupURL"
+              [outlined]="true"
+            >
+            </app-menu-button>
+            <app-menu-button text="Ayuda" [routerLink]="'help'">
+            </app-menu-button>
+          </ng-template>
+        </div>
+      </mat-menu>
+    </div>
+
+    <ng-template #authButtons>
+      <div
+        fxLayout="row nowrap"
+        fxShow="false"
+        fxShow.gt-xs="true"
+        fxLayoutGap="10px"
+        fxLayoutAlign="center center"
+      >
+        <a
+          mat-flat-button
+          class="toolbar-button text-2"
+          [routerLink]="urls.loginURL"
+        >
+          Iniciar sesión
+        </a>
+        <a
+          mat-flat-button
+          class="toolbar-button text-2"
+          [routerLink]="urls.signupURL"
+        >
+          Registrarme
+        </a>
+      </div>
+    </ng-template>
+  </div>
+</mat-toolbar>

@@ -1,0 +1,15 @@
+<div fxLayout="column" fxLayoutGap="20px">
+  <span class="title-blog">{{ title }}</span>
+  <div
+    fxLayout.gt-xs="row"
+    fxLayout.xs="column"
+    fxLayoutAlign="space-between center"
+    fxLayoutGap="10px"
+  >
+    <div class="main-font-bold-12 date">
+      Actualización <br />
+      {{ date | date: "dd 'de' MMMM, yyyy":'es' }}
+    </div>
+    <img src="../../../../assets/svg/icons/blog_arrow.svg" />
+  </div>
+</div>

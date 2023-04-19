@@ -1,0 +1,34 @@
+<div
+  fxLayout="row nowrap"
+  [class.error]="hasError"
+  fxLayoutAlign="start center"
+  fxLayoutGap="5px"
+  class="container"
+  [class.light]="light"
+>
+  <button
+    type="button"
+    class="level-selection-button down"
+    [disabled]="disabled"
+    (click)="onDecrease()"
+  ></button>
+  <input
+    #input
+    class="level-selection-input main-font-semibold-15"
+    type="text"
+    [disabled]="disabled"
+    [value]="displayValue"
+    (input)="onInput($event)"
+    (blur)="onTouched()"
+    [step]="step"
+    [min]="minValue"
+    [max]="maxValue"
+  />
+  <button
+    type="button"
+    class="level-selection-button up"
+    [disabled]="disabled"
+    (click)="onIncrease()"
+  ></button>
+</div>
+<span class="error main-font-reg-15" *ngIf="hasError">{{ errorMessage }}</span>

@@ -1,0 +1,30 @@
+@import '../../../../../styles/constants/colors';
+
+:host {
+  .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
+  div {
+    border-radius: 5px;
+    padding: 10px;
+    max-width: 100%;
+    p {
+      // word-break: break-all;
+      word-wrap: break-word;
+    }
+  }
+  .other-message {
+    div {
+      background-color: $white;
+      max-width: 70%;
+    }
+  }
+  .user-message {
+    div {
+      background-color: $green;
+      max-width: 70%;
+    }
+  }
+}

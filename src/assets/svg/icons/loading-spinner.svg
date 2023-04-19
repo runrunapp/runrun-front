@@ -1,0 +1,67 @@
+<svg width="46.694" height="53.07599999999999" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+   <linearGradient
+   id="left-to-right"
+   gradientUnits="userSpaceOnUse"
+ >
+  <stop
+     offset="0"
+     stop-color="#223769"
+     id="stop4">
+    <animate
+       dur="3s"
+       attributeName="offset"
+       fill="freeze"
+       repeatCount="indefinite"
+       from="0"
+       to="1"
+       values="0;1;0;1;0"
+       keyTimes="0;0.5;0.5;1;1" />
+    <animate
+       dur="3s"
+       attributeName="stop-color"
+       fill="freeze"
+       repeatCount="indefinite"
+       from="#223769"
+       to="#223769"
+       values="#223769;#223769;transparent;transparent;#223769"
+       keyTimes="0;0.5;0.5;1;1" />
+  </stop>
+  <stop
+     offset="0"
+     stop-color="transparent"
+     id="stop6">
+    <animate
+       dur="3s"
+       attributeName="offset"
+       fill="freeze"
+       repeatCount="indefinite"
+       from="0"
+       to="1"
+       values="0;1;0;1;0"
+       keyTimes="0;0.5;0.5;1;1" />
+    <animate
+       dur="3s"
+       attributeName="stop-color"
+       fill="freeze"
+       repeatCount="indefinite"
+       from="transparent"
+       to="transparent"
+       values="transparent;transparent;#223769;#223769;transparent"
+       keyTimes="0;0.5;0.5;1;1" />
+  </stop>
+ </linearGradient>
+
+   <clipPath id="clip-path">
+    <ellipse stroke-width="2px" stroke-miterlimit="10" stroke-linejoin="round" stroke="#223769" ry="8.113" rx="8.114" cy="9.113" cx="9.114" class="cls-1" data-name="Elipse 110" id="Elipse_110"/>
+   </clipPath>
+   <clipPath id="clip-path-2">
+    <path stroke-width="2px" stroke-miterlimit="10" stroke-linejoin="round" stroke="#223769" d="m23.347,1l22.347,9.2l0,41.871l-44.694,0l0,-41.867l22.347,-9.204zm-18.427,28.595l1.1,1.066c5.505,5.358 11.336,8.077 17.327,8.077s11.821,-2.718 17.328,-8.077l1.1,-1.066a0.225,0.225 0 0 0 0,-0.323l-1.1,-1.066c-5.507,-5.361 -11.338,-8.077 -17.328,-8.077s-11.822,2.716 -17.327,8.077l-1.1,1.066a0.225,0.225 0 0 0 0,0.323z" class="cls-1" data-name="Trazado 1448" id="Trazado_1448"/>
+   </clipPath>
+  </defs>
+  <g fill="url(#left-to-right)" >
+
+   <path stroke-width="2px"   stroke-miterlimit="10" stroke-linejoin="round" stroke="#223769" d="m23.2481,1.0989l-22.347,9.2l0,41.872l44.694,0l0,-41.868l-22.347,-9.204zm18.423,28.595l-1.1,1.066c-5.505,5.358 -11.335,8.077 -17.326,8.077s-11.821,-2.718 -17.328,-8.077l-1.1,-1.066a0.225,0.225 0 0 1 0,-0.323l1.1,-1.066c5.507,-5.361 11.338,-8.077 17.328,-8.077s11.821,2.716 17.326,8.077l1.1,1.066a0.225,0.225 0 0 1 0,0.323z"  class="cls-1" data-name="Trazado 1446" id="Trazado_1446"/>
+   <circle stroke-width="2px" stroke-miterlimit="10" stroke-linejoin="round" stroke="#223769" r="8.113" cy="29.5319" cx="23.2471" class="cls-1"  data-name="Elipse 108" id="Elipse_108"/>
+  </g>
+ </svg>

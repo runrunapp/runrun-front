@@ -1,0 +1,47 @@
+<div fxLayout="row" fxLayoutAlign="center" class="page-container">
+  <div
+    fxLayout="column"
+    ngClass.xs="w-100 mx-10"
+    ngClass.gt-xs="container"
+    fxLayoutGap="50px"
+  >
+    <span class="title-2">Servicios</span>
+    <ng-container *ngIf="services$ | async as services">
+      <div fxLayout="row wrap" fxLayoutGap="30px">
+        <div
+          class="service-container"
+          fxLayout="column"
+          fxLayoutAlign="start center"
+          *ngFor="let service of services"
+        >
+          <img [src]="service.image" class="service-icon" />
+          <span class="subtitle-1">{{ service.name }}</span>
+          <span class="text-1-semibold">{{ service.description }}</span>
+        </div>
+      </div>
+
+      <div fxLayout="column" fxLayoutGap="10px">
+        <div fxLayout="row nowrap" fxLayoutGap="10px">
+          <select
+            fxFlex
+            class="runrun-select-light"
+            [(ngModel)]="selectedService"
+          >
+            <option [ngValue]="null">Seleccionar</option>
+            <option *ngFor="let option of services" [ngValue]="option">
+              {{ option.name }}
+            </option>
+          </select>
+        </div>
+
+        <app-textarea-numbered [(ngModel)]="message"> </app-textarea-numbered>
+
+        <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="10px">
+          <button class="simple-button" (click)="onSubmit()">
+            Solicitar Servicio
+          </button>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>

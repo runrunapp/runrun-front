@@ -1,0 +1,12 @@
+<div fxLayout="column nowrap" class="container">
+  <img
+    class="s-img-card mx-20 mt-20"
+    mat-card-image
+    [src]="img"
+    [alt]="title"
+  />
+  <span class="main-font-bold-17 overflow-hidden mx-20 mt-10">{{ title }}</span>
+  <span class="main-font-reg-18 mx-20 mt-5"
+    >{{ price | price }} {{ currency }}
+  </span>
+</div>

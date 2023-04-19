@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #ebedeb;
+      }
+    </style>
+  </defs>
+  <g id="Group_1288" data-name="Group 1288" transform="translate(-926 -505)">
+    <rect id="Rectangle" class="cls-1" width="36" height="36" rx="8" transform="translate(926 505)"/>
+    <g id="Checkmark" transform="translate(936 511.386)">
+      <path id="Union_19" data-name="Union 19" d="M-9217-151.385v-3h3v3Zm-23,0v-3h3v3Zm0-3v-4h26v4Z" transform="translate(9235 169)"/>
+      <path id="Rectangle_663" data-name="Rectangle 663" d="M2,0H6A2,2,0,0,1,8,2V3A0,0,0,0,1,8,3H0A0,0,0,0,1,0,3V2A2,2,0,0,1,2,0Z" transform="translate(-5 6.614)"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,29 @@
+@import '../../../../../styles/constants/colors';
+@import '../../../../../styles/constants/constants';
+
+:host {
+  .container {
+    overflow: visible;
+
+    background-color: #f5f6f5;
+    position: relative;
+
+    border-radius: 20px;
+    margin-top: 50px;
+    padding: 20px 0px;
+    border: 4px solid $black;
+  }
+  .background {
+    height: 480px;
+  }
+
+  img.listing {
+    aspect-ratio: 3 / 2;
+  }
+
+  .heart {
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+  }
+}

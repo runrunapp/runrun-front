@@ -1,0 +1,147 @@
+$light-green: #d6eac6;
+$green: #92cbab;
+$gray: #ebedeb;
+$darkgray: #808080;
+$white: white;
+$black: black;
+$dark-blue: #223769;
+$light-blue: #5675b9;
+$pink: #f3b8ab;
+$red: #f36f55;
+$yellow: #fcd672;
+$yellow-light: #f6dfa4;
+
+$black-palette: (
+  50: #e5e4e4,
+  100: #bdbcbc,
+  200: #918f90,
+  300: #656263,
+  400: #444141,
+  500: #231f20,
+  600: #1f1b1c,
+  700: #1a1718,
+  800: #151213,
+  900: #0c0a0b,
+  A100: #ff52ff,
+  A200: #ff1fff,
+  A400: #eb00eb,
+  A700: #d200d2,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #ffffff,
+    400: #ffffff,
+    500: #ffffff,
+    600: #ffffff,
+    700: #ffffff,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #ffffff,
+    A400: #ffffff,
+    A700: #ffffff,
+  ),
+);
+
+/* For use in src/lib/core/theming/_palette.scss */
+$gray-palette: (
+  50: #fdfdfd,
+  100: #f9faf9,
+  200: #f5f6f5,
+  300: #f1f2f1,
+  400: #eef0ee,
+  500: #ebedeb,
+  600: #e9ebe9,
+  700: #e5e8e5,
+  800: #e2e5e2,
+  900: #dde0dd,
+  A100: #ffffff,
+  A200: #ffffff,
+  A400: #ffffff,
+  A700: #ffffff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #000000,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+/* For use in src/lib/core/theming/_palette.scss */
+$red-palette: (
+  50: #feeeeb,
+  100: #fbd4cc,
+  200: #f9b7aa,
+  300: #f79a88,
+  400: #f5856f,
+  500: #f36f55,
+  600: #f1674e,
+  700: #ef5c44,
+  800: #ed523b,
+  900: #ea402a,
+  A100: #ffffff,
+  A200: #fff7f6,
+  A400: #ffc9c3,
+  A700: #ffb2a9,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #ffffff,
+    900: #ffffff,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);
+
+/* For use in src/lib/core/theming/_palette.scss */
+$white-palette: (
+  50: #ffffff,
+  100: #ffffff,
+  200: #ffffff,
+  300: #ffffff,
+  400: #ffffff,
+  500: #ffffff,
+  600: #ffffff,
+  700: #ffffff,
+  800: #ffffff,
+  900: #ffffff,
+  A100: #ffffff,
+  A200: #ffffff,
+  A400: #ffffff,
+  A700: #ffffff,
+  contrast: (
+    50: #000000,
+    100: #000000,
+    200: #000000,
+    300: #000000,
+    400: #000000,
+    500: #000000,
+    600: #000000,
+    700: #000000,
+    800: #000000,
+    900: #000000,
+    A100: #000000,
+    A200: #000000,
+    A400: #000000,
+    A700: #000000,
+  ),
+);

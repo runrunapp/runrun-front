@@ -1,0 +1,26 @@
+@import '../../../../styles/constants/colors';
+
+:host {
+  .container {
+    width: 100%;
+    background-color: transparent;
+    padding: 10px 0;
+
+    mat-icon {
+      min-width: 100%;
+      height: auto;
+      cursor: pointer;
+      &:active {
+        color: $black;
+      }
+      &:hover {
+        ::ng-deep svg path {
+          fill: $black;
+        }
+      }
+    }
+    .locals {
+      width: 100%;
+    }
+  }
+}

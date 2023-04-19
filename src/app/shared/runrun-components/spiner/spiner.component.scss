@@ -1,0 +1,32 @@
+@import '../../../../styles/constants/colors';
+@import '../../../../styles/constants/constants';
+
+:host {
+  button {
+    background-color: $white;
+    height: 36px;
+    border: none;
+    width: 36px;
+    border-radius: $big-border-radius;
+    padding: 0;
+  }
+  input {
+    background-color: $white;
+    height: 36px;
+    border: none;
+    width: 50px;
+    border-radius: $big-border-radius;
+    padding: 0;
+    text-align: center;
+  }
+
+  .error {
+    button,
+    input {
+      border: 2px solid $red;
+      color: $red;
+    }
+
+    color: $red;
+  }
+}

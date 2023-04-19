@@ -1,0 +1,32 @@
+<div
+  fxLayout="row"
+  [class.active]="active"
+  fxLayoutAlign="center center"
+  fxLayoutGap="5px"
+>
+  <input
+    #input
+    class="search-input"
+    fxFlex="grow"
+    type="text"
+    [placeholder]="label"
+    [matAutocomplete]="auto"
+    [formControl]="inputControl"
+  />
+
+  <button
+    class="right-arrow-button"
+    mat-mini-fab
+    (click)="onClick(input.value)"
+  >
+    <mat-icon [svgIcon]="icons.ARROW"></mat-icon>
+  </button>
+
+  <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+    <ng-container *ngIf="filteredOptions | async as options">
+      <mat-option *ngFor="let option of options" [value]="option">
+        {{ option.display_name }}
+      </mat-option>
+    </ng-container>
+  </mat-autocomplete>
+</div>

@@ -1,0 +1,80 @@
+@import '../../../../../styles/constants/colors';
+
+:host {
+  .chat-container {
+    min-height: calc(100vh - 50px);
+    max-height: calc(100vh - 50px);
+    padding-bottom: 50px;
+    background-color: $gray;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: flex-end;
+    @media (max-width: '600px') {
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+  .container {
+    height: calc(100vh - 50px);
+
+    overflow: hidden;
+  }
+  #messagesContainer {
+    max-height: 100%;
+    overflow-y: scroll;
+    /* width */
+  }
+  .conversation-header {
+    height: 40px;
+    background-color: $gray;
+    border-bottom: 2px solid $black;
+    .avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+    span {
+      color: $black;
+      cursor: pointer;
+    }
+  }
+
+  .send-message-form {
+    margin-top: 10px;
+    textarea {
+      border-radius: 8px;
+      border: 2px solid $gray;
+      padding: 10px;
+      resize: none;
+      height: 40px;
+
+      &:hover,
+      &:focus {
+        border: 2px solid $black;
+      }
+    }
+  }
+
+  ::-webkit-scrollbar {
+    width: 3px;
+    border-radius: 50%;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: $white;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: $black;
+  }
+}

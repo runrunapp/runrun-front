@@ -1,0 +1,11 @@
+@import 'src/styles/constants/colors';
+
+:host {
+  .container {
+    width: 520px;
+  }
+  .service-icon {
+    width: 36px;
+    height: 36px;
+  }
+}

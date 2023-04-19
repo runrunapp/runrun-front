@@ -1,0 +1,63 @@
+@import 'src/styles/constants/colors';
+
+:host {
+  .profile-container {
+    width: 500px;
+  }
+  swiper {
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+  }
+  ngx-avatars {
+    border: none;
+    border-radius: 8px;
+    ::ng-deep .avatar-content {
+      width: 100%;
+      border: none;
+      border-radius: 8px !important;
+    }
+  }
+  .badge {
+    height: 20px;
+    background-color: $black;
+    color: $white;
+    border-radius: 8px;
+    padding: 0px 5px;
+    line-height: 21px;
+  }
+  a {
+    text-decoration: none;
+    color: $black;
+  }
+  fa-icon {
+    font-size: 36px;
+  }
+
+  .logout-btn {
+    height: 32px;
+    padding: 0px 10px;
+    border-radius: 10px;
+    border: none;
+    background-color: $white;
+    color: $black;
+
+    &:hover {
+      background-color: $black;
+      color: $white;
+    }
+  }
+
+  .favorites-btn {
+    height: 32px;
+    background-color: $pink;
+    border-radius: 16px;
+    padding: 10px;
+    box-shadow: none;
+    border: none;
+    mat-icon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}

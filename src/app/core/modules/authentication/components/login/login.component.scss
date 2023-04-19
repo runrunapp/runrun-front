@@ -1,0 +1,23 @@
+@import '../../../../../../styles/constants/colors';
+
+:host {
+  .container {
+    padding-top: 30px;
+    background-color: $gray;
+    min-height: calc(100vh - 50px);
+  }
+  .keep-login {
+    text-decoration: none;
+    border-color: $gray;
+  }
+
+  .login-btn {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: gray;
+  }
+}

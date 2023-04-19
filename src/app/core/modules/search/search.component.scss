@@ -1,0 +1,88 @@
+@import '../../../../styles/constants/colors';
+
+:host {
+  .top-element {
+    // position: relative;
+    // margin-top: 30px;
+    height: calc(100vh - 55px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: $gray;
+  }
+  .panel-opened {
+    background-color: $white;
+  }
+  .space {
+    width: auto;
+  }
+  .container {
+    min-height: 100vh;
+
+    @media screen and (min-width: '320px') {
+      max-width: 100vw !important;
+      min-width: 0;
+      margin: 0px;
+      margin-top: 30px;
+    }
+    @media screen and (min-width: '600px') {
+      max-width: calc(100vw - 450px) !important;
+      min-width: 0;
+      margin: 30px 50px;
+    }
+    @media screen and (min-width: '950px') {
+      max-width: calc(100vw - 550px) !important;
+      min-width: 0;
+      margin: 30px 100px;
+    }
+    @media screen and (min-width: '1000px') {
+      max-width: calc(100vw - 750px) !important;
+      min-width: 0;
+      margin: 30px 100px 0px 100px;
+    }
+  }
+  .map-container {
+    height: calc(100vh - 55px);
+    width: 100vw;
+    app-map-search {
+      height: 100%;
+      width: 100%;
+    }
+  }
+  app-feed-card {
+    cursor: pointer;
+  }
+
+  .filters {
+    position: absolute;
+    right: 0px;
+    top: 52px;
+    width: 350px;
+
+    z-index: 1000;
+  }
+
+  /* width */
+  ::-webkit-scrollbar {
+    width: 3px;
+    border-radius: 50%;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: $white;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: $black;
+  }
+
+  button.simple-button {
+    height: auto;
+  }
+}

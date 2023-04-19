@@ -1,0 +1,12 @@
+@import 'src/styles/constants/colors';
+
+:host {
+  .step {
+    height: 4px;
+    border-radius: 2px;
+    background-color: $gray;
+  }
+  .active {
+    background-color: $darkgray;
+  }
+}

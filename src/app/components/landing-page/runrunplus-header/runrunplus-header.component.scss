@@ -1,0 +1,46 @@
+@import '../../../../styles/constants/colors';
+
+:host {
+  .background-runplus {
+    background-color: $red;
+    position: relative;
+  }
+
+  .plus-brand {
+    height: calc(100vh - 50px);
+
+    @media screen and (min-width: '320px') {
+      background-image: url('../../../../assets/landing/hands_mobile.png');
+      background-attachment: local;
+      background-position: center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      div {
+        width: 100%;
+      }
+      .runrun-plus-img {
+        width: calc(100% - 20px);
+      }
+    }
+    @media screen and (min-width: '500px') {
+      background-image: url('../../../../assets/landing/hands_desktop.png');
+      background-size: cover;
+      div {
+        width: 40%;
+      }
+      .runrun-plus-img {
+        width: 355px;
+        margin-top: 50px !important;
+      }
+    }
+    background-attachment: local;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  span {
+    width: 350px;
+    text-align: center;
+    line-height: 18px;
+  }
+}

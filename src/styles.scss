@@ -1,0 +1,145 @@
+/* Importing swiper CSS*/
+@import '~swiper/swiper-bundle';
+
+// RunRun Colors
+@import './styles/constants/colors';
+@import './styles/constants/constants';
+// Helpers
+@import './styles/helpers/dimensions';
+@import './styles/helpers/general';
+@import './styles/helpers/colors';
+// Typography
+@import './styles/constants/fonts-face';
+@import './styles/typography/font-classes';
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@import '~@angular/material/theming';
+
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$runrun-primary: mat-palette($black-palette);
+$runrun-accent: mat-palette($white-palette);
+
+// The warn palette is optional (defaults to red).
+$runrun-warn: mat-palette($red-palette);
+
+$runrun-foreground: mat-palette($black-palette);
+$runrun-background: mat-palette($gray-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$runrun-theme: mat-light-theme(
+  (
+    color: (
+      primary: $runrun-primary,
+      accent: $runrun-accent,
+      warn: $runrun-warn,
+      foreground: $runrun-foreground,
+      background: $runrun-background,
+    ),
+  )
+);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($runrun-theme);
+
+/* You can add global styles to this file, and also import other style files */
+
+$runrun-typography: mat-typography-config(
+  $font-family: 'Space Grotesk',
+  $display-4: mat-typography-level(40pt, 56px, 300),
+  $display-3: mat-typography-level(30pt, 48px, 400),
+  $display-2: mat-typography-level(20pt, 34px, 400),
+  $display-1: mat-typography-level(12pt, 22px, 400),
+  $headline: mat-typography-level(40pt, 48px, bold, 'Space Grotesk'),
+  $title: mat-typography-level(30pt, 32px, 500),
+  $subheading-2: mat-typography-level(15pt, 20px, 400),
+  $subheading-1: mat-typography-level(20pt, 24px, 400),
+  $body-2: mat-typography-level(15pt, 1.125, bold, 'Space Grotesk'),
+  $body-1: mat-typography-level(12pt, 22px, 400),
+  $caption: mat-typography-level(10pt, 20px, 200),
+  $button: mat-typography-level(15pt, 50px, bold, 'Space Grotesk'),
+  $input: mat-typography-level(12pt, 1.125, 400),
+);
+
+// Override typography for all Angular Material, including mat-base-typography and all components.
+@include mat-core($runrun-typography);
+
+body {
+  padding-top: 50px;
+  margin: 0;
+}
+
+// Overriding global components
+.mat-form-field-flex > .mat-form-field-infix {
+  padding: 0.3em 0px !important;
+}
+.mat-form-field-label-wrapper {
+  top: -1.5em;
+  overflow: visible !important;
+}
+
+.mat-form-field-appearance-outline.mat-form-field-can-float.mat-form-field-should-float
+  .mat-form-field-label {
+  transform: translateY(-1.1em) scale(0.75);
+  width: 133.33333%;
+}
+.mat-form-field-wrapper {
+  padding-bottom: 15px;
+}
+
+.mat-form-field-outline-start {
+  border-radius: $big-border-radius 0 0 $big-border-radius;
+}
+.mat-form-field-outline-end {
+  border-radius: 0 $big-border-radius $big-border-radius 0;
+}
+
+.mat-flat-button.mat-primary.mat-button-disabled,
+.mat-flat-button.mat-accent.mat-button-disabled,
+.mat-flat-button.mat-warn.mat-button-disabled,
+.mat-flat-button.mat-button-disabled.mat-button-disabled,
+.mat-raised-button.mat-primary.mat-button-disabled,
+.mat-raised-button.mat-accent.mat-button-disabled,
+.mat-raised-button.mat-warn.mat-button-disabled,
+.mat-raised-button.mat-button-disabled.mat-button-disabled,
+.mat-fab.mat-primary.mat-button-disabled,
+.mat-fab.mat-accent.mat-button-disabled,
+.mat-fab.mat-warn.mat-button-disabled,
+.mat-fab.mat-button-disabled.mat-button-disabled,
+.mat-mini-fab.mat-primary.mat-button-disabled,
+.mat-mini-fab.mat-accent.mat-button-disabled,
+.mat-mini-fab.mat-warn.mat-button-disabled,
+.mat-mini-fab.mat-button-disabled.mat-button-disabled {
+  color: $black;
+  opacity: 0.2;
+}
+
+*:focus {
+  outline: none;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+
+@import './styles/components/index';

@@ -1,0 +1,97 @@
+<form [formGroup]="form" #ngForm="ngForm" (submit)="onSubmit($event)">
+  <div fxLayout="column" fxLayoutGap="20px">
+    <span class="title-2">2. Características del garaje</span>
+    <div fxLayout="column" fxLayoutGap="5px">
+      <span class="text-1 ml-10">Capacidad del garaje</span>
+      <select
+        fxFlex
+        class="runrun-select-light"
+        formControlName="garageCapacity"
+      >
+        <option [ngValue]="null">Seleccionar</option>
+        <option *ngFor="let option of garageCapacity" [ngValue]="option.value">
+          {{ option.label }}
+        </option>
+      </select>
+      <mat-error
+        *ngIf="ngForm.submitted && form.controls.garageCapacity.errors"
+      >
+        Este campo es requerido
+      </mat-error>
+    </div>
+
+    <div fxLayout="column" fxLayoutGap="5px">
+      <boolean-checkgroup
+        label="Admite motos eléctricas"
+        formControlName="allowElectricMotorcycle"
+      ></boolean-checkgroup>
+      <span class="reg-15-dimmed">*Opcional</span>
+    </div>
+
+    <app-checkgroup
+      label="Otras características del garage"
+      [formGroup]="othersForm"
+      [values]="[
+        {
+          value: 'Garage cubierto',
+          checked: 'isCover'
+        },
+        { value: 'Alarma', checked: 'alarms' },
+        {
+          value: 'Personal de seguridad',
+          checked: 'securityPersonal'
+        },
+        {
+          value: 'Sistema de seguridad',
+          checked: 'securitySystem'
+        },
+        {
+          value: 'Puerta automática',
+          checked: 'automaticDoor'
+        }
+      ]"
+    ></app-checkgroup>
+
+    <form [formGroup]="formCommon" (ngSubmit)="onSubmit($event)">
+      <div fxLayout="column" fxLayoutGap="5px">
+        <span class="text-1">Descripción adicional</span>
+        <span class="reg-15"
+          >Haz una descripción del inmueble que no haya sido incluida
+          anteriormente</span
+        >
+        <app-textarea-numbered
+          formControlName="details"
+        ></app-textarea-numbered>
+        <span class="reg-15-dimmed">
+          *Los anuncios con comentarios racistas, homófobos y/o discriminatorios
+          serán eliminados.
+        </span>
+        <span class="reg-15-dimmed">
+          *El anuncio deberá escribirse en mayúsculas y minúsculas
+        </span>
+        <span
+          class="error"
+          *ngIf="
+            formCommon.controls.details.dirty &&
+            formCommon.controls.details.invalid
+          "
+        >
+          Este campo no puede estar vacío
+        </span>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px">
+        <button
+          class="text-1 button-variant-filled-gray"
+          type="button"
+          (click)="back.emit()"
+        >
+          Regresar
+        </button>
+        <button class="text-1 button-variant-filled-gray" type="submit">
+          Continuar
+        </button>
+      </div>
+    </form>
+  </div>
+</form>

@@ -1,0 +1,44 @@
+<div fxLayout="row" fxLayoutAlign="center" class="page-container">
+  <div
+    fxLayout="column"
+    ngClass.xs="w-100 mx-10"
+    ngClass.gt-xs="container"
+    fxLayoutGap="20px"
+  >
+    <span class="title-2">Incidencias</span>
+    <ng-container *ngIf="incidences$ | async as incidences">
+      <div
+        class="incidence-container"
+        fxLayout="column"
+        fxLayoutAlign="start center"
+        *ngFor="let incidence of incidences"
+      >
+        <div fxLayout="row nowrap" fxLayoutGap="20px">
+          <span class="text-1">{{ incidence.description }}</span>
+          <span class="text-2">{{
+            incidence.createdAt | date: 'dd/MM/yyyy - hh:mm a'
+          }}</span>
+        </div>
+        <div
+          fxLayout="row nowrap"
+          fxLayoutGap="20px"
+          *ngIf="incidence.solved; else notSolved"
+        >
+          <span class="text-1">Solucionado</span>
+          <span class="text-2">{{
+            incidence.solvedAt | date: 'dd/MM/yyyy - hh:mm a'
+          }}</span>
+        </div>
+
+        <ng-template #notSolved>
+          <button
+            (click)="onSolve(incidence)"
+            class="solve-button text-2-semibold"
+          >
+            Marcar como resuelta
+          </button>
+        </ng-template>
+      </div>
+    </ng-container>
+  </div>
+</div>

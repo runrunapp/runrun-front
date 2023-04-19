@@ -1,0 +1,32 @@
+<div
+  class="container filter-buttons"
+  fxLayout="row nowrap"
+  fxLayoutAlign="space-between stretch"
+>
+  <button
+    fxFlex
+    mat-button
+    [class.clicked]="panelOpened[0]"
+    (click)="handleButtonClick(0)"
+    *ngIf="!searchOpened"
+  >
+    <mat-icon
+      [svgIcon]="icons.FILTER"
+      style="width: 17px; height: 11.81px"
+    ></mat-icon>
+  </button>
+  <button
+    fxFlex
+    mat-button
+    [class.clicked]="panelOpened[1]"
+    (click)="handleButtonClick(1)"
+    *ngIf="!searchOpened"
+  >
+    <mat-icon
+      [svgIcon]="icons.PIN"
+      style="width: 14px; height: 18px"
+    ></mat-icon>
+  </button>
+</div>
+
+<div class="filter-display"></div>

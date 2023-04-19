@@ -1,0 +1,128 @@
+<div fxLayout="row" fxLayoutAlign="center" class="page-container">
+  <div
+    fxLayout="column"
+    ngClass.xs="w-100 mx-10"
+    ngClass.gt-xs="container"
+    fxLayoutGap="20px"
+    *ngIf="manager$ | async as manager"
+  >
+    <app-tenant-manager-card [manager]="manager"></app-tenant-manager-card>
+
+    <div
+      class="profile-container"
+      fxLayout="row nowrap"
+      fxLayoutAlign="start center"
+      *ngIf="manager?.manager as user"
+    >
+      <div
+        fxLayout="row nowrap"
+        fxLayoutAlign="start center"
+        fxLayoutGap="20px"
+        class="profile"
+      >
+        <ngx-avatars
+          class="avatar"
+          [src]="user.avatar"
+          [name]="user.firstName"
+          [initialsSize]="1"
+          [round]="false"
+          [routerLink]="[urls.userProfileURL, user.id]"
+        ></ngx-avatars>
+
+        <div fxLayout="column">
+          <span
+            class="text-1-semibold"
+            [routerLink]="[urls.userProfileURL, user.id]"
+            >{{ user.firstName }} {{ user.lastName }}</span
+          >
+          <span class="text-2-semibold">Administrador</span>
+        </div>
+
+        <button [routerLink]="[urls.chatURL, user.id]" class="text-1 badge">
+          Ir al Chat
+        </button>
+      </div>
+    </div>
+
+    <div
+      class="w-100 manager-button-container"
+      fxLayout="row nowrap"
+      fxLayoutGap="20px"
+      [routerLink]="[urls.contracts, manager.listing]"
+    >
+      <div class="icon-container" fxLayoutAlign="center center">
+        <mat-icon>assessment</mat-icon>
+      </div>
+      <div fxFlex fxLayout="column" fxLayoutAlign="center" fxLayoutGap="10px">
+        <span class="subtitle-1">Contratos</span>
+        <span class="">Acceder a contratos del alojamiento</span>
+      </div>
+    </div>
+
+    <div
+      class="w-100 manager-button-container"
+      fxLayout="row nowrap"
+      fxLayoutGap="20px"
+      [routerLink]="[urls.receipts, manager.listing]"
+    >
+      <div class="icon-container" fxLayoutAlign="center center">
+        <mat-icon>assessment</mat-icon>
+      </div>
+      <div fxFlex fxLayout="column" fxLayoutAlign="center" fxLayoutGap="10px">
+        <span class="subtitle-1">Recibos + números</span>
+        <span class="">Acceder a recibos y estadísticas del alojamiento</span>
+      </div>
+    </div>
+
+    <div
+      class="w-100 manager-button-container"
+      fxLayout="row nowrap"
+      fxLayoutGap="20px"
+      [routerLink]="[urls.incidences, manager.listing]"
+    >
+      <div class="icon-container" fxLayoutAlign="center center">
+        <mat-icon>assessment</mat-icon>
+      </div>
+      <div fxFlex fxLayout="column" fxLayoutAlign="center">
+        <span class="subtitle-1">Incidencias</span>
+        <span class="text-2-darkgray"
+          >Acceder a los reportes de incidencia</span
+        >
+      </div>
+    </div>
+
+    <div
+      class="w-100 manager-button-container"
+      fxLayout="row nowrap"
+      fxLayoutGap="20px"
+    >
+      <div class="icon-container" fxLayoutAlign="center center">
+        <mat-icon>add</mat-icon>
+      </div>
+      <div
+        fxFlex
+        fxLayout="column"
+        [routerLink]="[urls.services, manager.listing]"
+        fxLayoutAlign="center"
+        fxLayoutGap="10px"
+      >
+        <span class="subtitle-1">Servicios adicionales</span>
+        <span class="">Solicitar servicios temporales o fijos</span>
+      </div>
+    </div>
+
+    <div fxLayout="column" fxLayoutGap="10px">
+      <span class="text-1-semibold">Reportar incidencia</span>
+      <app-textarea-numbered
+        [(ngModel)]="incidenceMessage"
+      ></app-textarea-numbered>
+      <button
+        class="simple-button"
+        (click)="onSendIncidence(manager.listing)"
+        fxFlexAlign="end"
+      >
+        Enviar
+      </button>
+    </div>
+  </div>
+</div>

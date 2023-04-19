@@ -1,0 +1,15 @@
+@import "../../../../../../styles/constants/colors";
+
+:host {
+  .progress-tile {
+    height: 2px;
+    background-color: $gray;
+
+
+
+  }
+  .active {
+    background-color: $black;
+  }
+
+}

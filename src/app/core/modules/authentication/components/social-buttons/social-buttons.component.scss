@@ -1,0 +1,29 @@
+@import '../../../../../../styles/constants/colors';
+@import '../../../../../../styles/constants/constants';
+
+:host {
+  .social-button {
+    border: none;
+    border-radius: $big-border-radius;
+    background-color: $white;
+    height: 80px;
+
+    color: gray;
+
+    @media (min-width: '300px') {
+      width: 150px;
+    }
+
+    @media (min-width: '400px') {
+      width: 180px;
+    }
+
+    @media (min-width: '500px') {
+      width: 240px;
+    }
+
+    fa-icon {
+      font-size: 30px;
+    }
+  }
+}

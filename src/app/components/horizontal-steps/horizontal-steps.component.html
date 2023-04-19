@@ -1,0 +1,13 @@
+<div
+  fxLayout="row nowrap"
+  fxLayoutGap="5px"
+  fxLayoutAlign="space-between center"
+  class="w-100"
+>
+  <div
+    fxFlex
+    class="step"
+    *ngFor="let i of steps"
+    [class.active]="i < current"
+  ></div>
+</div>

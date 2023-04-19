@@ -1,0 +1,80 @@
+<div fxLayout="column" fxLayoutGap="30px" class="page-container">
+  <ng-container *ngIf="listing$ | async as listing">
+    <div class="mb-30">
+      <div fxLayout="column" fxLayoutGap="20px">
+        <app-profile-images-swiper
+          *ngIf="listing.images"
+          class="w-100"
+          [images]="listing.images"
+          [isPlus]="listing.planType === 1"
+        ></app-profile-images-swiper>
+        <div fxLayout="row nowrap" fxLayoutAlign="center">
+          <div
+            fxLayout="column"
+            ngClass.gt-xs="w-50"
+            ngClass.xs="w-100 mx-10"
+            fxLayoutGap="20px"
+            fxLayoutAlign="start start"
+          >
+            <app-profile-title
+              class="w-100"
+              [title]="listing.title"
+              [price]="listing.price"
+              [isOwner]="user$ | async | isOwner : listing.id"
+              [propertyType]="listing.propertyType | propertyType"
+              [area]="listing.totalArea"
+              [state]="listing.state"
+              [roomNumber]="listing.roomNumber"
+              [address]="listing.address"
+              [neighborhood]="listing.neighborhood"
+              [municipality]="municipality$ | async"
+              [province]="province$ | async"
+              [lat]="listing.locationLat"
+              [lng]="listing.locationLng"
+              [allowShare]="listing.allowRunroomies"
+              [currency]="listing.currency"
+              [isAuthenticated]="!!(user$ | async)"
+              [isFavorite]="
+                (user$ | async)?.favoriteListings | isFavorite : listing.id
+              "
+              [isShared]="
+                (user$ | async)?.runroomiePosts
+                  | isSharedOnRunroomie : listing.id
+              "
+              (setFavorite)="onSetFavorite($event)"
+              (setShare)="onSetShare($event, listing.id)"
+              (requestVisit)="onRequestVisit($event)"
+            ></app-profile-title>
+
+            <span class="main-font-semibold-15">{{ listing.details }}</span>
+
+            <app-house-profile
+              *ngIf="listing.propertyType === 'house'"
+              [house]="listing"
+            ></app-house-profile>
+            <app-room-profile
+              *ngIf="listing.propertyType === 'room'"
+              [room]="listing"
+            ></app-room-profile>
+            <app-office-profile
+              *ngIf="listing.propertyType === 'office'"
+              [office]="listing"
+            ></app-office-profile>
+            <app-local-profile
+              *ngIf="listing.propertyType === 'local'"
+              [local]="listing"
+            ></app-local-profile>
+            <app-garage-profile
+              *ngIf="listing.propertyType === 'garage'"
+              [garage]="listing"
+            ></app-garage-profile>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+
+  <app-landing-swipe></app-landing-swipe>
+
+  <app-footer></app-footer>
+</div>

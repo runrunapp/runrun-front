@@ -1,0 +1,240 @@
+<form [formGroup]="form" #ngForm="ngForm" (submit)="onSubmit($event)">
+  <div fxLayout="column" fxLayoutGap="40px">
+    <span class="title-2">2. Características de la vivienda</span>
+
+    <div
+      fxLayout="row nowrap"
+      fxLayout.xs="column"
+      fxLayoutAlign="space-between end"
+    >
+      <div fxLayout="column" fxLayoutGap="5px">
+        <span class="text-1 ml-10">Tipo de vivienda</span>
+        <select fxFlex class="runrun-select-light" formControlName="houseType">
+          <option [ngValue]="null">Seleccionar</option>
+          <option *ngFor="let option of houseType" [ngValue]="option.value">
+            {{ option.label }}
+          </option>
+        </select>
+        <mat-error *ngIf="ngForm.submitted && form.controls.houseType.errors">
+          Este campo es requerido
+        </mat-error>
+      </div>
+
+      <app-checkgroup
+        label=""
+        [formGroup]="form"
+        [values]="[
+          { value: 'Permite Mascotas', checked: 'allowPets' },
+          {
+            value: 'Permite compartir en Runroomie',
+            checked: 'allowRunroomies'
+          }
+        ]"
+      ></app-checkgroup>
+    </div>
+    <div
+      fxLayout="row nowrap"
+      fxLayout.xs="column"
+      fxLayoutAlign="space-between"
+    >
+      <div fxLayout="column" fxLayoutGap="10px">
+        <span class="text-1">Número de Habitaciones</span>
+        <app-spiner
+          [minValue]="0"
+          [maxValue]="20"
+          [indeterminateValue]="0"
+          formControlName="roomNumber"
+          [hasError]="
+            form.controls.roomNumber.dirty && form.controls.roomNumber.invalid
+          "
+        >
+        </app-spiner>
+      </div>
+
+      <div fxLayout="column" fxLayoutGap="10px">
+        <span class="text-1">Número de Baños</span>
+        <app-spiner
+          [minValue]="0"
+          [maxValue]="20"
+          [indeterminateValue]="0"
+          formControlName="bathNumber"
+          [hasError]="
+            form.controls.bathNumber.dirty && form.controls.bathNumber.invalid
+          "
+        >
+        </app-spiner>
+      </div>
+    </div>
+
+    <app-checkgroup
+      label="Electrodomésticos y otros"
+      [formGroup]="electrodomesticForm"
+      [values]="[
+        {
+          value: 'Aire acondicionado',
+          checked: 'airCondition'
+        },
+        {
+          value: 'Cama',
+          checked: 'bed'
+        },
+
+        {
+          value: 'Clóset/escaparate',
+          checked: 'closet'
+        },
+
+        {
+          value: 'Cocina de gas',
+          checked: 'gasCooker'
+        },
+
+        {
+          value: 'Cocina eléctrica',
+          checked: 'electricCooker'
+        },
+
+        {
+          value: 'Lavadora',
+          checked: 'washingMachine'
+        },
+
+        {
+          value: 'Menajes de cocina',
+          checked: 'kitchenEquipment'
+        },
+        {
+          value: 'Microwave',
+          checked: 'microwave'
+        },
+
+        {
+          value: 'Refrigerador',
+          checked: 'refrigerator'
+        },
+        {
+          value: 'Teléfono fijo',
+          checked: 'phone'
+        },
+        {
+          value: 'Televisor',
+          checked: 'tv'
+        },
+
+        {
+          value: 'Vajilla',
+          checked: 'dishes'
+        },
+        {
+          value: 'Ventilador',
+          checked: 'fan'
+        },
+        {
+          value: 'Wifi',
+          checked: 'wifi'
+        }
+      ]"
+    ></app-checkgroup>
+
+    <app-checkgroup
+      label="Infraestructura"
+      [formGroup]="infrastructureForm"
+      [values]="[
+        {
+          value: 'Agua caliente',
+          checked: 'hotWater'
+        },
+        {
+          value: 'Azotea libre',
+          checked: 'freeRoof'
+        },
+        {
+          value: 'Balcón',
+          checked: 'balcon'
+        },
+        {
+          value: 'Cisterna',
+          checked: 'tank'
+        },
+        {
+          value: 'Elevador',
+          checked: 'elevator'
+        },
+        {
+          value: 'Entrada independiente',
+          checked: 'independantEntrance'
+        },
+        {
+          value: 'Gas licuado',
+          checked: 'liquidGas'
+        },
+        {
+          value: 'Gas manufacturado',
+          checked: 'manufacturedGas'
+        },
+        {
+          value: 'Jardín',
+          checked: 'garden'
+        },
+        {
+          value: 'Piscina',
+          checked: 'pool'
+        },
+        {
+          value: 'Plaza de garaje',
+          checked: 'parking'
+        },
+        {
+          value: 'Portero',
+          checked: 'portman'
+        },
+        {
+          value: 'Tanque independiente',
+          checked: 'independantTank'
+        }
+      ]"
+    ></app-checkgroup>
+
+    <form [formGroup]="formCommon" (ngSubmit)="onSubmit($event)">
+      <div fxLayout="column" fxLayoutGap="5px">
+        <span class="text-1">Descripción adicional</span>
+        <span class="reg-15"
+          >Haz una descripción del inmueble que no haya sido incluida
+          anteriormente</span
+        >
+        <app-textarea-numbered
+          formControlName="details"
+        ></app-textarea-numbered>
+        <span class="reg-15-dimmed">
+          *Los anuncios con comentarios racistas, homófobos y/o discriminatorios
+          serán eliminados.
+        </span>
+        <span class="reg-15-dimmed">
+          *El anuncio deberá escribirse en mayúsculas y minúsculas
+        </span>
+        <span
+          class="error"
+          *ngIf="
+            formCommon.controls.details.dirty &&
+            formCommon.controls.details.invalid
+          "
+        >
+          Este campo no puede estar vacío
+        </span>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px">
+        <button
+          class="text-1 button-variant-filled-gray"
+          type="button"
+          (click)="back.emit()"
+        >
+          Regresar
+        </button>
+        <button class="text-1 button-variant-filled-gray" type="submit">
+          Continuar
+        </button>
+      </div>
+    </form>
+  </div>
+</form>

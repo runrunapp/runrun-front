@@ -1,0 +1,13 @@
+<swiper [config]="swiperConfig" *ngIf="images.length">
+  <div class="swiper-wrapper">
+    <img class="swiper-slide" *ngFor="let img of images" [src]="img.image" />
+  </div>
+  <div class="swiper-pagination"></div>
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+  <div class="float-label" fxLayoutAlign="center center" fxLayoutGap="10px">
+    <div class="plus-container main-font-semibold-12">
+      <mat-icon class="rplus" *ngIf="isPlus" [svgIcon]="icons.PLUS"></mat-icon>
+    </div>
+  </div>
+</swiper>

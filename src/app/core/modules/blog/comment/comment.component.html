@@ -1,0 +1,14 @@
+<div class="container" fxLayout="column start" fxLayoutGap="5px">
+  <div fxLayout="row nowrap" fxLayoutGap="20px">
+    <span class="text-1-semibold">{{
+      author.firstName + ' ' + author.lastName
+    }}</span>
+    <span class="text-2-semibold-darkgray">{{
+      date | date: "d 'd'e MMMM, yyyy. hh:mm"
+    }}</span>
+  </div>
+  <p class="text-1-semibold">{{ content }}</p>
+  <button class="text-2-semibold" *ngIf="showResButton" (click)="onClick()">
+    Responder
+  </button>
+</div>

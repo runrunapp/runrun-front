@@ -1,0 +1,94 @@
+<div fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="start start">
+  <div fxLayout="row" fxLayoutGap="10px">
+    <span class="property-type text-2-semibold-darkgray">{{
+      propertyTypeDisplay
+    }}</span>
+    <span
+      [class.free]="state === 0"
+      class="status-badge text-2-semibold-darkgray"
+      >{{ state === 0 ? 'Libre' : 'Ocupado' }}</span
+    >
+    <span class="allowShare-2-semibold-darkgray" *ngIf="isHouse"
+      >{{ roomNumber }}
+      {{ roomNumber > 1 ? 'habitaciones' : 'habitación' }}</span
+    >
+    <span class="main-font-semibold-15">{{ area }} m²</span>
+  </div>
+  <div
+    fxLayout="row nowrap"
+    class="w-100"
+    fxLayoutGap="20px"
+    fxLayoutAlign="space-between"
+  >
+    <span class="main-font-semibold-15">{{ title }}</span>
+    <span class="main-font-semibold-15"
+      >{{ price | price }} {{ currency | uppercase }} / mes
+    </span>
+  </div>
+  <div
+    fxLayout="row nowrap"
+    class="w-100"
+    fxLayoutGap="20px"
+    fxLayoutAlign="start start"
+  >
+    <span class="text-2-semibold-darkgray"
+      >{{ address }},
+      <ng-container *ngIf="neighborhood">{{ neighborhood }},</ng-container>
+      {{ municipality }}, {{ province }}
+    </span>
+    <a
+      class="view-map text-2-semibold-darkgray"
+      fxLayout="row nowrap"
+      fxLayoutAlign="center center"
+      fxLayoutGap="5px"
+      [routerLink]="['/home/feed/']"
+      [queryParams]="{ map: 1, lat: lat, lon: lng, propertyType: propertyType }"
+    >
+      <mat-icon [svgIcon]="icons.PIN"></mat-icon>
+      <span> Ver mapa </span>
+    </a>
+  </div>
+  <ng-container *ngIf="isAuthenticated && !isOwner">
+    <div
+      fxLayout.xs="column"
+      fxLayout="row nowrap"
+      fxLayoutAlign="space-evenly center"
+      fxLayoutGap="10px"
+      class="buttons-container w-100"
+    >
+      <app-icon-flip-button
+        [active]="isFavorite"
+        label="Añadir a favoritos"
+        labelActive="Eliminar de favoritos"
+        icon="heart-filled"
+        activeColor="#f36f55"
+        color="#ebebeb"
+        (clickActive)="removeFromFavorite()"
+        (clickNormal)="addToFavorite()"
+      ></app-icon-flip-button>
+      <ng-container *ngIf="state === 0">
+        <app-icon-flip-button
+          label="Solicitar visita"
+          labelActive="Visita Solicitada"
+          icon="right"
+          activeColor="#92cbab"
+          color="#ebebeb"
+          (click)="onVisitClick()"
+          [active]="hasVisit"
+        ></app-icon-flip-button>
+
+        <app-icon-flip-button
+          *ngIf="allowShare"
+          [active]="isShared"
+          (clickNormal)="onShareClick(true)"
+          (clickActive)="onShareClick(false)"
+          label="Compartir en RUNROOMIE"
+          labelActive="Eliminar de RUNROOMIE"
+          icon="runroomie_small"
+          activeColor="#FCD672"
+          color="#ebebeb"
+        ></app-icon-flip-button>
+      </ng-container>
+    </div>
+  </ng-container>
+</div>

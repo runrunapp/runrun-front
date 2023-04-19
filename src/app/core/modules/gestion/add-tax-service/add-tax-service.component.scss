@@ -1,0 +1,8 @@
+@import "../../../../../styles/constants/colors";
+
+:host {
+  .container {
+    background-color: $gray;
+    padding: 10px;
+  }
+}

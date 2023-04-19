@@ -1,0 +1,95 @@
+<div
+  fxLayout="column"
+  class="top-element"
+  [class.panel-opened]="filterFloat.isPanelOpened"
+>
+  <div
+    fxLayout="row"
+    fxLayoutAlign.xs="stretch"
+    fxLayoutAlign.gt-xs="space-between"
+    [fxLayoutAlign]="isMapOpened ? 'space-evenly' : 'center'"
+    [fxLayoutGap]="isMapOpened ? '5px' : '20px'"
+  >
+    <ng-container *ngIf="listings$ | async as lisitngs">
+      <ng-container *ngIf="!filterFloat.isPanelOpened || filterFloat.mapOpened">
+        <div
+          class="container"
+          fxFlex="grow"
+          fxLayout="column"
+          fxLayoutGap="20px"
+          *ngIf="!isMapOpened; else mapContainer"
+        >
+          <div
+            fxLayout="row nowrap"
+            class="mx-10"
+            fxLayoutGap="20px"
+            fxLayoutAlign="space-between center"
+          >
+            <span class="title-2-left">
+              {{ lisitngs.length }}
+              {{ lisitngs.length > 1 ? 'resultados' : 'resultado' }} -
+              <span class="title-2-left">
+                {{ propertyType }}
+              </span>
+            </span>
+
+            <button
+              class="simple-button"
+              *ngIf="!orderByPrice"
+              (click)="orderByPrice$.next(true)"
+            >
+              Ordenar por precio ↑
+            </button>
+            <button
+              class="simple-button"
+              *ngIf="orderByPrice"
+              (click)="orderByPrice$.next(false)"
+            >
+              Ordenar por precio ↓
+            </button>
+          </div>
+
+          <app-feed-card
+            *ngFor="let listing of lisitngs"
+            [listing]="listing"
+            [routerLink]="[listingURL, listing.id]"
+          ></app-feed-card>
+        </div>
+
+        <ng-template #mapContainer>
+          <div
+            class="map-container"
+            fxFlex="grow"
+            fxLayout="column"
+            fxLayoutGap="20px"
+          >
+            <app-map-search [listings]="lisitngs"></app-map-search>
+          </div>
+        </ng-template>
+      </ng-container>
+    </ng-container>
+
+    <ng-container *ngIf="filterFloat.isPanelOpened && !isMapOpened">
+      <div class="container" fxFlex="grow" fxLayout="column" fxLayoutGap="20px">
+        <app-property-filters
+          *ngIf="filterFloat.filtersOpened"
+          [formGroup]="filtersForm"
+        ></app-property-filters>
+      </div>
+    </ng-container>
+  </div>
+
+  <app-float-filters-buttons
+    #filterFloat
+    fxHide.gt-xs
+    (mapOpen)="setMapState($event)"
+  ></app-float-filters-buttons>
+  <div fxHide.xs class="filter-container">
+    <app-filters-panel
+      #filterPanel
+      class="filters"
+      [form]="filtersForm"
+      (mapOpen)="setMapState($event)"
+    ></app-filters-panel>
+  </div>
+</div>

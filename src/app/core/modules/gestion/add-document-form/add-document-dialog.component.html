@@ -1,0 +1,48 @@
+<div fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="start start">
+  <div fxLayout="column">
+    <span class="text-1">Título</span>
+    <input type="text" class="runrun-input" [(ngModel)]="title" />
+    <mat-error class="error" *ngIf="submitted && !title"
+      >Este campo es requerido</mat-error
+    >
+  </div>
+
+  <div fxLayout="column">
+    <label for="file-upload" class="file-upload">
+      Añadir documento
+      <input
+        id="file-upload"
+        type="file"
+        class="runrun-input"
+        (change)="onChangeDocument($event)"
+      />
+    </label>
+    <mat-error class="error" *ngIf="submitted && !document"
+      >Este campo es requerido</mat-error
+    >
+  </div>
+
+  <div fxLayoutAlign="start center" fxLayoutGap="10px">
+    <input type="checkbox" class="runrun-checkbox" [(ngModel)]="public" />
+    <span class="text-1">Visible para huéspedes</span>
+  </div>
+
+  <ng-container *ngIf="type === 'receipt'">
+    <div fxLayout="column">
+      <span class="text-1">Importe</span>
+      <input type="number" class="runrun-input" [(ngModel)]="ammount" />
+      <span class="text-2-darkgray"
+        >Valores positivos indican cobros por parte del arrendador, negativos
+        indica gastos</span
+      >
+      <mat-error class="error" *ngIf="submitted && !title"
+        >Este campo es requerido</mat-error
+      >
+    </div>
+  </ng-container>
+
+  <div fxLayoutAlign="center center" fxLayoutGap="10px">
+    <button mat-dialog-close class="button-variant-filled">Cancelar</button>
+    <button (click)="onClose()" class="button-variant-filled">Subir</button>
+  </div>
+</div>

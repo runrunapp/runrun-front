@@ -1,0 +1,14 @@
+<div fxLayout="row" fxLayoutAlign="center" class="page-container">
+  <div fxLayout="column" fxLayoutGap="10px">
+    <span class="title-2-left">Blog</span>
+
+    <app-blog-entry
+      *ngFor="let post of posts | async"
+      (click)="navigate(post.id)"
+      [title]="post.title"
+      [date]="post.updatedDate"
+      [description]="post.description"
+      [poster]="post.poster"
+    ></app-blog-entry>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+@import "../../../../styles/constants/colors";
+@import "../../../../styles/constants/constants";
+
+:host {
+
+.container {
+  height: 275px;
+  width: 315px;
+  background-color: $white;
+  border-radius: $small-border-radius;
+  box-shadow: 1px 1px 3px $black;
+  cursor: pointer;
+
+  .s-img-card {
+    width: 275px;
+    height: 180px;
+
+  }
+
+  .overflow-hidden {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &:hover {
+    border: 2px solid $black;
+  }
+}
+
+
+}

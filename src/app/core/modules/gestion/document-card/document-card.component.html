@@ -1,0 +1,15 @@
+<div class="container" fxLayout="column" fxLayoutGap="10px">
+  <div class="placeholder">
+    <img
+      *ngIf="
+        document.document.endsWith('png') || document.document.endsWith('jpg')
+      "
+      [src]="document.document"
+    />
+  </div>
+  <span class="subtitle-1">{{ document.title }}</span>
+  <div fxLayout="row nowrap" fxLayoutAlign="space-between">
+    <a target="_blank" [href]="document.document">Ver</a>
+    <a (click)="removeDocument()">Eliminar</a>
+  </div>
+</div>

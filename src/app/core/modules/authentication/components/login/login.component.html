@@ -1,0 +1,115 @@
+<div fxLayout="row" fxLayoutAlign="center" class="page-container">
+  <div
+    ngClass.xs="mx-20"
+    fxLayout="column"
+    fxLayoutGap="40px"
+    fxLayoutAlign="space-between"
+  >
+    <div
+      ngClass.xs="mx-20"
+      fxLayout="column"
+      fxLayoutGap="40px"
+      fxLayoutAlign="start center"
+    >
+      <span class="title-2">Iniciar sesión</span>
+      <form
+        #credentialForm="ngForm"
+        [formGroup]="credentialsForm"
+        (submit)="handleSubmit()"
+      >
+        <div fxLayout="column" fxLayoutGap="40px" fxLayoutAlign="center center">
+          <div fxLayout="column" fxLayoutGap="16px">
+            <div fxLayout="column">
+              <input
+                class="runrun-input-light"
+                placeholder="Correo electrónico"
+                type="text"
+                name="email"
+                formControlName="email"
+              />
+              <mat-error
+                *ngIf="
+                  credentialForm.submitted && checkError('email', 'required')
+                "
+              >
+                Debe proporcionar una dirección de correo electrónico
+              </mat-error>
+              <mat-error
+                *ngIf="credentialForm.submitted && checkError('email', 'email')"
+              >
+                El correo electrónico dado no es válido
+              </mat-error>
+            </div>
+            <div fxLayout="column">
+              <input
+                class="runrun-input-light"
+                placeholder="Contraseña"
+                type="password"
+                name="password"
+                formControlName="password"
+                matInput
+              />
+              <mat-error
+                *ngIf="
+                  credentialForm.submitted && checkError('password', 'required')
+                "
+              >
+                Debe proporcionar una constraseña
+              </mat-error>
+              <mat-error
+                *ngIf="
+                  credentialForm.submitted &&
+                  checkError('password', 'minlength')
+                "
+              >
+                La contraseña debe tener al menos 8 caracteres
+              </mat-error>
+            </div>
+
+            <div
+              fxLayout="row inline"
+              fxLayoutAlign="stretch center"
+              fxLayoutGap="10px"
+            >
+              <input
+                class="runrun-checkbox-light"
+                type="checkbox"
+                formControlName="keepLogin"
+              />
+
+              <span class="text-1" style="color: gray">
+                Mantener abierta la sesión
+              </span>
+            </div>
+          </div>
+
+          <button class="button-variant-filled" type="submit" color="primary">
+            Iniciar sesión
+          </button>
+        </div>
+      </form>
+    </div>
+    <div fxLayout="column" fxLayoutGap="16px" fxLayoutAlign="center center">
+      <div>
+        <a
+          class="text-1 no-decoration color-system-gray"
+          [routerLink]="resetPasswordURL"
+        >
+          Olvidaste tu contraseña?
+        </a>
+      </div>
+      <div
+        fxLayout="row wrap"
+        class="text-1"
+        fxLayoutAlign="center"
+        style="width: 100%; color: gray"
+      >
+        Al ingresar tus datos, aceptas la
+        <a class="inline-link" routerLink="/home/privacy-policy"
+          >Política de Privacidad</a
+        >
+        y Términos de uso de Runrún
+      </div>
+    </div>
+  </div>
+</div>

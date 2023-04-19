@@ -1,0 +1,45 @@
+@import '../../../styles/constants/colors';
+
+:host {
+  display: block;
+  .mat-sidenav {
+    @media screen and (max-width: 480px) {
+      width: 100%;
+    }
+    @media screen and (min-width: 480px) {
+      width: 480px;
+    }
+    background: linear-gradient(to bottom right, $gray, $light-green);
+    height: 100vh;
+    overflow: hidden;
+  }
+  .landing-search-button {
+    height: 50px;
+    position: absolute;
+    top: calc(100vh * 0.8);
+    left: 0;
+    right: 90px;
+    margin: auto;
+    z-index: 200 !important;
+    transition: width ease-in 500ms, width ease-out 500ms;
+
+    @media screen and (min-width: '600px') {
+      width: 10%;
+    }
+    @media screen and (min-width: '800px') {
+      width: 20%;
+    }
+    @media screen and (min-width: '900px') {
+      width: 350px;
+    }
+  }
+
+  .landing-search-button-fixed {
+    position: fixed;
+    top: 10px;
+  }
+
+  .blank-space {
+    height: 200px;
+  }
+}

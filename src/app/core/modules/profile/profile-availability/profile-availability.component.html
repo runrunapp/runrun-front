@@ -1,0 +1,17 @@
+<div fxLayout="column" fxLayoutGap="5px">
+  <span class="text-1">Disponibilidad</span>
+  <span class="main-font-reg-15"
+    >Disponible
+    {{
+      isAvailable ? 'ahora' : ('el' + date | date: "d 'd'e MMMM, yyyy")
+    }}</span
+  >
+  <div fxLayout.gt-xs="row nowrap" fxLayout.xs="column" fxLayoutGap="5px">
+    <span class="main-font-reg-15" *ngIf="minStay > 0"
+      >Mínimo {{ minStay >= 1 ? minStay + ' meses' : 'un mes' }}</span
+    >
+    <span class="main-font-reg-15" *ngIf="maxStay > 0"
+      >Máximo {{ maxStay >= 1 ? maxStay + ' meses' : 'un mes' }}</span
+    >
+  </div>
+</div>

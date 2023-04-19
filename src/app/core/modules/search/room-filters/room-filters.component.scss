@@ -1,0 +1,35 @@
+@import "../../../../../styles/constants/colors";
+@import "../../../../../styles/constants/constants";
+
+
+:host {
+  .age-range {
+    background-color: $white;
+    height: 24px;
+    border: 2px solid $gray;
+    width: 50px;
+    border-radius: $small-border-radius;
+
+    padding: 0;
+    text-align: center;
+    &:hover {
+      border: 2px solid $black;
+    }
+    &:active {
+      border: 2px solid $black;
+      background-color: $gray;
+    }
+  }
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  /* Firefox */
+  input[type="number"] {
+    -moz-appearance: textfield;
+  }
+
+
+}

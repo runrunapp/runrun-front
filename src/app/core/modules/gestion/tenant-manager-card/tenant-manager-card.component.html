@@ -1,0 +1,43 @@
+<div fxLayout="column" class="w-100 container" fxLayoutGap="10px">
+  <div fxLayout="row nowrap" fxLayoutGap="20px">
+    <img [src]="manager.image" />
+    <div fxFlex fxLayout="column" fxLayoutAlign="center" fxLayoutGap="10px">
+      <span class="subtitle-1">{{ manager.propertyTitle }}</span>
+      <div fxLayout="row" fxLayoutGap="20px">
+        <span class="rounded-darkgray">{{
+          propertyTypeDisplay(manager.propertyType)
+        }}</span>
+        <span *ngIf="!manager.completed && manager.paymentDay"
+          >Próximo pago en
+          {{ getRemainingPaymentDays(manager.paymentDay) }} días
+        </span>
+      </div>
+    </div>
+  </div>
+  <ng-container *ngIf="!manager.completed; else completeBlock">
+    <app-horizontal-steps
+      [total]="manager.totalMonths || 1"
+      [current]="manager.currentMonths || 1"
+    ></app-horizontal-steps>
+    <div fxLayout="row nowrap" fxLayoutGap="20px">
+      <span
+        class="subtitle-1"
+        *ngIf="manager.currentMonths && manager.totalMonths"
+        >{{ manager.currentMonths }}/{{ manager.totalMonths }} meses</span
+      >
+      <span *ngIf="manager.busyStart && manager.busyEnd">
+        {{ manager.busyStart | date }} - {{ manager.busyEnd | date }}
+      </span>
+    </div>
+  </ng-container>
+
+  <ng-template #completeBlock>
+    <div
+      style="background-color: #ebedeb"
+      fxLayout="row"
+      fxLayoutAlign="center center"
+    >
+      <span class="subtitle-1">Completado</span>
+    </div>
+  </ng-template>
+</div>

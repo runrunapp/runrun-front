@@ -1,0 +1,131 @@
+<div fxLayout="column" fxLayoutGap="10px">
+  <div gdColumns="1fr 1fr" gdColumns.xs="1fr">
+    <div fxLayout="row nowrap" fxLayoutGap="10px">
+      <mat-icon [svgIcon]="icons.ROOMS"></mat-icon>
+      <span class="text-1"
+        >{{ localLocationDispllay(local.localLocation) }}
+      </span>
+    </div>
+
+    <div fxLayout="row nowrap" fxLayoutGap="10px" *ngIf="local.allowPets">
+      <mat-icon [svgIcon]="icons.PETS"></mat-icon>
+      <span class="text-1">Permite mascotas</span>
+    </div>
+
+    <div fxLayout="row nowrap" fxLayoutGap="10px">
+      <mat-icon [svgIcon]="icons.BATHS"></mat-icon>
+      <span class="text-1"
+        >{{ local.bathNumber }}
+        {{ local.bathNumber != 1 ? 'baños' : 'baño' }}</span
+      >
+    </div>
+
+    <div fxLayout="row nowrap" fxLayoutGap="10px">
+      <mat-icon [svgIcon]="icons.CHECK"></mat-icon>
+      <span class="text-1"
+        >{{ local.linealFrontSize }}
+        {{ local.linealFrontSize != 1 ? 'metros' : 'metro' }} lineales de
+        fachada</span
+      >
+    </div>
+
+    <div
+      fxLayout="row nowrap"
+      fxLayoutGap="10px"
+      *ngIf="local.floorsNumber > 0"
+    >
+      <mat-icon [svgIcon]="icons.CHECK"></mat-icon>
+      <span class="text-1"
+        >{{ local.floorsNumber }}
+        {{ local.floorsNumber != 1 ? 'plantas' : 'planta' }}</span
+      >
+    </div>
+
+    <div fxLayout="row nowrap" fxLayoutGap="10px" *ngIf="local.entranceRamp">
+      <mat-icon [svgIcon]="icons.WHEELCHAIR"></mat-icon>
+      <span class="text-1">Rampas de acceso</span>
+    </div>
+  </div>
+
+  <div
+    fxLayout="row nowrap"
+    fxLayout.xs="column"
+    fxLayoutGap="10px"
+    fxLayoutGap.xs="5px"
+    *ngIf="local.lastActivity"
+  >
+    <span class="text-1">Última actividad comercial:</span>
+    <span class="main-font-bold-12">{{ local.lastActivity }}</span>
+  </div>
+
+  <span class="text-1">Otras características</span>
+
+  <app-checked-list
+    gdColumns="1fr 1fr"
+    gdColumns.xs="1fr"
+    [values]="[
+      {
+        label: 'Aire Acondicionado',
+        value: local.airCondition
+      },
+      {
+        label: 'Elevador',
+        value: local.elevator
+      },
+      {
+        label: 'Hace esquina',
+        value: local.corner
+      },
+      {
+        label: 'Sistema de seguridad',
+        value: local.securitySystem
+      },
+      {
+        label: 'Personal de seguridad',
+        value: local.securityPersonal
+      },
+      {
+        label: 'Luz natural',
+        value: local.naturalLight
+      },
+      { label: 'Alarma', value: local.alarms },
+      {
+        label: 'Cocina equipada',
+        value: local.kitchen
+      },
+      {
+        label: 'Plaza de garaje',
+        value: local.parking
+      },
+      {
+        label: 'Extractor',
+        value: local.extractor
+      }
+    ]"
+  ></app-checked-list>
+
+  <span class="text-1">Servicios incluidos por Runrún</span>
+
+  <app-checked-list
+    gdColumns="1fr 1fr"
+    gdColumns.xs="1fr"
+    [values]="[
+      {
+        label: 'Limpieza',
+        value: local.cleanService
+      },
+      {
+        label: 'Mantenimiento',
+        value: local.maintainerService
+      },
+      {
+        label: 'Pago de facturas',
+        value: local.billPaymentService
+      },
+      {
+        label: 'Transporte de mudanza',
+        value: local.transportationService
+      }
+    ]"
+  ></app-checked-list>
+</div>

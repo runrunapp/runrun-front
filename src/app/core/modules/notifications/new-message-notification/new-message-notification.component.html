@@ -1,0 +1,37 @@
+<div fxLayout="row nowrap" fxLayoutGap="10px">
+  <div style="cursor: pointer">
+    <ngx-avatars
+      [src]="newMessageNotification.sender.avatar"
+      [name]="newMessageNotification.sender.firstName"
+      [initialsSize]="1"
+      [round]="true"
+      [size]="50"
+      [routerLink]="[userProfileURL, newMessageNotification.sender.id]"
+    ></ngx-avatars>
+  </div>
+  <div fxLayout="column" fxLayoutGap="10px" fxFlex>
+    <div fxLayout="column">
+      <p class="main-font-reg-15">
+        <span
+          class="text-1"
+          style="cursor: pointer"
+          [routerLink]="[userProfileURL, newMessageNotification.sender.id]"
+          >{{ newMessageNotification.sender.firstName }}
+          {{ newMessageNotification.sender.lastName }}</span
+        >
+        te envío un mensaje
+      </p>
+      <span class="main-font-reg-12 relative-date">{{
+        newMessageNotification.creationDate | fromNow
+      }}</span>
+    </div>
+
+    <button
+      class="button-variant-normal-oulined"
+      [routerLink]="[chatURL, newMessageNotification.sender.id]"
+      [fragment]="newMessageNotification.message.toString()"
+    >
+      Ir al chat
+    </button>
+  </div>
+</div>

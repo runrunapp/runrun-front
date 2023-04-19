@@ -1,0 +1,16 @@
+@import "../../../../../styles/constants/colors";
+@import "../../../../../styles/constants/constants";
+
+:host {
+  .label {
+    background-color: $gray;
+    border-radius: $small-border-radius;
+    padding: 10px;
+  }
+  mat-icon {
+    min-width: 26px;
+    min-height: 26px;
+    max-width: 26px;
+    max-height: 26px;
+  }
+}

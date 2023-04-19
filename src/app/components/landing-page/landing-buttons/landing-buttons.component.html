@@ -1,0 +1,79 @@
+<div
+  fxLayout="row"
+  fxFill
+  fxLayoutGap="20px"
+  fxLayoutAlign="space-around"
+  fxHide
+  fxShow.gt-xs
+>
+  <button
+    class="search-button"
+    fxFlex="grow"
+    fxLayout="column nowrap"
+    fxLayoutGap="30px"
+    fxLayoutAlign="center center"
+    [routerLink]="feedURL"
+  >
+    <span class="title-1">BUSCAR</span>
+
+    <span class="text-1"
+      >Encuentra tu renta con <br />nuestros filtros de búsqueda</span
+    >
+  </button>
+  <button
+    class="publish-button"
+    fxFlex="grow"
+    [routerLink]="publishURL"
+    fxLayout="column nowrap"
+    fxLayoutAlign="center center"
+    fxLayoutGap="30px"
+  >
+    <span class="title-1">PUBLICAR</span>
+
+    <span class="text-1"
+      >El inquilino perfecto existe, <br />lo puedes encontrar aquí</span
+    >
+  </button>
+</div>
+
+<mat-accordion fxHide fxShow.xs>
+  <mat-expansion-panel
+    #searchPanel
+    hideToggle
+    [expanded]="searchOpen"
+    (closed)="searchOpen = false"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title class="main-font-bold-22 color-lightblue">
+        Buscar
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div fxLayout="row nowrap" fxLayoutAlign="space-between center">
+      <span class="text-1 lightblue"
+        >Encuentra tu alojamiento con <br />nuestro sistema de sugerencias</span
+      >
+      <div class="search-button-navigator title-1" [routerLink]="feedURL">
+        <mat-icon [svgIcon]="icons.ARROW"></mat-icon>
+      </div>
+    </div>
+  </mat-expansion-panel>
+  <mat-expansion-panel
+    hideToggle
+    [expanded]="!searchOpen"
+    (closed)="searchOpen = true"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title class="main-font-bold-22 color-red">
+        Publicar
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+    <div fxLayout="row nowrap" fxLayoutAlign="space-between center">
+      <span class="text-1 color-red"
+        >El inquilino perfecto existe, <br />lo puedes encontrar aquí</span
+      >
+      <div class="publish-button-navigator title-1" [routerLink]="publishURL">
+        <mat-icon [svgIcon]="icons.ARROW"></mat-icon>
+      </div>
+    </div>
+  </mat-expansion-panel>
+</mat-accordion>

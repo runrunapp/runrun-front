@@ -1,0 +1,17 @@
+@import 'src/styles/constants/colors';
+
+:host {
+  .container {
+    width: 520px;
+  }
+  .incidence-container {
+    padding: 10px;
+    background-color: $white;
+  }
+  .solve-button {
+    background-color: black;
+    border: none;
+    border-radius: 8px;
+    color: $white;
+  }
+}

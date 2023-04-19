@@ -1,0 +1,22 @@
+@import '../../../styles/constants/colors';
+
+:host {
+  cursor: pointer;
+  .btn-menu {
+    height: 30px;
+    border: 0;
+    background-color: transparent;
+  }
+  a {
+    text-decoration: none;
+    padding: 10px;
+  }
+  a.outlined {
+    padding: 0px;
+  }
+  a.outlined span {
+    background-color: $gray;
+    border-radius: 8px;
+    padding: 5px;
+  }
+}

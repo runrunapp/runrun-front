@@ -1,0 +1,20 @@
+<div fxLayout="row nowrap" fxLayoutGap="10px">
+  <img
+    class="avatar"
+    [routerLink]="[generalNotification.link]"
+    style="cursor: pointer;"
+    [src]="generalNotification.image"
+  />
+
+  <div fxLayout="column" fxLayoutGap="10px" fxFlex>
+    <div fxLayout="column">
+      <p class="main-font-reg-15" [routerLink]="[generalNotification.link]"  style="cursor: pointer;">
+       {{generalNotification.message}}
+      </p>
+      <span class="main-font-reg-12 relative-date"
+        >{{generalNotification.creationDate | fromNow}}</span
+      >
+    </div>
+
+  </div>
+</div>

@@ -1,0 +1,70 @@
+<div
+  fxLayout="column"
+  fxLayoutAlign="start center"
+  fxLayoutGap="100px"
+  style="margin-top: 20px"
+>
+  <div fxLayout="column" class="w-90" fxLayoutGap="10px">
+    <app-menu-button
+      *ngIf="(user$ | async)?.isOwner"
+      text="Gestión"
+      (click)="navigate(gestionURL)"
+    ></app-menu-button>
+    <app-menu-button
+      *ngIf="user$ | async"
+      text="Mensajes"
+      (click)="navigate(chatsURL)"
+    ></app-menu-button>
+    <app-menu-button
+      (click)="navigate(feedURL)"
+      text="Buscar"
+    ></app-menu-button>
+    <app-menu-button
+      *ngIf="user$ | async"
+      text="Publicar"
+      (click)="navigate(publishURL)"
+    >
+    </app-menu-button>
+
+    <app-menu-button
+      text="RUNROOMIE"
+      (click)="navigate(runroomieURL)"
+      [outlined]="true"
+    >
+    </app-menu-button>
+    <app-menu-button text="Ayuda" (click)="navigate(blogURL)">
+    </app-menu-button>
+  </div>
+
+  <div fxLayout="column" fxLayoutGap="20px" fxLayoutAlign="">
+    <button
+      mat-flat-button
+      class="button-variant-normal"
+      color="accent"
+      *ngIf="!(user$ | async)"
+      (click)="navigate(loginURL)"
+    >
+      Iniciar sesión
+    </button>
+    <button
+      mat-flat-button
+      class="button-variant-normal"
+      color="accent"
+      *ngIf="!(user$ | async)"
+      (click)="navigate(signupURL)"
+    >
+      Registrarse
+    </button>
+    <button
+      class="button-stroked-white"
+      mat-stroked-button
+      color="primary"
+      *ngIf="user$ | async"
+      (click)="navigate(logoutURL)"
+    >
+      Cerrar Sesión
+    </button>
+  </div>
+
+  <div class="copyright main-font-bold-12">© Runrún, 2021</div>
+</div>

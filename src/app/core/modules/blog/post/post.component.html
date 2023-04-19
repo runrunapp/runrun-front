@@ -1,0 +1,70 @@
+<div fxLayout="row" fxLayoutAlign="center" fxFill class="my-40 mx-10">
+  <div
+    ngClass.gt-xs="w-60"
+    ngClass.xs="w-100"
+    fxLayout="column"
+    fxLayoutAlign=" center"
+    fxLayoutGap="10px"
+    *ngIf="post$ | async as post"
+  >
+    <img [src]="post.poster" />
+    <span class="title-1">{{ post.title }}</span>
+    <div fxLayout="row nowrap" fxLayoutGap="20px">
+      <span class="text-1-semibold">{{
+        post.author.firstName + ' ' + post.author.lastName
+      }}</span>
+      <span class="text-1-semibold">{{
+        post.updatedDate | date: "d 'd'e MMMM, yyyy"
+      }}</span>
+    </div>
+    <div>
+      <div class="text-1" [innerHTML]="post.content | keepHtml"></div>
+    </div>
+    <!-- <markdown [data]="post.content" (ready)="onReady()"></markdown> -->
+    <app-comment-input
+      *ngIf="userAuthenticated$ | async"
+      class="comment-input"
+      (send)="onPostComment($event)"
+    >
+    </app-comment-input>
+    <div
+      class="comments-container"
+      fxLayout="column"
+      fxLayoutGap="15px"
+      fxLayoutAlign=" start"
+      tabindex="1"
+      *ngFor="let postComment of post.comments"
+      #postComments
+      fxFlex="grow"
+    >
+      <app-comment
+        class="post-comment"
+        [commentId]="postComment.id"
+        [author]="postComment.author"
+        [date]="postComment.date"
+        [content]="postComment.content"
+        [showResButton]="userAuthenticated$ | async"
+        (response)="onResponseButton(postComment.id)"
+      ></app-comment>
+      <div class="comments2-container">
+        <app-comment
+          class="comment-comment"
+          *ngFor="let comments of postComment.comments"
+          [commentId]="postComment.id"
+          [author]="comments.author"
+          [date]="comments.date"
+          [content]="comments.content"
+          [showResButton]="userAuthenticated$ | async"
+          (response)="onResponseButton(postComment.id)"
+        ></app-comment>
+      </div>
+      <app-comment-input
+        label="Responder"
+        (send)="onCommentComment($event, postComment.id)"
+        *ngIf="showResponseInput === postComment.id"
+      >
+      </app-comment-input>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

@@ -1,0 +1,44 @@
+<div fxLayout="row nowrap" fxLayoutGap="10px">
+  <div style="cursor: pointer">
+    <ngx-avatars
+      [src]="runroomieNotification.applicant.avatar"
+      [name]="runroomieNotification.applicant.firstName"
+      [initialsSize]="1"
+      [round]="true"
+      [size]="50"
+      [routerLink]="[userProfileURL, runroomieNotification.applicant.id]"
+    ></ngx-avatars>
+  </div>
+
+  <div fxLayout="column" fxLayoutGap="10px" fxFlex>
+    <div fxLayout="column">
+      <p class="main-font-reg-15">
+        <span
+          class="text-1"
+          style="cursor: pointer"
+          [routerLink]="[userProfileURL, runroomieNotification.applicant.id]"
+          >{{ runroomieNotification.applicant.firstName }}
+          {{ runroomieNotification.applicant.lastName }}</span
+        >
+        dejó de compartir tu
+        <span
+          class="text-1"
+          style="cursor: pointer"
+          [routerLink]="[listingURL, runroomieNotification.listing.id]"
+          >casa</span
+        >
+        en
+        <span
+          class="text-1"
+          [routerLink]="[runroomieURL]"
+          style="cursor: pointer"
+        >
+          RUNROOMIE
+        </span>
+      </p>
+      <span class="main-font-reg-12 relative-date">{{
+        runroomieNotification.creationDate | fromNow
+      }}</span>
+    </div>
+  </div>
+</div>

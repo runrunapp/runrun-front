@@ -1,0 +1,18 @@
+@import "../../../../../styles/constants/colors";
+
+:host {
+  button {
+    font-size: 15px !important;
+    transition: width linear 1s;
+  }
+  .accepted {
+    color: $white;
+    border: none !important;
+    background-color: $dark-blue !important;
+  }
+  .rejected {
+    color: $white;
+    border: none !important;
+    background-color: $red !important;
+  }
+}

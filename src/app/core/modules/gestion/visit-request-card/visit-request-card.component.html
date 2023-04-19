@@ -1,0 +1,44 @@
+<div fxLayout="column" class="w-100 container" fxLayoutGap="10px">
+  <div fxLayout="row nowrap" fxLayoutGap="20px">
+    <ngx-avatars
+      class="avatar"
+      [src]="visitRequest.user.avatar"
+      [name]="visitRequest.user.firstName"
+      [initialsSize]="1"
+      [round]="false"
+      [routerLink]="[urls.userProfileURL, visitRequest.user.id]"
+    ></ngx-avatars>
+
+    <div fxFlex fxLayout="column" fxLayoutAlign="center" fxLayoutGap="10px">
+      <span class="text-1"
+        >{{ visitRequest.user.firstName }}
+        {{ visitRequest.user.lastName }}</span
+      >
+      <span class="text-2"
+        >Fecha de solicitud: {{ visitRequest.creationDate | date }}</span
+      >
+    </div>
+  </div>
+
+  <div class="separator"></div>
+
+  <div fxLayout="row nowrap" fxLayoutAlign="space-between" fxLayoutGap="20px">
+    <ng-container *ngIf="!visitRequest.approved; else elseblock">
+      <button (click)="onApprove()" class="button-variant-filled-gray approve">
+        Aprobar
+      </button>
+      <button (click)="onReject()" class="button-variant-filled-gray reject">
+        Rechazar
+      </button>
+    </ng-container>
+
+    <ng-template #elseblock>
+      <button
+        class="button-variant-filled-gray"
+        [routerLink]="[urls.chatURL, visitRequest.user.id]"
+      >
+        Ir al chat
+      </button>
+    </ng-template>
+  </div>
+</div>

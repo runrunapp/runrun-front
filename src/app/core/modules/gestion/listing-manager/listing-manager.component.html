@@ -1,0 +1,190 @@
+<div fxLayout="row" fxLayoutAlign="center" class="page-container">
+  <div
+    fxLayout="column"
+    ngClass.xs="w-100 mx-10"
+    ngClass.gt-xs="content-wrapper"
+    fxLayoutGap="16px"
+    *ngIf="manager$ | async as manager"
+  >
+    <app-listing-display-card
+      [image]="manager.image"
+      [title]="manager.listingName"
+      [status]="manager.state"
+      [visitRequestCount]="manager.visitRequests.length"
+      [propertyType]="propertyTypeDisplay(manager.propertyType)"
+      [remainingDaysForPayment]="
+        getRemainingPaymentDays(manager?.currentBooking?.paymentDay)
+      "
+      [id]="manager.listing"
+      [planType]="manager.planType"
+      (refresh)="onRefresh()"
+    ></app-listing-display-card>
+
+    <div
+      class="profile-container"
+      fxLayout="row nowrap"
+      fxLayoutAlign="center center"
+      *ngIf="manager.planType === 2"
+    >
+      <div fxLayout="column">
+        <span class="text-1-semibold"
+          >Debe cambiar de plan para acceder a las funciones de Gestión</span
+        >
+        <button (click)="onPlanUpgrade()" class="text-1 badge">
+          Solicitar cambio de plan
+        </button>
+      </div>
+    </div>
+
+    <div
+      class="profile-container"
+      fxLayout="row nowrap"
+      fxLayoutAlign="start center"
+      *ngIf="manager?.currentBooking?.user as user"
+    >
+      <div
+        fxLayout="row nowrap"
+        fxLayoutAlign="start center"
+        fxLayoutGap="20px"
+        class="profile"
+      >
+        <ngx-avatars
+          class="avatar"
+          [src]="user.avatar"
+          [name]="user.firstName"
+          [initialsSize]="1"
+          [round]="false"
+          [routerLink]="[urls.userProfileURL, user.id]"
+        ></ngx-avatars>
+
+        <div fxLayout="column">
+          <span
+            class="text-1-semibold"
+            [routerLink]="[urls.userProfileURL, user.id]"
+            >{{ user.firstName }} {{ user.lastName }}</span
+          >
+          <span class="text-2-semibold"
+            >Inquilino: {{ manager.currentBooking.busyStart | date }} -
+            {{ manager.currentBooking.busyEnd | date }}</span
+          >
+        </div>
+
+        <button [routerLink]="[urls.chatURL, user.id]" class="text-1 badge">
+          Ir al Chat
+        </button>
+      </div>
+    </div>
+
+    <div fxLayout="column" fxLayoutGap="10px">
+      <button
+        class="w-100 manager-button-container"
+        fxLayoutAlign="start center"
+        [disabled]="manager.planType === 2"
+        fxLayout="row nowrap"
+        fxLayoutGap="20px"
+        [routerLink]="[urls.contracts, manager.listing]"
+      >
+        <div class="icon-container" fxLayoutAlign="center center">
+          <mat-icon>assessment</mat-icon>
+        </div>
+        <div fxFlex fxLayout="column" fxLayoutAlign="center">
+          <span class="subtitle-1">Contratos</span>
+          <span class="text-2-darkgray"
+            >Acceder a contratos del alojamiento</span
+          >
+        </div>
+      </button>
+
+      <button
+        class="w-100 manager-button-container"
+        fxLayoutAlign="start center"
+        [disabled]="manager.planType === 2"
+        fxLayout="row nowrap"
+        fxLayoutGap="20px"
+        [routerLink]="[urls.legals, manager.listing]"
+      >
+        <div class="icon-container" fxLayoutAlign="center center">
+          <mat-icon>euro</mat-icon>
+        </div>
+        <div fxFlex fxLayout="column" fxLayoutAlign="center">
+          <span class="subtitle-1">Información legal</span>
+          <span class="text-2-darkgray"
+            >Guardar archivos de impuestos y otros documentos legales
+            importantes</span
+          >
+        </div>
+      </button>
+
+      <button
+        class="w-100 manager-button-container"
+        fxLayoutAlign="start center"
+        [disabled]="manager.planType === 2"
+        fxLayout="row nowrap"
+        fxLayoutGap="20px"
+        [routerLink]="[urls.receipts, manager.listing]"
+      >
+        <div class="icon-container" fxLayoutAlign="center center">
+          <mat-icon>assessment</mat-icon>
+        </div>
+        <div fxFlex fxLayout="column" fxLayoutAlign="center">
+          <span class="subtitle-1">Recibos + números</span>
+          <span class="text-2-darkgray"
+            >Acceder a recibos y estadísticas del alojamiento</span
+          >
+        </div>
+      </button>
+
+      <button
+        class="w-100 manager-button-container"
+        fxLayoutAlign="start center"
+        [disabled]="manager.planType === 2"
+        fxLayout="row nowrap"
+        fxLayoutGap="20px"
+        [routerLink]="[urls.incidences, manager.listing]"
+      >
+        <div class="icon-container" fxLayoutAlign="center center">
+          <mat-icon>assessment</mat-icon>
+        </div>
+        <div fxFlex fxLayout="column" fxLayoutAlign="center">
+          <span class="subtitle-1">Incidencias</span>
+          <span class="text-2-darkgray"
+            >Acceder a los reportes de incidencia</span
+          >
+        </div>
+      </button>
+
+      <button
+        class="w-100 manager-button-container"
+        fxLayoutAlign="start center"
+        [disabled]="manager.planType === 2"
+        fxLayout="row nowrap"
+        fxLayoutGap="20px"
+        [routerLink]="[urls.services, manager.listing]"
+      >
+        <div class="icon-container" fxLayoutAlign="center center">
+          <mat-icon>add</mat-icon>
+        </div>
+        <div fxFlex fxLayout="column" fxLayoutAlign="center">
+          <span class="subtitle-1">Servicios adicionales</span>
+          <span class="text-2-darkgray"
+            >Solicitar servicios temporales o fijos</span
+          >
+        </div>
+      </button>
+    </div>
+    <div fxLayout="column" fxLayoutGap="10px">
+      <span class="text-1-semibold">Reportar incidencia</span>
+      <app-textarea-numbered
+        [(ngModel)]="incidenceMessage"
+      ></app-textarea-numbered>
+      <button
+        [disabled]="manager.planType === 2"
+        class="simple-button"
+        (click)="onSendIncidence()"
+        fxFlexAlign="end"
+      >
+        Enviar
+      </button>
+    </div>
+  </div>
+</div>

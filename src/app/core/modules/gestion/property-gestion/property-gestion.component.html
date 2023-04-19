@@ -1,0 +1,173 @@
+<div fxLayout="column" fxLayoutGap="40px" *ngIf="!dialogOpened">
+  <div fxLayout="column">
+    <div
+      fxLayout="row nowrap"
+      fxLayoutAlign="start center"
+      fxLayoutGap="10px"
+      *ngIf="
+        manager.state === LISTING_STATE.OCUPADO && manager.occupant !== null
+      "
+    >
+      <img
+        [src]="manager.occupant.avatar"
+        class="avatar"
+        [routerLink]="[usersURL, manager.occupant.id]"
+      />
+      <span class="text-1" [routerLink]="[usersURL, manager.occupant.id]"
+        >{{ manager.occupant.firstName }} {{ manager.occupant.lastName }}</span
+      >
+
+      <button mat-icon-button [routerLink]="[chatURL, manager.occupant.id]">
+        <mat-icon [svgIcon]="icons.MESSAGE"></mat-icon>
+      </button>
+    </div>
+    <div fxLayout="row nowrap" fxLayoutAlign="start center" fxLayoutGap="30px">
+      <span class="main-font-reg-15">Estado del alojamiento: </span>
+      <span
+        style="cursor: pointer"
+        class="main-font-reg-15"
+        [mat-menu-trigger-for]="menu"
+        [class.free]="manager.state === LISTING_STATE.LIBRE"
+        [class.busy]="manager.state === LISTING_STATE.OCUPADO"
+        [class.not-available]="manager.state === LISTING_STATE.NO_DISPONIBLE"
+        >{{
+          manager.state === LISTING_STATE.LIBRE
+            ? 'Libre'
+            : manager.state === LISTING_STATE.OCUPADO
+            ? 'Ocupado'
+            : 'No disponible'
+        }}</span
+      >
+    </div>
+
+    <mat-menu #menu id="menu">
+      <div fxLayout="column nowrap" fxLayoutAlign="center center">
+        <button
+          class="text-1 gestion-menu-btn"
+          [class.busy]="manager.state === LISTING_STATE.OCUPADO"
+          (click)="setBusy(manager)"
+        >
+          Ocupado
+        </button>
+        <button
+          class="text-1 gestion-menu-btn"
+          [class.free]="manager.state === LISTING_STATE.LIBRE"
+          (click)="setFree(manager)"
+        >
+          Libre
+        </button>
+        <button
+          class="text-1 gestion-menu-btn"
+          [class.not-available]="manager.state === LISTING_STATE.NO_DISPONIBLE"
+          (click)="setNotAvailable(manager)"
+        >
+          No disponible
+        </button>
+      </div>
+    </mat-menu>
+
+    <span
+      class="main-font-reg-15 opacity-50"
+      *ngIf="manager.busyStart && manager.busyEnd"
+    >
+      {{ manager.busyStart | date: "d 'de' MMMM 'de' YYYY " }} -
+      {{ manager.busyEnd | date: "d 'de' MMMM 'de' YYYY " }}
+    </span>
+
+    <span class="main-font-reg-15" *ngIf="manager.paymentDay"
+      >Proximo pago en:
+      <span class="text-1">{{ manager.paymentDay | paymentDay }}</span>
+    </span>
+  </div>
+
+  <app-earnings-chart [receipts]="manager.receipts"></app-earnings-chart>
+
+  <div fxLayout="column nowrap" fxLayoutGap="10px" *ngIf="manager.isPlus">
+    <div
+      fxLayout="row nowrap"
+      fxLayoutAlign="space-between center"
+      [routerLink]="['receipts', manager.listing]"
+    >
+      <span class="main-font-bold-20">Recibos</span>
+      <mat-icon [svgIcon]="icons.ARROW"></mat-icon>
+    </div>
+    <div fxLayout="row nowrap" fxLayoutAlign="space-between center">
+      <span class="main-font-bold-20">Contrato</span>
+      <mat-icon [svgIcon]="icons.ARROW"></mat-icon>
+    </div>
+    <div fxLayout="row nowrap" fxLayoutAlign="space-between center">
+      <span class="main-font-bold-20">Impuestos</span>
+      <mat-icon [svgIcon]="icons.ARROW"></mat-icon>
+    </div>
+    <div fxLayout="row nowrap" fxLayoutAlign="space-between center">
+      <span class="main-font-bold-20">Servicios</span>
+      <mat-icon [svgIcon]="icons.ARROW"></mat-icon>
+    </div>
+    <div fxLayout="row nowrap" fxLayoutAlign="space-between center">
+      <span class="main-font-bold-20">Declaracion jurada</span>
+      <mat-icon [svgIcon]="icons.ARROW"></mat-icon>
+    </div>
+  </div>
+  <div fxLayout="column nowrap" fxLayoutGap="10px" *ngIf="!manager.isPlus">
+    <div
+      fxLayout="row nowrap"
+      fxLayoutAlign="space-between center"
+      *ngIf="manager.taxManagement"
+    >
+      <span class="main-font-bold-20">Impuestos</span>
+      <mat-icon [svgIcon]="icons.ARROW"></mat-icon>
+    </div>
+    <div
+      fxLayout="row nowrap"
+      fxLayoutAlign="space-between center"
+      *ngIf="!manager.taxManagement"
+      [routerLink]="['add/tax']"
+      style="cursor: pointer"
+    >
+      <span class="main-font-bold-20 opacity-50">Impuestos</span>
+      <mat-icon [svgIcon]="icons.GREEN_PLUS"></mat-icon>
+    </div>
+    <div
+      fxLayout="row nowrap"
+      fxLayoutAlign="space-between center"
+      *ngIf="manager.servicesManagement"
+    >
+      <span class="main-font-bold-20">Servicios</span>
+      <mat-icon [svgIcon]="icons.ARROW"></mat-icon>
+    </div>
+    <div
+      fxLayout="row nowrap"
+      fxLayoutAlign="space-between center"
+      *ngIf="!manager.servicesManagement"
+      [routerLink]="['add/service']"
+      style="cursor: pointer"
+    >
+      <span class="main-font-bold-20 opacity-50">Servicios</span>
+      <mat-icon [svgIcon]="icons.GREEN_PLUS"></mat-icon>
+    </div>
+    <div
+      fxLayout="row nowrap"
+      fxLayoutAlign="space-between center"
+      *ngIf="manager.declaracionJuradaManagement"
+    >
+      <span class="main-font-bold-20">Declaracion jurada</span>
+      <mat-icon [svgIcon]="icons.ARROW"></mat-icon>
+    </div>
+    <div
+      fxLayout="row nowrap"
+      fxLayoutAlign="space-between center"
+      *ngIf="!manager.declaracionJuradaManagement"
+      [routerLink]="['add/declaracion-jurada']"
+      style="cursor: pointer"
+    >
+      <span class="main-font-bold-20 opacity-50">Declaracion jurada</span>
+      <mat-icon [svgIcon]="icons.GREEN_PLUS"></mat-icon>
+    </div>
+  </div>
+</div>
+<div
+  fxLayout="column"
+  fxLayoutGap="40px"
+  *ngIf="dialogOpened"
+  class="dialog-container"
+></div>

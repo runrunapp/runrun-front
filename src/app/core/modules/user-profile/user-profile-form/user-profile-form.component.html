@@ -1,0 +1,200 @@
+<div fxLayout="row" class="page-container" fxLayoutAlign="center">
+  <form
+    [formGroup]="profileForm"
+    fxLayout="column"
+    fxLayoutGap="10px"
+    ngClass.gt-xs="w-50"
+    ngClass.xs="w-100"
+    (ngSubmit)="onSubmit()"
+  >
+    <div fxLayout="row nowrap" fxFlex fxLayoutAlign="center center">
+      <span class="main-font-bold-30 center"
+        >Editar perfil ({{ progress }}%)</span
+      >
+    </div>
+
+    <div
+      class="images-container"
+      fxLayout="row"
+      fxLayoutGap="5px"
+      fxLayoutAlign="space-between"
+    >
+      <app-image-form-field
+        [image]="profilePicture1"
+        [addActive]="profilePicture1 === null"
+        [allowDelete]="profilePicture1 !== null"
+        [modifyActive]="profilePicture1 !== null"
+        (add)="onImageAdd(1, $event)"
+        (delete)="onImageDelete(1)"
+      ></app-image-form-field>
+
+      <app-image-form-field
+        *ngIf="profilePicture1"
+        [image]="profilePicture2"
+        [addActive]="profilePicture1 !== null && profilePicture2 === null"
+        [allowDelete]="profilePicture2 !== null"
+        [modifyActive]="profilePicture2 !== null"
+        (add)="onImageAdd(2, $event)"
+        (delete)="onImageDelete(2)"
+      ></app-image-form-field>
+
+      <app-image-form-field
+        *ngIf="profilePicture2"
+        [image]="profilePicture3"
+        [addActive]="profilePicture2 !== null && profilePicture3 === null"
+        [allowDelete]="profilePicture3 !== null"
+        [modifyActive]="profilePicture3 !== null"
+        (add)="onImageAdd(3, $event)"
+        (delete)="onImageDelete(3)"
+      ></app-image-form-field>
+    </div>
+
+    <span class="text-1">Información personal</span>
+
+    <input
+      class="runrun-input-light left-aligned"
+      formControlName="firstName"
+      type="text"
+      placeholder="Nombre"
+    />
+    <mat-error *ngIf="profileForm.get('firstName')?.errors?.required"
+      >Este campo es obligatorio</mat-error
+    >
+
+    <input
+      class="runrun-input-light left-aligned"
+      formControlName="lastName"
+      type="text"
+      placeholder="Apellidos"
+    />
+    <mat-error *ngIf="profileForm.get('lastName')?.errors?.required"
+      >Este campo es obligatorio</mat-error
+    >
+
+    <div fxLayout="column" fxLayoutGap="5px">
+      <span class="text-1">Día de nacimiento</span>
+      <input
+        class="runrun-input-light left-aligned"
+        type="date"
+        formControlName="birthday"
+        useValueAsLocalDate
+      />
+
+      <mat-error *ngIf="profileForm.get('birthday')?.errors?.required"
+        >Este campo es obligatorio</mat-error
+      >
+    </div>
+
+    <div fxLayout="column" fxLayoutGap="5px">
+      <span class="text-1">Género</span>
+      <app-exclusive-checkgroup
+        formControlName="gender"
+        [values]="[
+          { label: 'Femenino', value: 1 },
+          { label: 'No binario', value: 2 },
+          { label: 'Masculino', value: 0 },
+          { label: 'Prefiero no decir', value: 3 }
+        ]"
+      ></app-exclusive-checkgroup>
+      <span
+        class="text-1-red"
+        *ngIf="profileForm.get('gender')?.errors?.required"
+        >Este campo es obligatorio</span
+      >
+    </div>
+
+    <div fxLayout="column" fxLayoutGap="5px">
+      <span class="text-1">Ocupación</span>
+      <div gdGap="10px 5px" gdAuto="row dense" gdColumns="repeat(2, 1fr)">
+        <label
+          fxLayout="row inline"
+          fxLayoutGap="5px"
+          fxLayoutAlign="start center"
+        >
+          <input
+            class="runrun-checkbox-light"
+            formControlName="ocupationStudent"
+            type="checkbox"
+          />
+          <span class="runrun-checkbox-label text-1">Estudio</span>
+        </label>
+        <label
+          fxLayout="row inline"
+          fxLayoutGap="5px"
+          fxLayoutAlign="start center"
+        >
+          <input
+            class="runrun-checkbox-light"
+            formControlName="ocupationWork"
+            type="checkbox"
+          />
+          <span class="runrun-checkbox-label text-1">Trabajo</span>
+        </label>
+        <label
+          fxLayout="row inline"
+          fxLayoutGap="5px"
+          fxLayoutAlign="start center"
+        >
+          <input
+            class="runrun-checkbox-light"
+            formControlName="ocupationOther"
+            type="checkbox"
+          />
+          <span class="runrun-checkbox-label text-1">Otro</span>
+        </label>
+      </div>
+    </div>
+    <div fxLayout="column" fxLayoutGap="10px">
+      <span class="text-1">Redes sociales</span>
+
+      <input
+        class="runrun-input-light left-aligned"
+        type="text"
+        formControlName="facebook"
+        placeholder="Facebook"
+      />
+
+      <input
+        class="runrun-input-light left-aligned"
+        type="text"
+        formControlName="instagram"
+        placeholder="Instagram"
+      />
+
+      <input
+        class="runrun-input-light left-aligned"
+        placeholder="Twitter"
+        type="text"
+        formControlName="twitter"
+      />
+
+      <input
+        class="runrun-input-light left-aligned"
+        placeholder="LinkedIn"
+        type="text"
+        formControlName="linkedin"
+      />
+    </div>
+
+    <div fxLayout="column" fxLayoutGap="5px">
+      <span class="text-1">Presentación adicional</span>
+      <app-textarea-numbered
+        [maxLenght]="300"
+        formControlName="presentation"
+      ></app-textarea-numbered>
+    </div>
+
+    <div fxLayout="row nowrap" fxLayoutAlign="center center" fxLayoutGap="5px">
+      <button
+        mat-flat-button
+        class="button-variant-filled-gray"
+        (click)="onCancel()"
+      >
+        Cancelar
+      </button>
+      <button mat-flat-button class="button-variant-filled-gray" type="submit">
+        Guardar
+      </button>
+    </div>
+  </form>
+</div>

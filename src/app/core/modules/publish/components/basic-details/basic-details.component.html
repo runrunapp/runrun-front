@@ -1,0 +1,199 @@
+<form
+  class="information-wrapper"
+  fxLayout="column"
+  fxLayoutGap="24px"
+  #ngForm="ngForm"
+  [formGroup]="form"
+  (submit)="onSubmit()"
+>
+  <span class="title-2">1. Datos del alojamiento</span>
+  <div
+    fxLayout="row nowrap"
+    fxLayout.xs="column"
+    fxLayoutGap="10px"
+    fxLayoutAlign="space-between"
+  >
+    <div fxLayout="column" fxLayoutGap="10px">
+      <span class="text-1 ml-10">Tipo de inmueble</span>
+      <select fxFlex class="runrun-select-light" formControlName="propertyType">
+        <option [ngValue]="null">Seleccionar</option>
+        <option *ngFor="let option of propertyType" [ngValue]="option.value">
+          {{ option.label }}
+        </option>
+      </select>
+      <mat-error *ngIf="ngForm.submitted && form.controls.propertyType.errors">
+        Este campo es requerido
+      </mat-error>
+    </div>
+
+    <div fxLayout="column" fxLayoutGap="10px">
+      <div fxLayout="row" fxLayoutGap="10px">
+        <span class="text-1 ml-10">Superficie (m²)</span>
+      </div>
+      <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-between">
+        <input
+          fxFlex
+          type="number"
+          class="runrun-input-light runrun-range"
+          formControlName="totalArea"
+          placeholder="Área útil"
+        />
+      </div>
+      <mat-error *ngIf="ngForm.submitted && form.controls.totalArea.errors">
+        Este campo es requerido
+      </mat-error>
+    </div>
+  </div>
+
+  <div
+    fxLayout="row nowrap"
+    fxLayout.xs="column"
+    fxLayoutGap="10px"
+    fxLayoutAlign="space-between"
+  >
+    <div fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="stretch stretch">
+      <div fxLayout="row" fxLayoutGap="10px">
+        <span class="text-1 ml-10">Precio:</span>
+        <mat-chip-list class="currencies-chip-list">
+          <mat-chip
+            class="text-2"
+            [class.active]="form.controls.currency.value === 'CUP'"
+            (click)="onCurrencyChange($event)"
+            >CUP</mat-chip
+          >
+          <mat-chip
+            class="text-2"
+            [class.active]="form.controls.currency.value === 'MLC'"
+            (click)="onCurrencyChange($event)"
+            >MLC</mat-chip
+          >
+          <mat-chip
+            class="text-2"
+            [class.active]="form.controls.currency.value === 'USD'"
+            (click)="onCurrencyChange($event)"
+            >USD</mat-chip
+          >
+          <mat-chip
+            class="text-2"
+            [class.active]="form.controls.currency.value === 'EUR'"
+            (click)="onCurrencyChange($event)"
+            >EUR</mat-chip
+          >
+        </mat-chip-list>
+      </div>
+
+      <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-between">
+        <input
+          fxFlex
+          type="number"
+          class="runrun-input-light runrun-range"
+          formControlName="price"
+          placeholder="Precio mensual"
+        />
+      </div>
+      <mat-error *ngIf="ngForm.submitted && form.controls.price.errors">
+        Este campo es requerido
+      </mat-error>
+    </div>
+
+    <div fxLayout="column" fxLayoutGap="10px">
+      <span class="text-1 ml-10">Estancia mínima (meses)</span>
+
+      <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-between">
+        <input
+          fxFlex
+          type="number"
+          class="runrun-input-light"
+          formControlName="minStay"
+          placeholder="Tiempo (meses)"
+        />
+      </div>
+      <mat-error *ngIf="ngForm.submitted && form.controls.minStay.errors">
+        Este campo es requerido
+      </mat-error>
+    </div>
+  </div>
+
+  <div fxLayout="column" fxLayoutGap="10px">
+    <span class="text-1 ml-10">Nivel</span>
+
+    <app-level-selection
+      [minValue]="-3"
+      [maxValue]="20"
+      [value]="0"
+      [light]="true"
+      [indeterminateValue]="-3"
+      [displayFn]="displayLevel"
+      formControlName="floorLevel"
+    ></app-level-selection>
+  </div>
+
+  <div fxLayout="column">
+    <app-map-selection
+      (mapMoveEvent)="handleMapChange($event)"
+    ></app-map-selection>
+  </div>
+
+  <div fxLayout="column" fxLayoutGap="10px">
+    <span class="text-1 ml-10">Dirección</span>
+    <input class="runrun-input-light" formControlName="address" type="text" />
+    <mat-error
+      *ngIf="form.controls.address.touched && form.controls.address.errors"
+      >Este campo es obligatorio</mat-error
+    >
+  </div>
+
+  <div fxLayout="column" fxLayoutGap="10px">
+    <span class="text-1 ml-10">Barrio (Opcional)</span>
+
+    <input
+      class="runrun-input-light"
+      formControName="neighborhood"
+      type="text"
+    />
+  </div>
+
+  <div fxLayout="row nowrap" fxLayout.xs="column" fxLayoutGap="10px">
+    <div fxLayout="column" fxLayoutGap="10px">
+      <span class="text-1 ml-10">Provincia</span>
+      <select
+        fxFlex
+        class="runrun-select-light"
+        [(ngModel)]="province"
+        [ngModelOptions]="{ standalone: true }"
+      >
+        <option [ngValue]="null">Seleccionar</option>
+        <option *ngFor="let state of states" [ngValue]="state">
+          {{ state.name }}
+        </option>
+      </select>
+      <mat-error *ngIf="ngForm.submitted && !province">
+        Este campo es requerido
+      </mat-error>
+    </div>
+  </div>
+
+  <div fxLayout="column" fxLayoutGap="10px">
+    <span class="text-1 ml-10">Municipio</span>
+    <select fxFlex class="runrun-select-light" formControlName="municipality">
+      <option [ngValue]="null">Seleccionar</option>
+      <option *ngFor="let city of cities" [ngValue]="city.id">
+        {{ city.name }}
+      </option>
+    </select>
+    <mat-error *ngIf="ngForm.submitted && form.controls.municipality.errors">
+      Este campo es requerido
+    </mat-error>
+  </div>
+
+  <app-publish-images-form
+    [images]="images"
+    (imageChange)="onImageChange($event)"
+  ></app-publish-images-form>
+
+  <div fxLayout="row" fxLayoutAlign="center">
+    <button class="text-1 button-variant-filled-gray" type="submit">
+      Continuar
+    </button>
+  </div>
+</form>

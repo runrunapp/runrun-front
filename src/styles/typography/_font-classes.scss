@@ -1,0 +1,183 @@
+@import '../constants/colors';
+@import '../constants/_fonts';
+
+$font-family-value: 'Space Grotesk';
+
+.comment-author {
+  font-family: 'Space Grotesk Extended';
+  font-weight: 600;
+  font-size: 12pt;
+}
+.comment-date {
+  font-family: 'Space Grotesk Extended';
+  font-weight: 800;
+  font-size: 10pt;
+}
+.comment-content {
+  font-family: $font-family-value;
+  font-weight: normal;
+  font-size: 12pt;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+.color-red {
+  color: $red;
+}
+
+.color-darkblue {
+  color: $dark-blue;
+}
+
+.color-green {
+  color: $green;
+}
+
+.color-yellow {
+  color: $yellow;
+}
+
+.color-lightblue {
+  color: $light-blue;
+}
+
+.color-white {
+  color: $white;
+}
+
+.color-gray {
+  color: $gray;
+}
+
+.color-gray-2 {
+  color: #96999c;
+}
+
+.color-system-gray {
+  color: gray;
+}
+
+.title-blog {
+  font-family: $font-family-value;
+  font-weight: bold;
+  font-size: 60px;
+  line-height: 60px;
+}
+
+.title-1 {
+  font-family: $font-family-value;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 48px;
+}
+
+.title-2 {
+  font-family: $font-family-value;
+  font-weight: bold;
+  font-size: 30px;
+  line-height: 36px;
+  text-align: center;
+}
+
+.title-2-left {
+  @extend .title-2;
+  text-align: left;
+}
+
+.subtitle-1 {
+  font-family: $font-family-value;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
+
+.subtitle-1-white {
+  @extend .subtitle-1;
+  color: $white;
+}
+
+.subtitle-1-black {
+  @extend .subtitle-1;
+  color: $black;
+}
+
+.subtitle-1-darkblue {
+  @extend .subtitle-1;
+  color: $dark-blue;
+}
+
+.text-1 {
+  font-family: $font-family-value;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.text-1-semibold {
+  @extend .text-1;
+  font-weight: 600;
+}
+
+.text-24 {
+  @extend .text-1;
+  line-height: 24px;
+}
+
+.text-21 {
+  @extend .text-1;
+  line-height: 21px;
+}
+
+.text-21-black {
+  @extend .text-21;
+  line-height: 21px;
+  color: $black;
+}
+
+.text-21-darkgray {
+  @extend .text-1;
+  line-height: 21px;
+  color: $darkgray;
+}
+
+.text-21-white {
+  @extend .text-1;
+  line-height: 21px;
+  color: $white;
+}
+
+.text-2 {
+  font-family: $font-family-value;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+.text-2-black {
+  @extend .text-2;
+  color: $black;
+}
+
+.text-2-darkgray {
+  @extend .text-2;
+  color: $darkgray;
+}
+
+.text-2-semibold {
+  @extend .text-2;
+  font-weight: 600;
+}
+
+.text-2-semibold-darkgray {
+  @extend .text-2-darkgray;
+  color: $darkgray;
+}
+
+span.text-2 {
+  line-height: 21px;
+}
+
+.no-decoration {
+  text-decoration: none;
+}

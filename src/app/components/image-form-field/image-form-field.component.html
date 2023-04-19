@@ -1,0 +1,44 @@
+<div class="container">
+  <img class="w-100 h-100" *ngIf="image && !addActive" [src]="image" />
+  <div
+    *ngIf="!image && addActive"
+    class="add-button-container"
+    fxLayout="row"
+    fxFill
+    fxLayoutAlign="center center"
+  >
+    <label
+      class="add-button label"
+      fxLayout="row"
+      fxLayoutAlign="center center"
+      (click)="addImage()"
+    >
+      <span class="title-1"> + </span>
+
+      <!-- <input type="file" accept="image/*" (change)="fileChangeEvent($event)" /> -->
+    </label>
+  </div>
+
+  <label
+    *ngIf="image && modifyActive"
+    class="modify-button label"
+    fxLayout="row"
+    fxLayoutAlign="center center"
+    (click)="addImage()"
+  >
+    <span>
+      <mat-icon>edit</mat-icon>
+    </span>
+  </label>
+  <button
+    mat-mini-fab
+    type="button"
+    *ngIf="image && modifyActive && allowDelete"
+    class="remove-button label"
+    fxLayout="row"
+    fxLayoutAlign="center center"
+    (click)="removeImage()"
+  >
+    <mat-icon>remove</mat-icon>
+  </button>
+</div>

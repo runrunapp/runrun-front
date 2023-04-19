@@ -1,0 +1,41 @@
+<div fxLayout="column">
+  <span class="main-font-light-20">Datos del alojamiento</span>
+  <br />
+
+  <div fxLayout="row" fxLayoutAlign="space-evenly" fxLayoutGap="10px">
+    <div
+      #basicWrapper
+      [class.disabled]="disabled"
+      class="wrapper"
+      [ngClass]="{ active: basic }"
+      (click)="onBasic()"
+      fxLayout="column"
+      fxLayoutAlign=" center"
+      fxFlex="grow"
+    >
+      <div
+        matRipple
+        [matRippleTrigger]="basicWrapper"
+        [matRippleColor]="'#231f20'"
+      ></div>
+      <span class="main-font-bold-12"> Básicos </span>
+    </div>
+    <div
+      #details
+      [class.disabled]="disabled"
+      class="wrapper"
+      (click)="onDetails()"
+      [ngClass]="{ active: !basic }"
+      fxLayout="column"
+      fxLayoutAlign=" center"
+      fxFlex="grow"
+    >
+      <div
+        matRipple
+        [matRippleTrigger]="details"
+        [matRippleColor]="'#231f20'"
+      ></div>
+      <span class="main-font-bold-12"> Detalles </span>
+    </div>
+  </div>
+</div>

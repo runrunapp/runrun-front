@@ -1,0 +1,43 @@
+<a [attr.href]="getURL(notification.link)">
+  <div
+    fxLayout="row nowrap"
+    fxLayoutGap="10px"
+    class="container"
+    [class.not-seen]="!notification.seen"
+    fxLayoutAlign="center center"
+  >
+    <img
+      class="notification-icon"
+      style="cursor: pointer"
+      [src]="notification.image"
+    />
+
+    <div
+      fxLayout="column"
+      fxLayoutGap="5px"
+      fxFlex
+      fxLayoutAlign="center start"
+    >
+      <div
+        fxLayout="row nowrap"
+        fxLayoutGap="10px"
+        fxLayoutAlign="space-between center"
+      >
+        <span class="text-2" style="color: gray">{{
+          notification.source
+        }}</span>
+        <span class="text-2" style="color: gray">{{
+          notification.creationDate | fromNow
+        }}</span>
+      </div>
+      <div
+        [innerText]="notification.content"
+        class="text-1"
+        style="cursor: pointer"
+      ></div>
+      <span [routerLink]="[notification.link]" class="text-1 badge">{{
+        notification.tag
+      }}</span>
+    </div>
+  </div>
+</a>

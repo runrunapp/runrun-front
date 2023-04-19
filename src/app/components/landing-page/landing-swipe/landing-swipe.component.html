@@ -1,0 +1,11 @@
+<div
+  class="landing-recomendations"
+  fxLayout="column"
+  fxLayoutGap="10px"
+  *ngIf="data$ | async as collections"
+>
+  <app-listing-collection
+    *ngFor="let collection of collections"
+    [collection]="collection"
+  ></app-listing-collection>
+</div>

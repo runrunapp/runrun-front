@@ -1,0 +1,58 @@
+:host {
+  swiper {
+    position: relative;
+    width: 100%;
+
+    img {
+      width: 100%;
+      aspect-ratio: 3 / 2;
+      // height: 375px; // !FIXME Resolution 2/3
+    }
+    .float-label {
+      position: absolute;
+      z-index: 1001;
+
+      bottom: 10px;
+      right: 20px;
+    }
+  }
+
+  .vertical-button {
+    writing-mode: vertical-lr;
+    text-orientation: sideways;
+  }
+  .plus-container {
+    background-color: transparent;
+    padding: 5px;
+    height: 24px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    &:hover {
+      background-color: white;
+      &::before {
+        content: 'Los alojamientos Runrun+ son gestionados por la plataforma';
+        margin-right: 10px;
+      }
+    }
+  }
+
+  .verified-container {
+    background-color: transparent;
+    padding: 5px;
+    height: 24px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+
+    &:hover {
+      background-color: white;
+      &::before {
+        content: 'El equipo de Runrún verificó este alojamiento';
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        margin-right: 10px;
+      }
+    }
+  }
+}

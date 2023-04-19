@@ -1,0 +1,21 @@
+<div
+  fxLayout="row nowrap"
+  fxLayoutAlign="space-between space-between"
+  class="w-100 container"
+>
+  <div fxLayout="column">
+    <span class="text-1">{{ receipt.description }}</span>
+    <span class="main-font-reg-15 opacity-50">{{
+      receipt.createdAt | date: "d 'de' MMMM YYYY"
+    }}</span>
+  </div>
+
+  <div fxLayout="column">
+    <span
+      class="text-1"
+      [class.free]="receipt.amount >= 0"
+      [class.not-available]="receipt.amount < 0"
+      >{{ receipt.amount < 0 ? -receipt.amount : receipt.amount }} cup</span
+    >
+  </div>
+</div>

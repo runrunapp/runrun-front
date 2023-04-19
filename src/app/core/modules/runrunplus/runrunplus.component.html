@@ -1,0 +1,182 @@
+<section class="background-runplus">
+  <div
+    class="plus-brand animate__fadeInUp"
+    fxLayout="row"
+    fxLayoutAlign="center start"
+  >
+    <div fxLayout="column" fxLayoutGap="5vh" fxLayoutAlign="center center">
+      <img class="runrun-plus-img" src="/assets/landing/runrunplus-logo.svg" />
+      <span class="plus-header subtitle-1 color-darkblue">
+        Agencia de gestión integral
+      </span>
+    </div>
+  </div>
+</section>
+
+<section
+  class="plus-info-container"
+  fxLayout="column"
+  ngClass.xs="mobile"
+  fxLayoutGap="40px"
+>
+  <h1 class="title-2">
+    Empieza ahora <br />
+    con Runrún+
+  </h1>
+
+  <div fxLayout="row" fxFill fxLayoutGap="20px" fxLayoutAlign="space-around">
+    <button
+      class="search-button"
+      fxFlex="grow"
+      fxLayout="column nowrap"
+      fxLayoutGap="30px"
+      fxLayoutAlign="center center"
+      [routerLink]="[urls.tenantURL]"
+    >
+      <span class="subtitle-1">INQUILINO</span>
+
+      <span class="text-1"
+        >Consultar documentos y otras <br />
+        informaciones del arriendo
+      </span>
+    </button>
+    <button
+      class="publish-button"
+      fxFlex="grow"
+      [routerLink]="[urls.gestionURL]"
+      fxLayout="column nowrap"
+      fxLayoutAlign="center center"
+      fxLayoutGap="30px"
+    >
+      <span class="subtitle-1">ARRENDADOR</span>
+
+      <span class="text-1"
+        >Chequear gestión y documentos <br />de tu negocio. Solicitar otros
+        servicios</span
+      >
+    </button>
+  </div>
+
+  <div
+    fxLayout="column"
+    fxLayoutAlign="center center"
+    class="mx-auto"
+    fxLayoutGap="30px"
+  >
+    <div fxLayout="column" fxLayoutGap="30px">
+      <span class="main-font-bold-40">Servicios incluidos</span>
+
+      <div fxLayout="column" fxLayoutGap="10px">
+        <div fxLayout="row" fxLayoutGap="5px">
+          <mat-icon class="white-check" [svgIcon]="icons.CHECK"></mat-icon>
+          <span class="subtitle-1"
+            >Publicación y mayor visibilidad en nuestra página</span
+          >
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="5px">
+          <mat-icon class="white-check" [svgIcon]="icons.CHECK"></mat-icon>
+          <span class="subtitle-1">Apoyo al acondicionamiento del negocio</span>
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="5px">
+          <mat-icon class="white-check" [svgIcon]="icons.CHECK"></mat-icon>
+          <span class="subtitle-1"
+            >Elaboración del inventario y estado del alojamiento</span
+          >
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="5px">
+          <mat-icon class="white-check" [svgIcon]="icons.CHECK"></mat-icon>
+          <span class="subtitle-1"
+            >Revisar opciones de potenciales huéspedes</span
+          >
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="5px">
+          <mat-icon class="white-check" [svgIcon]="icons.CHECK"></mat-icon>
+          <span class="subtitle-1">Realización y firma de contratos</span>
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="5px">
+          <mat-icon class="white-check" [svgIcon]="icons.CHECK"></mat-icon>
+          <span class="subtitle-1">Cobro de fianzas y pagos mensuales</span>
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="5px">
+          <mat-icon class="white-check" [svgIcon]="icons.CHECK"></mat-icon>
+          <span class="subtitle-1"
+            >Atención a huéspedes en horarios determinados</span
+          >
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="5px">
+          <mat-icon class="white-check" [svgIcon]="icons.CHECK"></mat-icon>
+          <span class="subtitle-1"
+            >Gestión de solución de averías o desperfectos técnicos</span
+          >
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="5px">
+          <mat-icon class="white-check" [svgIcon]="icons.CHECK"></mat-icon>
+          <span class="subtitle-1"
+            >Gestión de personal de limpieza y otros servicios</span
+          >
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="5px">
+          <mat-icon class="white-check" [svgIcon]="icons.CHECK"></mat-icon>
+          <span class="subtitle-1"
+            >Constancia de recibos de pago de renta y otros servicios</span
+          >
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="5px">
+          <mat-icon class="white-check" [svgIcon]="icons.CHECK"></mat-icon>
+          <span class="subtitle-1">Cambios o cierres de contratos</span>
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="5px">
+          <mat-icon class="white-check" [svgIcon]="icons.CHECK"></mat-icon>
+          <span class="subtitle-1"
+            >Informe económico del año de alojamiento</span
+          >
+        </div>
+      </div>
+
+      <span class="main-font-semibold-30">Servicios adicionales</span>
+
+      <div fxLayout="column" fxLayoutGap="10px">
+        <div fxLayout="row" fxLayoutGap="5px">
+          <mat-icon class="white-check" [svgIcon]="icons.CHECK"></mat-icon>
+          <span class="subtitle-1">Pago de impuestos y tenencia de libro</span>
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="5px">
+          <mat-icon class="white-check" [svgIcon]="icons.CHECK"></mat-icon>
+          <span class="subtitle-1">Declaración jurada ONAT</span>
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="5px">
+          <mat-icon class="white-check" [svgIcon]="icons.CHECK"></mat-icon>
+          <span class="subtitle-1">Toma de fotos al alojamiento</span>
+        </div>
+
+        <div fxLayout="row" fxLayoutGap="5px">
+          <mat-icon class="white-check" [svgIcon]="icons.CHECK"></mat-icon>
+          <span class="subtitle-1">Proyección económica del alojamiento </span>
+        </div>
+      </div>
+
+      <div fxLayout="column" fxLayoutGap="10px" fxLayoutAlign="center center">
+        <span class="rounded-button"> 10% Renta mensual </span>
+
+        <span class="main-font-semibold-15"
+          >10% de descuento para pagos anuales</span
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>

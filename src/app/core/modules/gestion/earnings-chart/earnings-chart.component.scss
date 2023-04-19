@@ -1,0 +1,19 @@
+@import '../../../../../styles/constants/colors';
+@import '../../../../../styles/constants/constants';
+
+:host {
+  background-color: $white;
+  padding: 10px;
+  border-radius: 10px;
+  .toggle-btn {
+    border: 2px solid $black;
+    border-radius: $small-border-radius;
+    background-color: $white;
+    width: 150px;
+  }
+
+  .active {
+    background-color: $black;
+    color: $white;
+  }
+}

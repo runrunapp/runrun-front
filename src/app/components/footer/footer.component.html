@@ -1,0 +1,110 @@
+<section
+  class="footer"
+  fxLayout.gt-xs="row"
+  fxLayout.xs="column"
+  fxLayoutAlign="space-between start"
+  fxLayoutGap="20px"
+>
+  <div
+    fxLayout="column"
+    class="container"
+    fxLayoutGap="50px"
+    fxFlexOrder.xs="3"
+  >
+    <mat-icon class="logo-white" [svgIcon]="icons.LOGO_FULL"> </mat-icon>
+
+    <span class="color-gray-2 main-font-semibold-15"
+      >Plataforma de gestión integral de rentas en Cuba.</span
+    >
+
+    <span class="main-font-semibold-15 color-white">©2023, Runrún</span>
+  </div>
+
+  <div fxLayout="column" class="container" fxLayoutGap="20px">
+    <span class="main-font-bold-20 color-white">Información</span>
+
+    <div fxLayout="column" fxLayoutGap="10px">
+      <a
+        [routerLink]="['/home/privacy-policy']"
+        class="main-font-semibold-15 color-gray-2"
+      >
+        Aviso Legal
+      </a>
+      <a
+        target="_blank"
+        [routerLink]="['/help']"
+        class="main-font-semibold-15 color-gray-2"
+      >
+        Ayuda
+      </a>
+      <a
+        [routerLink]="['/home/contact-us']"
+        class="main-font-semibold-15 color-gray-2"
+      >
+        Contacto
+      </a>
+    </div>
+  </div>
+
+  <div
+    fxLayout="column"
+    class="container"
+    fxLayoutGap="20px"
+    fxFlexOrder.xs="2"
+  >
+    <span class="main-font-bold-20 color-white">Suscripción</span>
+
+    <span class="main-font-semibold-15 color-gray-2"
+      >Recibe información actualizada, anuncios y productos de la
+      plataforma</span
+    >
+
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="5px">
+      <input
+        #input
+        class="subscription-input"
+        type="email"
+        placeholder="Inserta tu email"
+        [(ngModel)]="email"
+      />
+
+      <button (click)="onSubscribe()" class="right-arrow-button" mat-mini-fab>
+        <mat-icon [svgIcon]="icons.ARROW"></mat-icon>
+      </button>
+    </div>
+
+    <div
+      fxLayout="row"
+      fxLayoutAlign="start center"
+      fxLayoutGap="10px"
+      fxFlexOrder.xs="1"
+    >
+      <a
+        target="_blank"
+        href="https://www.facebook.com/profile.php?id=100087633967817"
+      >
+        <button mat-mini-fab aria-label="Runrun Facebook">
+          <fa-icon [icon]="socialIcons.facebook"></fa-icon>
+        </button>
+      </a>
+      <a target="_blank" href="https://twitter.com/Runrun_app">
+        <button mat-mini-fab aria-label="Runrun Twitter">
+          <fa-icon [icon]="socialIcons.twitter"></fa-icon>
+        </button>
+      </a>
+      <!-- <a target="_blank" href="https://t.me/runrun.app">
+        <button mat-mini-fab aria-label="Runrun Telegram">
+          <fa-icon [icon]="socialIcons.telegram"></fa-icon>
+        </button>
+      </a> -->
+      <a
+        target="_blank"
+        href="https://instagram.com/runrunapp_?igshid=YmMyMTA2M2Y="
+      >
+        <button mat-mini-fab aria-label="Runrun Instagram">
+          <fa-icon [icon]="socialIcons.instagram"></fa-icon>
+        </button>
+      </a>
+    </div>
+  </div>
+</section>

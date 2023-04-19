@@ -1,0 +1,18 @@
+@import '../../../../../styles/constants/colors';
+@import '../../../../../styles/constants/constants';
+
+:host {
+  .container {
+    width: 100%;
+    button {
+      height: 20px;
+      background-color: $darkgray;
+      color: $white;
+      border-radius: 8px;
+      border: none;
+      padding: 0px 5px;
+      line-height: 21px;
+      width: 75px;
+    }
+  }
+}

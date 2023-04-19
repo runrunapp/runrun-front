@@ -1,0 +1,29 @@
+<div
+  class="w-100"
+  fxLayout="row inline"
+  fxLayoutAlign="center stretch"
+  fxLayoutGap="20px"
+>
+  <button
+    fxFlex="grow"
+    class="social-button text-1"
+    color="primary"
+    fxLayout="column nowrap"
+    fxLayoutAlign="center center"
+    (click)="onFacebook()"
+  >
+    <fa-icon [icon]="faFacebook"></fa-icon>
+    <span>Continuar con Facebook</span>
+  </button>
+  <button
+    fxFlex="grow"
+    class="social-button text-1"
+    color="primary"
+    fxLayout="column nowrap"
+    fxLayoutAlign="center center"
+    (click)="onGoogle()"
+  >
+    <fa-icon [icon]="faGoogle"></fa-icon>
+    <span>Continuar con Google</span>
+  </button>
+</div>

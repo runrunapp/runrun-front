@@ -1,0 +1,27 @@
+<div fxLayout="row nowrap" class="page-container" fxLayoutAlign="center center">
+  <div
+    fxLayout="column"
+    class="container"
+    ngClass.xs="w-100 mx-10"
+    ngClass.gt-xs="w-60"
+    fxLayoutGap="20px"
+  >
+    <span class="subtitle-1">Mensajes</span>
+
+    <div
+      fxLayout="column"
+      fxLayoutGap="20px"
+      *ngIf="chatSessions$ | async as chatSessions"
+      class="chats-container"
+    >
+      <ng-container *ngIf="currentUser$ | async as user">
+        <app-chat-session-label
+          *ngFor="let session of chatSessions"
+          [user]="session | chooseUser: user"
+          [lastMessage]="session.lastMessage"
+        >
+        </app-chat-session-label>
+      </ng-container>
+    </div>
+  </div>
+</div>

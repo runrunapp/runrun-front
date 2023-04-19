@@ -1,0 +1,15 @@
+<div fxLayout="column" fxLayoutGap="10px">
+  <span class="main-font-reg-15">{{progress}}%</span>
+  <div fxLayout="row nowrap" fxLayoutGap="10px">
+    <div class="progress-tile" fxFlex [class.active]="progress >= 10"></div>
+    <div class="progress-tile" fxFlex [class.active]="progress >= 20"></div>
+    <div class="progress-tile" fxFlex [class.active]="progress >= 30"></div>
+    <div class="progress-tile" fxFlex [class.active]="progress >= 40"></div>
+    <div class="progress-tile" fxFlex [class.active]="progress >= 50"></div>
+    <div class="progress-tile" fxFlex [class.active]="progress >= 60"></div>
+    <div class="progress-tile" fxFlex [class.active]="progress >= 70"></div>
+    <div class="progress-tile" fxFlex [class.active]="progress >= 80"></div>
+    <div class="progress-tile" fxFlex [class.active]="progress >= 90"></div>
+    <div class="progress-tile" fxFlex [class.active]="progress >= 100"></div>
+  </div>
+</div>

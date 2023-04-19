@@ -1,0 +1,26 @@
+<div fxLayout="row" fxLayoutAlign="center" class="page-container">
+  <div
+    fxLayout="column"
+    ngClass.xs="w-100 mx-10"
+    ngClass.gt-xs="wrapper"
+    fxLayoutGap="16px"
+  >
+    <ng-container *ngIf="tenantManagers$ | async as tenantManagers">
+      <span class="subtitle-1" *ngIf="tenantManagers.length > 0; else noData">
+        HUESPED
+      </span>
+
+      <app-tenant-manager-card
+        *ngFor="let manager of tenantManagers"
+        [manager]="manager"
+        [routerLink]="['/home/gestion/tenant-manager', manager.id]"
+      ></app-tenant-manager-card>
+
+      <ng-template #noData>
+        <span class="subtitle-1"
+          >No ha sido inquilino de ningún inmueble todavía</span
+        >
+      </ng-template>
+    </ng-container>
+  </div>
+</div>

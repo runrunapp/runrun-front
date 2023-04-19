@@ -1,0 +1,50 @@
+@import '../../../../styles/constants/colors';
+
+:host {
+  .front-start-container {
+    margin: 0px 100px 0px 100px;
+  }
+  .mobile {
+    margin: 0px 10px 30px 10px;
+    padding-bottom: 20px;
+  }
+
+  .overlay {
+    // z-index: -1;
+    max-width: 100%;
+    max-height: 100%;
+    position: absolute;
+    top: calc(100vh * 0.3);
+    left: 0;
+    right: 65px;
+    margin: auto;
+    height: calc(100vh * 0.3); //180px;
+  }
+
+  .overlay-text {
+    max-width: 400px;
+    position: absolute;
+    top: 70px;
+    left: 100px;
+    color: $black;
+  }
+
+  .hide {
+    display: none;
+  }
+
+  .img-container {
+    @media screen and (min-width: '320px') {
+      background-image: url('/assets/landing/landing.png');
+      height: calc(100vh - 200px);
+    }
+    @media screen and (min-width: '600px') {
+      height: calc(100vh - 50px);
+      background-image: url('/assets/landing/landing_desktop.png');
+    }
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+}

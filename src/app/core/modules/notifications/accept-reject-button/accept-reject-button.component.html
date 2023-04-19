@@ -1,0 +1,16 @@
+<div fxLayout="row nowrap" fxLayoutGap="10px" >
+  <ng-container *ngIf="state === null" >
+    <button   fxFlex class="button-variant-normal-oulined" (click)="onAccept()">
+      ACEPTAR
+    </button>
+    <button   fxFlex class="button-variant-normal-oulined" (click)="onReject()">
+      RECHAZAR
+    </button>
+  </ng-container>
+  <button class="button-variant-normal-oulined accepted" fxFlex *ngIf="state === true" [routerLink]="[chatURL, chatId]" >
+    IR AL CHAT
+  </button>
+  <button class="button-variant-normal-oulined rejected" fxFlex *ngIf="state === false">
+    RECHAZADA
+  </button>
+</div>

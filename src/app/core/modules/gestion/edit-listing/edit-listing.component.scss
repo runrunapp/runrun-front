@@ -1,0 +1,58 @@
+@import 'src/styles/constants/colors';
+@import 'src/styles/constants/constants';
+
+:host {
+  ::ng-deep .mat-flat-button.mat-accent,
+  .mat-raised-button.mat-accent,
+  .mat-fab.mat-accent,
+  .mat-mini-fab.mat-accent {
+    border: 2px solid $black;
+    border-radius: $small-border-radius;
+  }
+
+  mat-chip {
+    height: 20px;
+    min-height: 20px !important;
+    max-height: 20px;
+    padding: 5px 6px;
+    margin: 3px;
+    &.active {
+      background-color: $black;
+      color: $white;
+    }
+  }
+  .runrun-select-light {
+    width: 240px;
+  }
+  input[type='number'].runrun-input-light {
+    width: 240px;
+  }
+  app-level-selection {
+    max-width: 300px;
+  }
+
+  .images-container {
+    overflow-x: scroll;
+    /* width */
+  }
+
+  ::-webkit-scrollbar {
+    width: 3px;
+    border-radius: 50%;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: $white;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: $black;
+  }
+}

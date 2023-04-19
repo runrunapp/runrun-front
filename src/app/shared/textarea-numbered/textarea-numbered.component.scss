@@ -1,0 +1,27 @@
+@import '../../../styles/constants/colors';
+@import '../../../styles/constants/constants';
+
+:host {
+  .wrapper {
+    position: relative;
+    textarea {
+      border: none;
+      border-radius: $big-border-radius;
+      width: calc(100% - 20px);
+      resize: none;
+      height: 200px;
+      padding: 5px;
+      padding-bottom: 20px;
+      &:hover,
+      &:focus {
+        -webkit-box-shadow: 0px 0px 3px 3px $black;
+        box-shadow: 0px 0px 0px 2px $black;
+      }
+    }
+    .indicator {
+      position: absolute;
+      bottom: 10px;
+      left: 10px;
+    }
+  }
+}

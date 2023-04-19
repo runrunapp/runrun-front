@@ -1,0 +1,159 @@
+<form [formGroup]="form" #ngForm="ngForm" (submit)="onSubmit($event)">
+  <div fxLayout="column" fxLayoutGap="20px">
+    <span class="title-2">2. Características del local</span>
+
+    <div fxLayout="column" fxLayoutGap="5px">
+      <span class="text-1-semibold ml-10">Ubicación</span>
+      <select
+        fxFlex
+        class="runrun-select-light"
+        formControlName="localLocation"
+      >
+        <option [ngValue]="null">Seleccionar</option>
+        <option *ngFor="let option of localLocation" [ngValue]="option.value">
+          {{ option.label }}
+        </option>
+      </select>
+      <mat-error *ngIf="ngForm.submitted && form.controls.localLocationrrors">
+        Este campo es requerido
+      </mat-error>
+    </div>
+
+    <div fxLayout="column" fxLayoutGap="5px">
+      <span class="text-1-semibold">Metros lineales de fachada</span>
+      <app-spiner
+        [minValue]="0"
+        [maxValue]="1000"
+        [indeterminateValue]="0"
+        formControlName="linealFrontSize"
+      >
+      </app-spiner>
+      <span class="reg-15-dimmed">*Opcional</span>
+    </div>
+
+    <span class="text-1-semibold">Número de Baños</span>
+    <app-spiner
+      [minValue]="-1"
+      [maxValue]="20"
+      [indeterminateValue]="-1"
+      formControlName="bathNumber"
+      [hasError]="
+        form.controls.bathNumber.dirty && form.controls.bathNumber.invalid
+      "
+    >
+    </app-spiner>
+
+    <div fxLayout="column" fxLayoutGap="5px">
+      <span class="text-1-semibold">Número de plantas</span>
+      <app-spiner
+        [minValue]="0"
+        [maxValue]="100"
+        formControlName="floorsNumber"
+      >
+      </app-spiner>
+      <span class="reg-15-dimmed">*Opcional</span>
+    </div>
+
+    <div fxLayout="column">
+      <span class="text-1-semibold ml-10"
+        >Última actividad comercial del local</span
+      >
+
+      <input
+        fxFlex
+        class="runrun-input-light"
+        formControlName="lastActivity"
+        type="text"
+      />
+    </div>
+
+    <app-checkgroup
+      label="Otras características del local"
+      [formGroup]="othersForm"
+      [values]="[
+        {
+          value: 'Aire Acondicionado',
+          checked: 'airCondition'
+        },
+        {
+          value: 'Elevador',
+          checked: 'elevator'
+        },
+        {
+          value: 'Hace esquina',
+          checked: 'corner'
+        },
+        {
+          value: 'Sistema de seguridad',
+          checked: 'securitySystem'
+        },
+        {
+          value: 'Personal de seguridad',
+          checked: 'securityPersonal'
+        },
+        {
+          value: 'Luz natural',
+          checked: 'naturalLight'
+        },
+        { value: 'Alarma', checked: 'alarms' },
+        {
+          value: 'Cocina equipada',
+          checked: 'kitchen'
+        },
+        {
+          value: 'Plaza de garaje',
+          checked: 'parking'
+        },
+        {
+          value: 'Extractor',
+          checked: 'extractor'
+        }
+      ]"
+    ></app-checkgroup>
+
+    <form [formGroup]="formCommon" (ngSubmit)="onSubmit($event)">
+      <div fxLayout="column" fxLayoutGap="5px">
+        <span class="text-1-semibold">Descripción adicional</span>
+        <span class="reg-15"
+          >Haz una descripción del inmueble que no haya sido incluida
+          anteriormente</span
+        >
+        <app-textarea-numbered
+          formControlName="details"
+        ></app-textarea-numbered>
+        <span class="reg-15-dimmed">
+          *Los anuncios con comentarios racistas, homófobos y/o discriminatorios
+          serán eliminados.
+        </span>
+        <span class="reg-15-dimmed">
+          *El anuncio deberá escribirse en mayúsculas y minúsculas
+        </span>
+        <span
+          class="error"
+          *ngIf="
+            formCommon.controls.details.dirty &&
+            formCommon.controls.details.invalid
+          "
+        >
+          Este campo no puede estar vacío
+        </span>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px">
+        <button
+          class="text-1 button-variant-filled-gray"
+          type="button"
+          (click)="back.emit()"
+        >
+          Regresar
+        </button>
+        <button
+          class="text-1-semibold button-variant-filled-gray"
+          type="submit"
+        >
+          Continuar
+        </button>
+      </div>
+    </form>
+  </div>
+</form>

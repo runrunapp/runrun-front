@@ -1,0 +1,118 @@
+<div fxLayout="row" fxLayoutAlign="center" class="container">
+  <div
+    fxLayout="column"
+    ngClass.xs="mx-20"
+    fxLayoutGap="40px"
+    fxLayoutAlign="start center"
+  >
+    <span class="title-2">Registrarme</span>
+    <form
+      #credentialForm="ngForm"
+      [formGroup]="credentialsForm"
+      (submit)="handleSubmit()"
+      fxFlex="grow"
+    >
+      <div fxLayout="column" fxLayoutGap="16px" fxLayoutAlign="center center">
+        <div fxLayout="column">
+          <input
+            class="runrun-input-light"
+            placeholder="Nombre"
+            type="text"
+            name="firstName"
+            formControlName="firstName"
+          />
+          <mat-error
+            *ngIf="
+              credentialForm.submitted && checkError('firstName', 'required')
+            "
+          >
+            Campo requerido
+          </mat-error>
+        </div>
+        <div fxLayout="column">
+          <input
+            class="runrun-input-light"
+            placeholder="Apellidos"
+            type="text"
+            name="lastName"
+            formControlName="lastName"
+          />
+          <mat-error
+            *ngIf="
+              credentialForm.submitted && checkError('lastName', 'required')
+            "
+            >Campo requerido</mat-error
+          >
+        </div>
+
+        <div fxLayout="column">
+          <input
+            class="runrun-input-light"
+            placeholder="Correo electrónico"
+            type="email"
+            name="email"
+            formControlName="email"
+          />
+          <mat-error
+            *ngIf="credentialForm.submitted && checkError('email', 'required')"
+            >Debe proporcionar una dirección de correo electrónico</mat-error
+          >
+          <mat-error
+            *ngIf="credentialForm.submitted && checkError('email', 'email')"
+            >El correo electrónico dado no es válido</mat-error
+          >
+        </div>
+
+        <div fxLayout="column">
+          <input
+            class="runrun-input-light"
+            placeholder="Contraseña"
+            type="password"
+            name="password1"
+            formControlName="password1"
+          />
+          <mat-error
+            *ngIf="
+              credentialForm.submitted && checkError('password1', 'required')
+            "
+            >Debe proporcionar una constraseña</mat-error
+          >
+          <mat-error
+            *ngIf="
+              credentialForm.submitted && checkError('password1', 'minlength')
+            "
+            >La contraseña debe tener al menos 8 caracteres</mat-error
+          >
+        </div>
+
+        <div fxLayout="column">
+          <input
+            class="runrun-input-light"
+            placeholder="Confirmar contraseña"
+            type="password"
+            name="password2"
+            formControlName="password2"
+          />
+          <mat-error *ngIf="credentialsForm.errors?.passwordNotMatch"
+            >Las contraseñas deben coincidir</mat-error
+          >
+        </div>
+
+        <button class="button-variant-filled" type="submit">Registrarme</button>
+      </div>
+    </form>
+
+    <div
+      fxLayout="row wrap"
+      class="text-1"
+      fxLayoutAlign="center"
+      style="width: 100%; color: gray"
+    >
+      Al ingresar tus datos, aceptas la
+      <a class="inline-link" routerLink="/home/privacy-policy"
+        >Política de Privacidad</a
+      >
+      y Términos de uso de Runrún
+    </div>
+  </div>
+</div>

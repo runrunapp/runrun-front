@@ -1,0 +1,40 @@
+@import '../../../../styles/constants/colors';
+
+:host {
+  .container {
+    height: calc(100vh - 55px - 30px);
+    overflow-y: hidden;
+    padding-bottom: 20px;
+  }
+
+  app-search-field {
+    ::ng-deep .search-input {
+      border: 1px solid $black;
+    }
+  }
+
+  .chats-container {
+    overflow-y: scroll;
+    height: 100%;
+  }
+
+  ::-webkit-scrollbar {
+    width: 3px;
+    border-radius: 50%;
+  }
+
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: $white;
+  }
+
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: transparent;
+  }
+
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: $black;
+  }
+}

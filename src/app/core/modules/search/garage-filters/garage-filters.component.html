@@ -1,0 +1,52 @@
+<form [ngrxFormState]="formState">
+  <div fxLayout="column" fxLayoutGap="20px">
+    <runrun-select
+      label="Capacidad del garaje"
+      [ngrxFormControlState]="formState.controls.garageCapacity"
+      [values]="garageCapacity"
+      [hasError]="
+        formState.controls.garageCapacity.isSubmitted &&
+        formState.controls.garageCapacity.isInvalid
+      "
+    ></runrun-select>
+
+    <div fxLayout="column">
+      <span class="main-font-semibold-15">Metros cuadrados</span>
+      <mat-form-field appearance="outline">
+        <input
+          matInput
+          [ngrxFormControlState]="formStateCommon.controls.totalArea"
+          type="text"
+        />
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="column" fxLayoutGap="5px">
+      <boolean-checkgroup
+        label="Admite motos eléctricas"
+        [ngrxFormControlState]="formState.controls.allowElectricMotorcycle"
+      ></boolean-checkgroup>
+    </div>
+    <!--
+    <app-checkgroup
+      [vertical]="true"
+      label="Otras características del garage"
+      [values]="[
+        { value: 'Garage cubierto', checked: formState.controls.isCover },
+        { value: 'Alarma', checked: formState.controls.alarms },
+        {
+          value: 'Personal de seguridad',
+          checked: formState.controls.securityPersonal
+        },
+        {
+          value: 'Sistema de seguridad',
+          checked: formState.controls.securitySystem
+        },
+        {
+          value: 'Puerta automática',
+          checked: formState.controls.automaticDoor
+        }
+      ]"
+    ></app-checkgroup> -->
+  </div>
+</form>

@@ -1,0 +1,630 @@
+<div fxLayout="row" class="w-100 page-container" fxLayoutAlign="center center">
+  <div fxLayout="column" ngClass.xs="w-100 mx-10" fxLayoutGap="10px">
+    <span class="subtitle-1">Editar anuncio</span>
+
+    <ng-container *ngIf="listingForm">
+      <form
+        class="information-wrapper"
+        fxLayout="column"
+        fxLayoutGap="24px"
+        [formGroup]="listingForm"
+        (submit)="onSubmit()"
+      >
+        <span class="title-2">1. Datos generales del inmueble</span>
+
+        <div
+          fxLayout="row nowrap"
+          fxLayout.xs="column"
+          fxLayoutGap="10px"
+          fxLayoutAlign="space-between"
+        >
+          <div
+            fxLayout="column"
+            fxLayoutGap="10px"
+            fxLayoutAlign="stretch stretch"
+          >
+            <div fxLayout="row" fxLayoutGap="10px">
+              <span class="text-1 ml-10">Precio:</span>
+              <mat-chip-list class="currencies-chip-list">
+                <mat-chip
+                  class="text-2"
+                  [class.active]="listingForm.controls.currency.value === 'CUP'"
+                  (click)="onCurrencyChange($event)"
+                  >CUP</mat-chip
+                >
+                <mat-chip
+                  class="text-2"
+                  [class.active]="listingForm.controls.currency.value === 'MLC'"
+                  (click)="onCurrencyChange($event)"
+                  >MLC</mat-chip
+                >
+                <mat-chip
+                  class="text-2"
+                  [class.active]="listingForm.controls.currency.value === 'USD'"
+                  (click)="onCurrencyChange($event)"
+                  >USD</mat-chip
+                >
+                <mat-chip
+                  class="text-2"
+                  [class.active]="listingForm.controls.currency.value === 'EUR'"
+                  (click)="onCurrencyChange($event)"
+                  >EUR</mat-chip
+                >
+              </mat-chip-list>
+            </div>
+
+            <div
+              fxLayout="row"
+              fxLayoutGap="10px"
+              fxLayoutAlign="space-between"
+            >
+              <input
+                fxFlex
+                type="number"
+                class="runrun-input-light runrun-range"
+                formControlName="price"
+                placeholder="Precio mensual"
+              />
+            </div>
+          </div>
+
+          <div fxLayout="column" fxLayoutGap="10px">
+            <span class="text-1 ml-10">Estancia mínima (meses)</span>
+
+            <div
+              fxLayout="row"
+              fxLayoutGap="10px"
+              fxLayoutAlign="space-between"
+            >
+              <input
+                fxFlex
+                type="number"
+                class="runrun-input-light"
+                formControlName="minStay"
+                placeholder="Tiempo (meses)"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- <app-publish-images-form
+          [images]="images"
+          (imageChange)="onImageChange($event)"
+        ></app-publish-images-form> -->
+
+        <ng-container [ngSwitch]="listingForm.value.propertyType">
+          <div *ngSwitchCase="'house'" fxLayout="column" fxLayoutGap="40px">
+            <span class="title-2">2. Características de la vivienda</span>
+
+            <div
+              fxLayout="row nowrap"
+              fxLayout.xs="column"
+              fxLayoutAlign="space-between end"
+            >
+              <app-checkgroup
+                label=""
+                [formGroup]="listingForm"
+                [values]="[{ value: 'Permite Mascotas', checked: 'allowPets' }]"
+              ></app-checkgroup>
+            </div>
+            <div
+              fxLayout="row nowrap"
+              fxLayout.xs="column"
+              fxLayoutAlign="space-between"
+            >
+              <div fxLayout="column" fxLayoutGap="10px">
+                <span class="text-1">Número de Habitaciones</span>
+                <app-spiner
+                  [minValue]="0"
+                  [maxValue]="20"
+                  [indeterminateValue]="0"
+                  formControlName="roomNumber"
+                  [hasError]="
+                    listingForm.controls.roomNumber.dirty &&
+                    listingForm.controls.roomNumber.invalid
+                  "
+                >
+                </app-spiner>
+              </div>
+
+              <div fxLayout="column" fxLayoutGap="10px">
+                <span class="text-1">Número de Baños</span>
+                <app-spiner
+                  [minValue]="0"
+                  [maxValue]="20"
+                  [indeterminateValue]="0"
+                  formControlName="bathNumber"
+                  [hasError]="
+                    listingForm.controls.bathNumber.dirty &&
+                    listingForm.controls.bathNumber.invalid
+                  "
+                >
+                </app-spiner>
+              </div>
+            </div>
+
+            <app-checkgroup
+              label="Electrodomésticos y otros"
+              [formGroup]="listingForm"
+              [values]="[
+                {
+                  value: 'Aire acondicionado',
+                  checked: 'airCondition'
+                },
+                {
+                  value: 'Cama',
+                  checked: 'bed'
+                },
+
+                {
+                  value: 'Clóset/escaparate',
+                  checked: 'closet'
+                },
+
+                {
+                  value: 'Cocina de gas',
+                  checked: 'gasCooker'
+                },
+
+                {
+                  value: 'Cocina eléctrica',
+                  checked: 'electricCooker'
+                },
+
+                {
+                  value: 'Lavadora',
+                  checked: 'washingMachine'
+                },
+
+                {
+                  value: 'Menajes de cocina',
+                  checked: 'kitchenEquipment'
+                },
+                {
+                  value: 'Microwave',
+                  checked: 'microwave'
+                },
+
+                {
+                  value: 'Refrigerador',
+                  checked: 'refrigerator'
+                },
+                {
+                  value: 'Teléfono fijo',
+                  checked: 'phone'
+                },
+                {
+                  value: 'Televisor',
+                  checked: 'tv'
+                },
+
+                {
+                  value: 'Vajilla',
+                  checked: 'dishes'
+                },
+                {
+                  value: 'Ventilador',
+                  checked: 'fan'
+                },
+                {
+                  value: 'Wifi',
+                  checked: 'wifi'
+                }
+              ]"
+            ></app-checkgroup>
+
+            <app-checkgroup
+              label="Infraestructura"
+              [formGroup]="listingForm"
+              [values]="[
+                {
+                  value: 'Agua caliente',
+                  checked: 'hotWater'
+                },
+                {
+                  value: 'Azotea libre',
+                  checked: 'freeRoof'
+                },
+                {
+                  value: 'Balcón',
+                  checked: 'balcon'
+                },
+                {
+                  value: 'Cisterna',
+                  checked: 'tank'
+                },
+                {
+                  value: 'Elevador',
+                  checked: 'elevator'
+                },
+                {
+                  value: 'Entrada independiente',
+                  checked: 'independantEntrance'
+                },
+                {
+                  value: 'Gas licuado',
+                  checked: 'liquidGas'
+                },
+                {
+                  value: 'Gas manufacturado',
+                  checked: 'manufacturedGas'
+                },
+                {
+                  value: 'Jardín',
+                  checked: 'garden'
+                },
+                {
+                  value: 'Piscina',
+                  checked: 'pool'
+                },
+                {
+                  value: 'Plaza de garaje',
+                  checked: 'parking'
+                },
+                {
+                  value: 'Portero',
+                  checked: 'portman'
+                },
+                {
+                  value: 'Tanque independiente',
+                  checked: 'independantTank'
+                }
+              ]"
+            ></app-checkgroup>
+          </div>
+
+          <div *ngSwitchCase="'room'" fxLayout="column" fxLayoutGap="20px">
+            <span class="title-2">2. Características de la habitación</span>
+
+            <div
+              fxLayout="row nowrap"
+              fxLayout.xs="column"
+              fxLayoutAlign="space-between"
+            >
+              <div fxLayout="column" fxLayoutGap="5px">
+                <span class="text-1 ml-10">Tipo de cama</span>
+                <select
+                  fxFlex
+                  class="runrun-select-light"
+                  formControlName="bedType"
+                >
+                  <option [ngValue]="null">Seleccionar</option>
+                  <option
+                    *ngFor="let option of bedType"
+                    [ngValue]="option.value"
+                  >
+                    {{ option.label }}
+                  </option>
+                </select>
+              </div>
+
+              <div fxLayout="column" fxLayoutGap="5px">
+                <span class="text-1 ml-10">Tipo de baño</span>
+                <select
+                  fxFlex
+                  class="runrun-select-light"
+                  formControlName="bathType"
+                >
+                  <option [ngValue]="null">Seleccionar</option>
+                  <option
+                    *ngFor="let option of bathType"
+                    [ngValue]="option.value"
+                  >
+                    {{ option.label }}
+                  </option>
+                </select>
+              </div>
+            </div>
+
+            <app-checkgroup
+              label="Comodidades"
+              [formGroup]="listingForm"
+              [values]="[
+                {
+                  value: 'Televisor',
+                  checked: 'tv'
+                },
+                {
+                  value: 'Secadora',
+                  checked: 'hairDryer'
+                },
+                {
+                  value: 'Mesa de estudio',
+                  checked: 'table'
+                },
+                { value: 'Wifi', checked: 'wifi' },
+                {
+                  value: 'Agua caliente',
+                  checked: 'hotWater'
+                },
+                {
+                  value: 'Ventilador',
+                  checked: 'fan'
+                },
+                {
+                  value: 'Aire Acondicionado',
+                  checked: 'airCondition'
+                },
+                {
+                  value: 'Refrigerador o minibar',
+                  checked: 'fridge'
+                },
+                {
+                  value: 'Closet',
+                  checked: 'closet'
+                }
+              ]"
+            ></app-checkgroup>
+          </div>
+
+          <div *ngSwitchCase="'office'" fxLayout="column" fxLayoutGap="20px">
+            <span class="title-2">2. Características de la oficina</span>
+
+            <span class="text-1">Número de Baños</span>
+            <app-spiner
+              [minValue]="-1"
+              [maxValue]="20"
+              [indeterminateValue]="-1"
+              formControlName="bathNumber"
+              [hasError]="
+                listingForm.controls.bathNumber.dirty &&
+                listingForm.controls.bathNumber.invalid
+              "
+            >
+            </app-spiner>
+
+            <app-checkgroup
+              label="Otras características de la oficina"
+              [formGroup]="listingForm"
+              [values]="[
+                {
+                  value: 'Aire Acondicionado',
+                  checked: 'airCondition'
+                },
+                {
+                  value: 'Plaza de garaje',
+                  checked: 'parking'
+                },
+                {
+                  value: 'Luz natural',
+                  checked: 'naturalLight'
+                },
+                { value: 'Wifi', checked: 'wifi' },
+                {
+                  value: 'Elevador',
+                  checked: 'elevator'
+                },
+                {
+                  value: 'Sistema de seguridad',
+                  checked: 'securitySystem'
+                },
+                { value: 'Alarma', checked: 'alarms' },
+                {
+                  value: 'Cocina equipada',
+                  checked: 'kitchen'
+                }
+              ]"
+            ></app-checkgroup>
+          </div>
+
+          <div *ngSwitchCase="'local'" fxLayout="column" fxLayoutGap="20px">
+            <span class="title-2">2. Características del local</span>
+
+            <div fxLayout="column" fxLayoutGap="5px">
+              <span class="title-1">Metros lineales de fachada</span>
+              <app-spiner
+                [minValue]="0"
+                [maxValue]="1000"
+                [indeterminateValue]="0"
+                formControlName="linealFrontSize"
+              >
+              </app-spiner>
+              <span class="text-2">*Opcional</span>
+            </div>
+
+            <span class="title-1">Número de Baños</span>
+            <app-spiner
+              [minValue]="-1"
+              [maxValue]="20"
+              [indeterminateValue]="-1"
+              formControlName="bathNumber"
+              [hasError]="
+                listingForm.controls.bathNumber.dirty &&
+                listingForm.controls.bathNumber.invalid
+              "
+            >
+            </app-spiner>
+
+            <div fxLayout="column" fxLayoutGap="5px">
+              <span class="title-1">Número de plantas</span>
+              <app-spiner
+                [minValue]="0"
+                [maxValue]="100"
+                formControlName="floorsNumber"
+              >
+              </app-spiner>
+              <span class="text-2">*Opcional</span>
+            </div>
+
+            <div fxLayout="column">
+              <span class="title-1 ml-10"
+                >Última actividad comercial del local</span
+              >
+
+              <input
+                fxFlex
+                class="runrun-input-light"
+                formControlName="lastActivity"
+                type="text"
+              />
+            </div>
+
+            <app-checkgroup
+              label="Otras características del local"
+              [formGroup]="listingForm"
+              [values]="[
+                {
+                  value: 'Aire Acondicionado',
+                  checked: 'airCondition'
+                },
+                {
+                  value: 'Elevador',
+                  checked: 'elevator'
+                },
+                {
+                  value: 'Hace esquina',
+                  checked: 'corner'
+                },
+                {
+                  value: 'Sistema de seguridad',
+                  checked: 'securitySystem'
+                },
+                {
+                  value: 'Personal de seguridad',
+                  checked: 'securityPersonal'
+                },
+                {
+                  value: 'Luz natural',
+                  checked: 'naturalLight'
+                },
+                { value: 'Alarma', checked: 'alarms' },
+                {
+                  value: 'Cocina equipada',
+                  checked: 'kitchen'
+                },
+                {
+                  value: 'Plaza de garaje',
+                  checked: 'parking'
+                },
+                {
+                  value: 'Extractor',
+                  checked: 'extractor'
+                }
+              ]"
+            ></app-checkgroup>
+          </div>
+
+          <div *ngSwitchCase="'garage'" fxLayout="column" fxLayoutGap="20px">
+            <span class="title-2">2. Características del garaje</span>
+            <div fxLayout="column" fxLayoutGap="5px">
+              <span class="text-1 ml-10">Capacidad del garaje</span>
+              <select
+                fxFlex
+                class="runrun-select-light"
+                formControlName="garageCapacity"
+              >
+                <option [ngValue]="null">Seleccionar</option>
+                <option
+                  *ngFor="let option of garageCapacity"
+                  [ngValue]="option.value"
+                >
+                  {{ option.label }}
+                </option>
+              </select>
+            </div>
+
+            <div fxLayout="column" fxLayoutGap="5px">
+              <boolean-checkgroup
+                label="Admite motos eléctricas"
+                formControlName="allowElectricMotorcycle"
+              ></boolean-checkgroup>
+              <span class="text-2">*Opcional</span>
+            </div>
+
+            <app-checkgroup
+              label="Otras características del garaje"
+              [formGroup]="listingForm"
+              [values]="[
+                {
+                  value: 'Garaje cubierto',
+                  checked: 'isCover'
+                },
+                { value: 'Alarma', checked: 'alarms' },
+                {
+                  value: 'Personal de seguridad',
+                  checked: 'securityPersonal'
+                },
+                {
+                  value: 'Sistema de seguridad',
+                  checked: 'securitySystem'
+                },
+                {
+                  value: 'Puerta automática',
+                  checked: 'automaticDoor'
+                }
+              ]"
+            ></app-checkgroup>
+          </div>
+        </ng-container>
+
+        <div
+          class="images-container"
+          fxLayout="row"
+          fxLayoutGap="5px"
+          fxLayoutAlign="space-between"
+        >
+          <app-image-form-field
+            *ngFor="let image of images; trackBy: imageTrackBy; let i = index"
+            [id]="'image-' + i"
+            [image]="image.image"
+            [addActive]="false"
+            [allowDelete]="true"
+            [modifyActive]="true"
+            (add)="modifyImage(image.id, $event)"
+            (remove)="removeImage(image.id)"
+          ></app-image-form-field>
+
+          <app-image-form-field
+            *ngIf="images.length < 7"
+            id="image-add"
+            [image]="null"
+            [addActive]="true"
+            [allowDelete]="false"
+            [modifyActive]="false"
+            (add)="addImage($event)"
+          ></app-image-form-field>
+        </div>
+
+        <div fxLayout="column" fxLayoutGap="5px">
+          <span class="text-1">Descripción adicional</span>
+          <span class="reg-15"
+            >Haz una descripción del inmueble que no haya sido incluida
+            anteriormente</span
+          >
+          <app-textarea-numbered
+            formControlName="details"
+          ></app-textarea-numbered>
+          <span class="text-2">
+            *Los anuncios con comentarios racistas, homófobos y/o
+            discriminatorios serán eliminados.
+          </span>
+          <span class="text-2">
+            *El anuncio deberá escribirse en mayúsculas y minúsculas
+          </span>
+          <span
+            class="error"
+            *ngIf="
+              listingForm.controls.details.dirty &&
+              listingForm.controls.details.invalid
+            "
+          >
+            Este campo no puede estar vacío
+          </span>
+        </div>
+
+        <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px">
+          <button
+            class="text-1 button-variant-filled-gray"
+            type="button"
+            [routerLink]="[managerURL, id]"
+          >
+            Cancelar
+          </button>
+          <button class="text-1 button-variant-filled-gray" type="submit">
+            Continuar
+          </button>
+        </div>
+      </form>
+    </ng-container>
+  </div>
+</div>

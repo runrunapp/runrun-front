@@ -1,0 +1,83 @@
+<div fxLayout="column" fxLayoutGap="10px">
+  <div gdColumns="1fr 1fr" gdColumns.xs="1fr">
+    <div fxLayout="row nowrap" fxLayoutGap="10px">
+      <mat-icon [svgIcon]="icons.CHECK"></mat-icon>
+      <span class="text-1"
+        >{{ garageCapacityDisplay(garage.garageCapacity) }}
+      </span>
+    </div>
+
+    <div
+      fxLayout="row nowrap"
+      fxLayoutGap="10px"
+      *ngIf="garage.allowElectricMotorcycle"
+    >
+      <mat-icon>motorcycle</mat-icon>
+      <span class="text-1">Permite motos electricas</span>
+    </div>
+
+    <div fxLayout="row nowrap" fxLayoutGap="10px">
+      <mat-icon [svgIcon]="icons.BATHS"></mat-icon>
+      <span class="text-1"
+        >{{ garage.bathNumber }}
+        {{ garage.bathNumber != 1 ? 'baños' : 'baño' }}</span
+      >
+    </div>
+
+    <div fxLayout="row nowrap" fxLayoutGap="10px" *ngIf="garage.entranceRamp">
+      <mat-icon [svgIcon]="icons.WHEELCHAIR"></mat-icon>
+      <span class="text-1">Rampas de acceso</span>
+    </div>
+  </div>
+
+  <span class="text-1">Características</span>
+
+  <app-checked-list
+    gdColumns="1fr 1fr"
+    gdColumns.xs="1fr"
+    [values]="[
+      {
+        label: 'Garage cubierto',
+        value: garage.isCover
+      },
+      { label: 'Alarma', value: garage.alarms },
+      {
+        label: 'Personal de seguridad',
+        value: garage.securityPersonal
+      },
+      {
+        label: 'Sistema de seguridad',
+        value: garage.securitySystem
+      },
+      {
+        label: 'Puerta automática',
+        value: garage.automaticDoor
+      }
+    ]"
+  ></app-checked-list>
+
+  <span class="text-1">Servicios incluidos por Runrún</span>
+
+  <app-checked-list
+    gdColumns="1fr 1fr"
+    gdColumns.xs="1fr"
+    [values]="[
+      {
+        label: 'Limpieza',
+        value: garage.cleanService
+      },
+      {
+        label: 'Mantenimiento',
+        value: garage.maintainerService
+      },
+      {
+        label: 'Pago de facturas',
+        value: garage.billPaymentService
+      },
+      {
+        label: 'Transporte de mudanza',
+        value: garage.transportationService
+      }
+    ]"
+  ></app-checked-list>
+</div>

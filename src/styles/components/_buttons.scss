@@ -1,0 +1,114 @@
+@import '../constants/colors';
+@import '../constants/constants';
+@import '../typography/font-classes';
+
+.button-variant-normal {
+  @extend .subtitle-1-white;
+  background-color: $white;
+  border-radius: $big-border-radius;
+}
+
+.base-button {
+  width: 200px;
+  height: 36px;
+
+  border-radius: $big-border-radius;
+  border: none;
+  @extend .subtitle-1-white;
+}
+
+button.simple-button {
+  height: 20px;
+  padding: 0px 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: $white;
+  color: $black;
+
+  &:hover {
+    background-color: $black;
+    color: $white;
+  }
+  &:disabled {
+    opacity: 0.5;
+    background-color: $white;
+    color: $black;
+  }
+
+  @extend .text-2-semibold-darkgray;
+}
+
+button.inverted-simple-button {
+  height: 20px;
+  padding: 0px 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: $black;
+  color: $white;
+  margin-top: 5px;
+  &:hover {
+    background-color: $gray;
+    color: $black;
+  }
+
+  @extend .text-2;
+}
+
+.button-variant-normal-oulined {
+  @extend .button-variant-normal;
+  border: 2px solid $black;
+}
+
+.button-stroked-white {
+  @extend .base-button;
+  background-color: transparent;
+  border-radius: $big-border-radius;
+  border: 2px solid $white;
+  color: $white;
+}
+
+.black-regular {
+  background-color: $black;
+  @extend .base-button;
+}
+
+.darkblue-regular {
+  @extend .base-button;
+  background-color: $dark-blue;
+}
+
+.button-variant-filled {
+  background-color: $darkgray;
+
+  @extend .base-button;
+
+  &:hover {
+    background-color: $black;
+    color: $white;
+  }
+
+  &:disabled,
+  &[disabled] {
+    background-color: $white;
+    color: $darkgray;
+  }
+}
+
+.button-variant-filled-normal {
+  @extend .base-button;
+  background-color: $white;
+  color: $darkgray;
+
+  &:hover {
+    color: $black;
+  }
+}
+
+.button-variant-filled-gray {
+  @extend .base-button;
+  background-color: gray;
+}
+
+button {
+  cursor: pointer;
+}

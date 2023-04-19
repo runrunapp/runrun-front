@@ -1,0 +1,126 @@
+<form [ngrxFormState]="formState">
+  <div fxLayout="column" fxLayoutGap="40px">
+    <runrun-select
+      label="Tipo de casa"
+      [ngrxFormControlState]="formState.controls.houseType"
+      [values]="houseType"
+      [hasError]="
+        formState.isSubmitted && formState.controls.houseType.isInvalid
+      "
+    ></runrun-select>
+
+    <div>
+      <span class="main-font-semibold-15">Número de Habitaciones</span>
+      <app-spiner
+        [minValue]="0"
+        [maxValue]="20"
+        [indeterminateValue]="0"
+        [ngrxFormControlState]="formState.controls.roomNumber"
+        [hasError]="
+          formState.controls.roomNumber.isSubmitted &&
+          formState.controls.roomNumber.isInvalid
+        "
+      >
+      </app-spiner>
+    </div>
+
+    <div>
+      <span class="main-font-semibold-15">Número de Baños</span>
+      <app-spiner
+        [minValue]="0"
+        [maxValue]="20"
+        [indeterminateValue]="0"
+        [ngrxFormControlState]="formState.controls.bathNumber"
+        [hasError]="
+          formState.controls.bathNumber.isSubmitted &&
+          formState.controls.bathNumber.isInvalid
+        "
+      >
+      </app-spiner>
+    </div>
+
+    <div fxLayout="column">
+      <span class="main-font-semibold-15">Metros cuadrados</span>
+      <mat-form-field appearance="outline">
+        <input
+          matInput
+          [ngrxFormControlState]="formStateCommon.controls.totalArea"
+          type="text"
+        />
+      </mat-form-field>
+    </div>
+
+    <div>
+      <runrun-select
+        label="Equipamiento"
+        [ngrxFormControlState]="formState.controls.kitchenEquipped"
+        [values]="kitchenEquipped"
+        [hasError]="
+          formState.controls.kitchenEquipped.isSubmitted &&
+          formState.controls.kitchenEquipped.isInvalid
+        "
+      ></runrun-select>
+      <runrun-select
+        [ngrxFormControlState]="formState.controls.houseFurnished"
+        [values]="houseFurnished"
+        [hasError]="
+          formState.controls.houseFurnished.isSubmitted &&
+          formState.controls.houseFurnished.isInvalid
+        "
+      ></runrun-select>
+    </div>
+
+    <!-- <app-checkgroup
+      [vertical]="true"
+      label="Servicios incluidos"
+      [values]="[
+        { value: 'Pago de facturas', checked: formState.controls.bills },
+        {
+          value: 'Servicio de limpieza',
+          checked: formState.controls.cleanService
+        },
+        { value: 'Mantenimiento', checked: formState.controls.mantainance }
+      ]"
+    ></app-checkgroup>
+
+    <app-checkgroup
+      [vertical]="true"
+      label="Comodidades"
+      [values]="[
+        { value: 'Televisor', checked: formState.controls.tv },
+        {
+          value: 'Aire Acondicionado',
+          checked: formState.controls.airCondition
+        },
+        { value: 'Lavaplatos', checked: formState.controls.dishWasher },
+        { value: 'Wifi', checked: formState.controls.wifi },
+        { value: 'Lavadora', checked: formState.controls.washingMachine },
+        { value: 'Clóset', checked: formState.controls.closet }
+      ]"
+    ></app-checkgroup>
+    <app-checkgroup
+      [vertical]="true"
+      label="Otras características"
+      [values]="[
+        { value: 'Balcón', checked: formState.controls.balcon },
+        { value: 'Elevador', checked: formState.controls.elevator },
+        { value: 'Jardín', checked: formState.controls.garden },
+        { value: 'Luz Natural', checked: formState.controls.naturalLight },
+        { value: 'Agua caliente', checked: formState.controls.hotWater },
+        { value: 'Azotea libre', checked: formState.controls.freeRoof },
+        { value: 'Terraza', checked: formState.controls.terrace },
+        { value: 'Piscina', checked: formState.controls.pool },
+        { value: 'Portero', checked: formState.controls.portman },
+        { value: 'Plaza de Garaje', checked: formState.controls.parking }
+      ]"
+    ></app-checkgroup>
+
+    <app-checkgroup
+      [vertical]="true"
+      label=""
+      [values]="[
+        { value: 'Permite Mascotas', checked: formState.controls.allowPets }
+      ]"
+    ></app-checkgroup> -->
+  </div>
+</form>

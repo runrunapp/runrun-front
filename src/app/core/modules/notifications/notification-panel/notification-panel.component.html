@@ -1,0 +1,24 @@
+<div fxLayout="column" fxLayoutGap="10px">
+  <span class="main-font-bold-20" *ngIf="todayNotifications.length > 0"
+    >Hoy</span
+  >
+
+  <app-notification-list
+    [notifications]="todayNotifications"
+  ></app-notification-list>
+
+  <span class="main-font-bold-20" *ngIf="yesterdayNotifications.length > 0"
+    >Ayer</span
+  >
+
+  <app-notification-list
+    [notifications]="yesterdayNotifications"
+  ></app-notification-list>
+
+  <span class="main-font-bold-20" *ngIf="recentNotifications.length > 0"
+    >Recientes</span
+  >
+  <app-notification-list
+    [notifications]="recentNotifications"
+  ></app-notification-list>
+</div>

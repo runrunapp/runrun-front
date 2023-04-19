@@ -1,0 +1,70 @@
+.mat-select-value {
+  font-size: 15px;
+  font-family: RFmain-font-Regular, RF main-font;
+}
+.mat-select-arrow {
+  border: none !important;
+  width: 16px !important;
+  height: 24px !important;
+  background-image: url('/assets/svg/icons/rightArrow.svg') !important;
+  background-repeat: no-repeat;
+  background-size: contain;
+  transform: rotate(0deg);
+  transition: transform 1s;
+}
+
+.mat-form-field.mat-focused .opened .mat-select-arrow {
+  transform: rotate(90deg);
+}
+.select-form-field {
+  border: none;
+}
+
+.mat-form-field-underline {
+  display: none;
+}
+
+select.runrun-select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  height: 36px;
+  height: 36px;
+  min-height: 36px;
+  max-height: 36px;
+
+  border: none;
+  border-radius: $big-border-radius;
+  padding: 5px;
+  @extend .text-1;
+
+  /* Some browsers will not display the caret when using calc, so we put the fallback first */
+  background: url('/assets/svg/icons/arrow-down.svg') $gray no-repeat 98.5% !important; /* !important used for overriding all other customisations */
+  background: url('/assets/svg/icons/arrow-down.svg') $gray no-repeat
+    calc(100% - 10px) !important; /* Better placement regardless of input width */
+}
+/*For IE*/
+select.runrun-select::-ms-expand {
+  display: none;
+}
+
+select.runrun-select-light {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  height: 36px;
+  min-height: 36px;
+  max-height: 36px;
+
+  border: none;
+  border-radius: $big-border-radius;
+  padding: 5px;
+  @extend .text-1;
+
+  /* Some browsers will not display the caret when using calc, so we put the fallback first */
+  background: url('/assets/svg/icons/arrow-down.svg') $white no-repeat 98.5% !important; /* !important used for overriding all other customisations */
+  background: url('/assets/svg/icons/arrow-down.svg') $white no-repeat
+    calc(100% - 10px) !important; /* Better placement regardless of input width */
+}

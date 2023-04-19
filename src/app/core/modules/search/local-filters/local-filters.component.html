@@ -1,0 +1,92 @@
+<form [ngrxFormState]="formState">
+  <div fxLayout="column" fxLayoutGap="20px">
+    <runrun-select
+      label="Ubicación"
+      [ngrxFormControlState]="formState.controls.localLocation"
+      [values]="localLocation"
+      [hasError]="
+        formState.controls.localLocation.isSubmitted &&
+        formState.controls.localLocation.isInvalid
+      "
+    ></runrun-select>
+
+    <div fxLayout="column">
+      <span class="main-font-semibold-15">Metros cuadrados</span>
+      <mat-form-field appearance="outline">
+        <input
+          matInput
+          [ngrxFormControlState]="formStateCommon.controls.totalArea"
+          type="text"
+        />
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="column" fxLayoutGap="5px">
+      <span class="main-font-semibold-15">Metros lineales de fachada</span>
+      <app-spiner
+        [indeterminateValue]="0"
+        [minValue]="0"
+        [maxValue]="1000"
+        [ngrxFormControlState]="formState.controls.linealFrontSize"
+      >
+      </app-spiner>
+    </div>
+
+    <div>
+      <span class="main-font-semibold-15">Número de Baños</span>
+      <app-spiner
+        [minValue]="-1"
+        [maxValue]="20"
+        [indeterminateValue]="-1"
+        [ngrxFormControlState]="formState.controls.bathNumber"
+        [hasError]="
+          formState.controls.bathNumber.isSubmitted &&
+          formState.controls.bathNumber.isInvalid
+        "
+      >
+      </app-spiner>
+    </div>
+
+    <div fxLayout="column" fxLayoutGap="5px">
+      <span class="main-font-semibold-15">Número de plantas</span>
+      <app-spiner
+        [minValue]="0"
+        [indeterminateValue]="0"
+        [maxValue]="100"
+        [ngrxFormControlState]="formState.controls.floorsNumber"
+      >
+      </app-spiner>
+    </div>
+
+    <!-- <app-text-input
+      label="Última actividad comercial del local"
+      [formControlState]="formState.controls.lastActivity"
+    ></app-text-input> -->
+
+    <!-- <app-checkgroup
+      [vertical]="true"
+      label="Otras características del local"
+      [values]="[
+        {
+          value: 'Aire Acondicionado',
+          checked: formState.controls.airCondition
+        },
+        { value: 'Elevador', checked: formState.controls.elevator },
+        { value: 'Hace esquina', checked: formState.controls.corner },
+        {
+          value: 'Sistema de seguridad',
+          checked: formState.controls.securitySystem
+        },
+        {
+          value: 'Personal de seguridad',
+          checked: formState.controls.securityPersonal
+        },
+        { value: 'Luz natural', checked: formState.controls.naturalLight },
+        { value: 'Alarma', checked: formState.controls.alarms },
+        { value: 'Cocina equipada', checked: formState.controls.kitchen },
+        { value: 'Plaza de garaje', checked: formState.controls.parking },
+        { value: 'Extractor', checked: formState.controls.extractor }
+      ]"
+    ></app-checkgroup> -->
+  </div>
+</form>

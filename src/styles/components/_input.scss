@@ -1,0 +1,59 @@
+@import 'src/styles/constants/colors';
+
+input {
+  text-align: left;
+  padding-left: 10px;
+  padding-right: 10px;
+  height: 36px;
+  @extend .text-1;
+}
+
+input.runrun-input {
+  background-color: $gray;
+  border: none;
+  border-radius: $big-border-radius;
+}
+
+input[type='number'].runrun-input.runrun-range {
+  width: 130px;
+  @extend .runrun-input;
+}
+
+input[type='date'].runrun-input {
+  width: 260px;
+  @extend .runrun-input;
+}
+
+input[type='file'].runrun-input {
+  display: none;
+}
+
+label.file-upload {
+  background-color: $gray;
+  border: none;
+  border-radius: $big-border-radius;
+  height: 38px;
+  padding: 0px 10px;
+  line-height: 38px;
+  text-decoration: underline;
+}
+
+input.runrun-input-light {
+  border: none;
+  border-radius: 8px;
+  min-height: 36px;
+  max-height: 36px;
+  color: $black;
+  background-color: $white;
+  &::placeholder {
+    color: $darkgray;
+    opacity: 1;
+  }
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 30px $white inset !important;
+}

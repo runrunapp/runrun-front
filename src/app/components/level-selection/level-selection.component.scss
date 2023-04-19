@@ -1,0 +1,40 @@
+@import 'src/styles/constants/colors';
+
+:host {
+  .level-selection-button {
+    background-color: $gray;
+    border: none;
+    border-radius: 5px;
+    width: 36px;
+    height: 36px;
+    &.up {
+      background: url('/assets/svg/icons/arrow-up.svg') $gray no-repeat 50% !important; /* Better placement regardless of input width */
+    }
+    &.down {
+      background: url('/assets/svg/icons/arrow-down.svg') $gray no-repeat 50% !important; /* Better placement regardless of input width */
+    }
+  }
+
+  .level-selection-input {
+    width: 100%;
+    height: 36px;
+    background-color: $gray;
+    border: none;
+    border-radius: 8px;
+    text-align: center;
+  }
+
+  .light {
+    .level-selection-input {
+      background-color: $white;
+    }
+    .level-selection-button {
+      &.up {
+        background: url('/assets/svg/icons/arrow-up.svg') $white no-repeat 50% !important; /* Better placement regardless of input width */
+      }
+      &.down {
+        background: url('/assets/svg/icons/arrow-down.svg') $white no-repeat 50% !important; /* Better placement regardless of input width */
+      }
+    }
+  }
+}

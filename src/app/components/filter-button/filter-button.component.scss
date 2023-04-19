@@ -1,0 +1,27 @@
+@import "../../../styles/constants/colors";
+
+:host {
+  span {
+    color:gray
+  }
+  button {
+    width: 30px;
+    height: 30px;
+
+    border-radius: 50%;
+    border: none;
+    background-color: $white;
+    box-shadow: none;
+
+  }
+
+  .active {
+    span {
+      color: $black;
+    }
+    button {
+      background-color: $gray;
+    }
+  }
+
+}

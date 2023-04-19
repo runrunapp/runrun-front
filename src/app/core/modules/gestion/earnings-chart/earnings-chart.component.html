@@ -1,0 +1,55 @@
+<div fxLayout="column">
+  <div fxLayout="row nowrap" fxLayoutAlign="center center" fxLayoutGap="20px">
+    <mat-icon
+      (click)="onDecrease()"
+      style="transform: rotate(180deg)"
+      [svgIcon]="ICONS.RIGHT_ANCLE"
+    >
+    </mat-icon>
+    <span class="text-1">{{ currentYear }}</span>
+    <mat-icon
+      (click)="onIncrease()"
+      [svgIcon]="ICONS.RIGHT_ANCLE"
+      [style.color]="currentYear === actualYear ? 'gray' : 'black'"
+    >
+    </mat-icon>
+  </div>
+
+  <div style="height: 300px">
+    <ngx-charts-line-chart
+      [scheme]="colorScheme"
+      [legend]="legend"
+      [showXAxisLabel]="showXAxisLabel"
+      [showYAxisLabel]="showYAxisLabel"
+      [showGridLines]="false"
+      [xAxis]="xAxis"
+      [yAxis]="yAxis"
+      [xAxisLabel]="xAxisLabel"
+      [yAxisLabel]="yAxisLabel"
+      [timeline]="timeline"
+      [results]="data"
+      [curve]="curve"
+      (select)="onSelect($event)"
+      (activate)="onActivate($event)"
+      (deactivate)="onDeactivate($event)"
+    >
+    </ngx-charts-line-chart>
+  </div>
+
+  <!-- <div fxLayout="row nowrap" fxLayoutAlign="center center" fxLayoutGap="10px">
+    <button
+      (click)="toggleMode(false)"
+      class="toggle-btn text-1"
+      [class.active]="!byYear"
+    >
+      CICLO
+    </button>
+    <button
+      (click)="toggleMode(true)"
+      class="toggle-btn text-1"
+      [class.active]="byYear"
+    >
+      AÑO
+    </button>
+  </div> -->
+</div>

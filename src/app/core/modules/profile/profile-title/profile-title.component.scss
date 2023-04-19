@@ -1,0 +1,44 @@
+@import 'src/styles/constants/colors';
+
+:host {
+  .property-type {
+    background-color: gray;
+    color: white;
+    border-radius: 10px;
+    padding: 0px 5px;
+  }
+  .status-badge {
+    background-color: $red;
+    color: $white;
+    border-radius: 10px;
+    padding: 0px 5px;
+
+    &.free {
+      background-color: $white !important;
+      color: $darkgray;
+    }
+  }
+
+  .view-map {
+    display: inline-block;
+    border-radius: 10px;
+    background-color: $black;
+    text-decoration: none;
+    color: $white;
+    padding: 0px 5px;
+    ::ng-deep path {
+      fill: white;
+    }
+    min-width: 100px;
+    height: 20px;
+    mat-icon {
+      width: 15px;
+      height: 15px;
+    }
+  }
+  .buttons-container {
+    background-color: white;
+    border-radius: 8px;
+    padding: 10px 20px;
+  }
+}

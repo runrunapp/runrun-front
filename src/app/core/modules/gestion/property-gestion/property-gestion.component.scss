@@ -1,0 +1,21 @@
+@import "../../../../../styles/constants/colors";
+
+:host {
+  .avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
+
+  .free {
+    color: $green;
+  }
+  .busy {
+    color: $light-blue;
+  }
+  .not-available {
+    color: $red;
+  }
+}
+
+

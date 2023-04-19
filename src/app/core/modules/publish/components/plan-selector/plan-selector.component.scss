@@ -1,0 +1,63 @@
+@import '../../../../../../styles/constants/colors';
+@import '../../../../../../styles/constants/constants';
+
+:host {
+  .plan-button {
+    cursor: pointer;
+
+    @media (min-width: '320px') {
+      width: 300px;
+    }
+    @media (min-width: '1000px') {
+      width: 400px;
+    }
+
+    border: none;
+    border-radius: $big-border-radius;
+    padding: 10px;
+
+    &.gestion {
+      background-color: $light-blue;
+      color: white;
+      &:hover {
+        background-color: $dark-blue;
+      }
+    }
+    &.free {
+      background-color: $light-green;
+      color: $black;
+      &:hover {
+        background-color: $green;
+      }
+    }
+    &.plus {
+      background-color: $pink;
+      color: $white;
+      &:hover {
+        background-color: $red;
+      }
+    }
+  }
+
+  .plan-button-selected {
+    cursor: pointer;
+    box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.75);
+    &.gestion {
+      background-color: $dark-blue;
+    }
+    &.plus {
+      background-color: $red;
+    }
+    &.free {
+      background-color: $green;
+    }
+  }
+
+  .badge {
+    border: none;
+    border-radius: 20px;
+    background-color: $white;
+    color: $black;
+    padding: 5px 10px;
+  }
+}

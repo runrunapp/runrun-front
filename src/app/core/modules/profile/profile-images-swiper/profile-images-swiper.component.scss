@@ -1,0 +1,83 @@
+@import '../../../../../styles/constants/colors';
+
+:host {
+  swiper {
+    width: 100%;
+    img {
+      width: 100%;
+    }
+    .float-label {
+      position: absolute;
+      z-index: 1001;
+      .rplus {
+        background-color: $red;
+        border-radius: 8px;
+        color: white;
+
+        text-align: center;
+      }
+      @media screen and (min-width: '320px') {
+        bottom: 10px;
+        right: 20px;
+      }
+      @media screen and (min-width: '600px') {
+        right: calc(25vw + 20px);
+      }
+    }
+  }
+  .swiper-slide {
+    @media screen and (min-width: '320px') {
+      opacity: 1;
+    }
+    @media screen and (min-width: '600px') {
+      opacity: 0.4;
+      width: 50vw !important;
+    }
+  }
+
+  .slide-active {
+    opacity: 1;
+    // width: 60vw !important;
+    // height: auto;
+  }
+  .slide-active-mobile {
+    opacity: 1 !important;
+    // width: 100vw !important;
+    // height: auto;
+  }
+
+  .swiper-button-next {
+    &::after {
+      content: url('/assets/svg/icons/navigation_next.svg');
+    }
+    right: calc(20vw / 2);
+  }
+  .swiper-button-prev {
+    &::after {
+      content: url('/assets/svg/icons/navigation_before.svg');
+    }
+    left: calc(20vw / 2);
+  }
+
+  ::ng-deep .swiper-pagination-bullet {
+    background-color: $gray;
+  }
+  ::ng-deep .swiper-pagination-bullet-active {
+    background-color: $white;
+  }
+  .plus-container {
+    background-color: transparent;
+    padding: 5px;
+    height: 24px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    &:hover {
+      background-color: $white;
+      &::before {
+        content: 'Los alojamientos Runrun+ son gestionados por la plataforma';
+        margin-right: 10px;
+      }
+    }
+  }
+}

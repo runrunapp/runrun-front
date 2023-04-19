@@ -1,0 +1,38 @@
+<ng-container *ngIf="blogs$ | async as blogs">
+  <div
+    class="blog-brand animate__fadeInUp w-100"
+    fxLayout="row"
+    fxLayoutAlign="center center"
+    *ngIf="blogs.length"
+    [style]="'--poster: url(' + blogs[index].poster + ')'"
+  >
+    <div
+      class="blog-brand-content"
+      [routerLink]="['/home/blog']"
+      fxLayout="column"
+      fxLayoutGap="10px"
+      fxLayoutAlign="start start"
+    >
+      <span ngClass.gt-xs="main-font-bold-30" ngClass.xs="main-font-bold-22"
+        >Blog</span
+      >
+      <swiper #swiperRef [config]="swiperOptions">
+        <div class="swiper-wrapper">
+          <app-blog-card
+            class="swiper-slide"
+            *ngFor="let entry of blogs"
+            [title]="entry.title"
+            [date]="entry.updatedDate"
+          ></app-blog-card>
+        </div>
+
+        <!-- Add Pagination -->
+        <!-- <div class="swiper-pagination"></div> -->
+
+        <!-- Add Arrows -->
+        <!-- <div class="swiper-button-next"></div> -->
+        <!-- <div class="swiper-button-prev"></div> -->
+      </swiper>
+    </div>
+  </div>
+</ng-container>

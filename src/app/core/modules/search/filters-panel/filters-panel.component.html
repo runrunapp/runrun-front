@@ -1,0 +1,30 @@
+<div fxLayout="column" fxLayoutGap="30px" class="container active">
+  <div
+    fxLayout="row nowrap"
+    class="filter-buttons"
+    ngClass.xs="mobile"
+    fxLayoutAlign="space-between"
+    fxLayoutGap="37px"
+  >
+    <app-filter-button text="Filtros" [active]="true">
+      <mat-icon
+        [svgIcon]="icons.FILTER"
+        style="width: 17px; height: 11px"
+      ></mat-icon>
+    </app-filter-button>
+    <app-filter-button text="Mapa" [active]="isMapOpen" (click)="toggleMap()">
+      <mat-icon
+        *ngIf="!isMapOpen"
+        [svgIcon]="icons.PIN"
+        style="width: 14px; height: 18px"
+      ></mat-icon>
+      <mat-icon
+        *ngIf="isMapOpen"
+        [svgIcon]="icons.MENU"
+        style="width: 14px; height: 18px"
+      ></mat-icon>
+    </app-filter-button>
+  </div>
+
+  <app-property-filters [formGroup]="form"></app-property-filters>
+</div>

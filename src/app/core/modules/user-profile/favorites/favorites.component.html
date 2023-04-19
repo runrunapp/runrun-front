@@ -1,0 +1,40 @@
+<div fxLayout="row nowrap" fxLayoutAlign="center start" class="page-container">
+  <div
+    fxLayout="column"
+    ngClass.gt-xs="profile-container"
+    ngClass.xs="w-100 mx-20"
+    fxLayoutGap="20px"
+    *ngIf="favorites$ | async as listings"
+  >
+    <div
+      class="container"
+      fxLayout="column nowrap"
+      fxLayoutGap="10px"
+      *ngFor="let listing of listings"
+      [routerLink]="[listingURL, listing.id]"
+    >
+      <img class="profile-image" [src]="listing.image" />
+
+      <div
+        fxLayout="row nowrap"
+        fxLayoutGap="10px"
+        fxLayoutAlign="space-between"
+        class="mx-20"
+      >
+        <span class="subtitle-1">{{ listing.title }}</span>
+
+        <span class="subtitle-1"
+          >{{ listing.price }} {{ listing.currency }} / mes
+        </span>
+      </div>
+      <div
+        fxLayout="row nowrap"
+        fxLayoutGap="10px"
+        fxLayoutAlign="space-between"
+        class="mx-20"
+      >
+        <!-- <ng-container *ngIf="listing.propertyType === 'house'"> </ng-container> -->
+      </div>
+    </div>
+  </div>
+</div>

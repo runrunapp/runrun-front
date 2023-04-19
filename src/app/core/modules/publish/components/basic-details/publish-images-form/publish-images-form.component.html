@@ -1,0 +1,8 @@
+<div class="container" fxLayout="column" fxLayoutGap="10px">
+  <span class="text-1 ml-10">Fotos del alojamiento</span>
+  <app-images-form
+    [images]="imgFiles"
+    (imageChange)="onImageChange($event)"
+    [allowDelete]="false"
+  ></app-images-form>
+</div>

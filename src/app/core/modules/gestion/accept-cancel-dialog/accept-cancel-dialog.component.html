@@ -1,0 +1,29 @@
+<mat-dialog-content class="w-100 mx-10">
+  <div fxLayout="column" fxLayoutAlign="end start" fxLayoutGap="20px" fxFill>
+    <span class="text-1">
+      {{ data.message }}
+    </span>
+
+    <div
+      fxLayout="row nowrap"
+      fxLayoutAlign="space-between center"
+      fxFill
+      fxLayoutGap="20px"
+    >
+      <button
+        mat-flat-button
+        class="button-variant-filled"
+        [mat-dialog-close]="{ clicked: 'Cancel' }"
+      >
+        Cancelar
+      </button>
+      <button
+        mat-flat-button
+        class="button-variant-filled"
+        [mat-dialog-close]="{ clicked: 'Ok' }"
+      >
+        Aceptar
+      </button>
+    </div>
+  </div>
+</mat-dialog-content>

@@ -1,0 +1,6 @@
+<ng-container *ngFor="let value of values">
+  <div fxLayout="row nowrap" fxLayoutGap="10px" *ngIf="value.value">
+    <mat-icon [svgIcon]="checkIcon"></mat-icon>
+    <span class="text-1">{{ value.label }}</span>
+  </div>
+</ng-container>

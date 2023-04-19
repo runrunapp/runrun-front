@@ -1,0 +1,205 @@
+<form [ngrxFormState]="formState">
+  <div fxLayout="column" fxLayoutGap="20px">
+    <runrun-select
+      label="Inmueble de la habitación"
+      [ngrxFormControlState]="formState.controls.roomHouseType"
+      [values]="roomHouseType"
+      [hasError]="
+        formState.controls.roomHouseType.isSubmitted &&
+        formState.controls.roomHouseType.isInvalid
+      "
+    ></runrun-select>
+
+    <div fxLayout="column">
+      <span class="main-font-semibold-15">Metros cuadrados</span>
+      <mat-form-field appearance="outline">
+        <input
+          matInput
+          [ngrxFormControlState]="formStateCommon.controls.totalArea"
+          type="text"
+        />
+      </mat-form-field>
+    </div>
+
+    <div fxLayout="column">
+      <span class="main-font-semibold-15"
+        >Número de habitaciones en la vivienda</span
+      >
+      <app-spiner
+        [minValue]="0"
+        [maxValue]="20"
+        [indeterminateValue]="0"
+        [ngrxFormControlState]="formState.controls.roomNumber"
+        [hasError]="
+          formState.controls.roomNumber.isSubmitted &&
+          formState.controls.roomNumber.isInvalid
+        "
+      >
+      </app-spiner>
+    </div>
+
+    <div fxLayout="column">
+      <span class="main-font-semibold-15">Número de baños en la vivienda</span>
+      <app-spiner
+        [minValue]="0"
+        [maxValue]="20"
+        [indeterminateValue]="0"
+        [ngrxFormControlState]="formState.controls.bathNumber"
+        [hasError]="
+          formState.controls.bathNumber.isSubmitted &&
+          formState.controls.bathNumber.isInvalid
+        "
+      >
+      </app-spiner>
+    </div>
+
+    <!-- <app-checkgroup
+      [vertical]="true"
+      label="Comodidades de la vivienda"
+      [values]="[
+        { value: 'Televisor', checked: formState.controls.tv },
+        { value: 'Cocina equipada', checked: formState.controls.kitchen },
+        { value: 'Secadora', checked: formState.controls.hairDryer },
+        { value: 'Wifi', checked: formState.controls.wifi },
+        { value: 'Amueblado', checked: formState.controls.furnished },
+        { value: 'Lavaplatos', checked: formState.controls.dishWasher },
+        {
+          value: 'Aire Acondicionado',
+          checked: formState.controls.airCondition
+        },
+        { value: 'Lavadora', checked: formState.controls.washingMachine },
+        { value: 'Trastero', checked: formState.controls.closet }
+      ]"
+    ></app-checkgroup>
+    <app-checkgroup
+      [vertical]="true"
+      label="Otras características"
+      [values]="[
+        { value: 'Balcón', checked: formState.controls.balcon },
+        { value: 'Elevador', checked: formState.controls.elevator },
+        { value: 'Azotea libre', checked: formState.controls.freeRoof },
+
+        { value: 'Luz Natural', checked: formState.controls.naturalLight },
+        { value: 'Agua caliente', checked: formState.controls.hotWater },
+        { value: 'Terraza', checked: formState.controls.terrace },
+        { value: 'Piscina', checked: formState.controls.pool },
+        { value: 'Portero', checked: formState.controls.portman },
+        { value: 'Plaza de Garaje', checked: formState.controls.parking },
+        { value: 'Jardín', checked: formState.controls.garden }
+      ]"
+    ></app-checkgroup> -->
+
+    <boolean-checkgroup
+      label="¿Se admiten parejas?"
+      [ngrxFormControlState]="formState.controls.allowCouples"
+    ></boolean-checkgroup>
+
+    <boolean-checkgroup
+      label="¿Se puede fumar?"
+      [ngrxFormControlState]="formState.controls.allowSmoking"
+    ></boolean-checkgroup>
+
+    <boolean-checkgroup
+      label="¿Se admiten menores de edad acompañados?"
+      [ngrxFormControlState]="formState.controls.allowMinors"
+    ></boolean-checkgroup>
+
+    <span class="typo-5">Habitación</span>
+
+    <runrun-select
+      label="Tipo de cama"
+      [ngrxFormControlState]="formState.controls.bedType"
+      [values]="bedType"
+      [hasError]="
+        formState.controls.bedType.isSubmitted &&
+        formState.controls.bedType.isInvalid
+      "
+    ></runrun-select>
+
+    <runrun-select
+      label="Tipo de baño"
+      [ngrxFormControlState]="formState.controls.bathType"
+      [values]="bathType"
+      [hasError]="
+        formState.controls.bathType.isSubmitted &&
+        formState.controls.bathType.isInvalid
+      "
+    ></runrun-select>
+
+    <runrun-select
+      label="Vista de la habitación"
+      [ngrxFormControlState]="formState.controls.windowType"
+      [values]="windowType"
+      [hasError]="
+        formState.controls.windowType.isSubmitted &&
+        formState.controls.windowType.isInvalid
+      "
+    ></runrun-select>
+
+    <!-- <app-checkgroup
+      [vertical]="true"
+      label="Otras características de la habitación"
+      [values]="[
+        {
+          value: 'Habitación amueblada',
+          checked: formState.controls.roomFurnished
+        },
+        { value: 'Clóset', checked: formState.controls.roomCloset }
+      ]"
+    ></app-checkgroup> -->
+
+    <div fxLayout="column" fxLayoutGap="5px">
+      <span class="main-font-semibold-15"
+        >¿Cuántas personas viven en la casa?</span
+      >
+
+      <app-spiner
+        [minValue]="1"
+        [maxValue]="20"
+        [indeterminateValue]="0"
+        [ngrxFormControlState]="formState.controls.housePopulation"
+        [hasError]="
+          formState.controls.housePopulation.isSubmitted &&
+          formState.controls.housePopulation.isInvalid
+        "
+      >
+      </app-spiner>
+      <mat-checkbox
+        class="runrun-checkbox"
+        [ngrxFormControlState]="formState.controls.housePopulation"
+        [ngrxValueConverter]="checkPopulationValueConverter"
+        >Nadie vive en la casa</mat-checkbox
+      >
+    </div>
+
+    <span class="typo-5">La persona que buscas</span>
+    <span class="reg-15-dimmed">*Opcional</span>
+
+    <runrun-select
+      label="Género"
+      [ngrxFormControlState]="formState.controls.personGender"
+      [values]="gender"
+    ></runrun-select>
+
+    <runrun-select
+      label="Ocupación"
+      [ngrxFormControlState]="formState.controls.personOcupation"
+      [values]="ocupation"
+    ></runrun-select>
+
+    <span class="main-font-semibold-15">Rango de edad</span>
+    <div fxLayout="row nowrap" fxLayoutGap="10px">
+      <input
+        class="age-range main-font-reg-15"
+        type="number"
+        [ngrxFormControlState]="formState.controls.ageRangeStart"
+      />
+      <span class="main-font-semibold-15">-</span>
+      <input
+        class="age-range"
+        type="number"
+        [ngrxFormControlState]="formState.controls.ageRangeEnd"
+      />
+    </div>
+  </div>
+</form>

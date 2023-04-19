@@ -1,0 +1,67 @@
+<div fxLayout="row" fxLayoutAlign="center center" class="page-container">
+  <div fxLayout="column" fxLayoutAlign="start" fxLayoutGap="20px">
+    <span class="text-1">Seleccione la fecha de ocupación:</span>
+
+    <div fxLayout="row nowrap" fxLayoutAlign="space-between center" fxFill>
+      <input
+        class="runrun-input-light"
+        #startTime
+        type="date"
+        [(ngModel)]="startDate"
+        useValueAsLocalDate
+      />
+      <span class="text-2">-</span>
+      <input
+        class="runrun-input-light"
+        #endTime
+        type="date"
+        [(ngModel)]="endDate"
+        useValueAsLocalDate
+      />
+    </div>
+
+    <span class="text-2">
+      Mientras tu alojamiento esté ocupado será visible para los usuarios más
+      allá de la fecha de desocupación
+    </span>
+
+    <span class="text-2">Marque el usuario que va a ocupar su inmueble:</span>
+
+    <select class="runrun-select-light" [(ngModel)]="selectedUser">
+      <option [ngValue]="null">No especificar</option>
+      <ng-container *ngIf="availableUsers$ | async as availableUsers">
+        <option *ngFor="let user of availableUsers" [value]="user.id">
+          <span class="text-1">{{ user.firstName }} {{ user.lastName }}</span>
+        </option>
+      </ng-container>
+    </select>
+
+    <span class="text-1">Día del pago:</span>
+
+    <input
+      class="runrun-input-light"
+      #startTime
+      type="number"
+      min="1"
+      max="31"
+      [(ngModel)]="paymentDay"
+    />
+
+    <div
+      fxLayout="row nowrap"
+      fxLayoutAlign="space-between center"
+      fxFill
+      fxLayoutGap="20px"
+    >
+      <button
+        class="button-variant-filled-gray"
+        [routerLink]="[urls.managerURL, id]"
+      >
+        Cancelar
+      </button>
+      <button class="button-variant-filled-gray" (click)="onSubmit()">
+        Aceptar
+      </button>
+    </div>
+  </div>
+</div>

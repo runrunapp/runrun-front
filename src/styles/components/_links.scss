@@ -1,0 +1,15 @@
+@import '../typography/font-classes';
+
+a {
+  @extend .text-1;
+  margin: 0 5px;
+  color: $black;
+}
+
+a.inline-link {
+  color: $darkgray;
+}
+
+a.cursor-pointer {
+  cursor: pointer;
+}

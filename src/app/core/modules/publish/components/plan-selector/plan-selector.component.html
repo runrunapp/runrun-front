@@ -1,0 +1,126 @@
+<div fxLayout="row" fxLayoutAlign="center" class="page-container">
+  <div fxLayout="column" fxLayoutAlign="start center" fxLayoutGap="60px">
+    <div fxLayout="column" fxLayoutGap="40px">
+      <span class="title-2">Publicar alojamiento</span>
+      <div
+        fxLayout.gt-xs="row"
+        fxLayout.xs="column"
+        fxLayoutAlign="center"
+        fxLayoutGap.gt-xs="60px"
+        fxLayoutGap.xs="10px"
+      >
+        <div
+          fxFlex="grow"
+          class="plan-button free"
+          [ngClass]="{ 'plan-button-selected': planType === 2 }"
+          (click)="onSelect(2)"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+          fxLayoutGap="20px"
+        >
+          <span class="subtitile-1">Gratis</span>
+
+          <div fxLayout="column" fxLayoutAlign="center center">
+            <span class="subtitile-1">Servicios incluidos</span>
+            <span class="text-2-semibold"
+              >· Publicación de anuncio en RUNRÚN
+            </span>
+          </div>
+        </div>
+
+        <div
+          fxFlex="grow"
+          class="plan-button gestion"
+          [ngClass]="{ 'plan-button-selected': planType === 0 }"
+          (click)="onSelect(0)"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+          fxLayoutGap="20px"
+        >
+          <span class="subtitile-1">Plataforma de gestión</span>
+
+          <span class="badge text-1-semibold">$500 CUP mensual</span>
+
+          <span class="text-2-semibold">
+            10% de descuentos para pagos anuales
+          </span>
+
+          <div fxLayout="column" fxLayoutAlign="center center">
+            <span class="subtitile-1">Servicios incluidos</span>
+            <span class="text-2-semibold"
+              >· Visita del gestor en una semana</span
+            >
+            <span class="text-2-semibold"
+              >· Publicación de anuncio en RUNRÚN
+            </span>
+            <span class="text-2-semibold">· Acceso a cuenta de gestión </span>
+          </div>
+
+          <div fxLayout="column" fxLayoutAlign="center center">
+            <span class="text-2-semibold color-blue">Opcional</span>
+            <span class="text-2-semibold color-blue"
+              >· Pago de impuesto y tenencia del libro</span
+            >
+            <span class="text-2-semibold color-blue">· Declaración jurada</span>
+            <span class="text-2-semibold color-blue"
+              >· Atención a roturas y necesidades del inquilino</span
+            >
+          </div>
+        </div>
+
+        <div
+          fxFlex="grow"
+          class="plan-button plus"
+          [ngClass]="{ 'plan-button-selected': planType === 1 }"
+          (click)="onSelect(1)"
+          fxLayout="column"
+          fxLayoutAlign="center center"
+          fxLayoutGap="20px"
+        >
+          <span class="subtitile-1">Agencia de gestión integral</span>
+
+          <span class="badge text-1-semibold">10% Renta mensual</span>
+
+          <span class="text-2-semibold">
+            10% de descuentos para pagos anuales
+          </span>
+
+          <div fxLayout="column" fxLayoutAlign="center center">
+            <span class="subtitile-1">Servicios incluidos</span>
+            <span class="text-2-semibold"
+              >· Visita del gestor en una semana</span
+            >
+            <span class="text-2-semibold">· Publicación de anuncio </span>
+            <span class="text-2-semibold"
+              >· Mostramos el alojamiento a candidatos
+            </span>
+            <span class="text-2-semibold">· Entrega de llaves </span>
+            <span class="text-2-semibold"
+              >· Firma de contratos y entraga de llaves
+            </span>
+            <span class="text-2-semibold"
+              >· Atendemos roturas y necesidades del inquilino
+            </span>
+            <span class="text-2-semibold"
+              >· Análisis de las cuentas a final de año y proyecciones
+            </span>
+          </div>
+          <div fxLayout="column" fxLayoutAlign="center center">
+            <span class="text-2-semibold color-blue">Opcional</span>
+            <span class="text-2-semibold color-blue"
+              >+ Pago de impuesto y tenencia del libro</span
+            >
+            <span class="text-2-semibold color-blue">+ Declaración jurada</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button
+      class="button-variant-filled"
+      [disabled]="planType === null"
+      (click)="onContinue()"
+    >
+      Continuar
+    </button>
+  </div>
+</div>

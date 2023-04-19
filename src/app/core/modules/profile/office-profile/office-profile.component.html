@@ -1,0 +1,87 @@
+<div fxLayout="column" fxLayoutGap="10px">
+  <div gdColumns="1fr 1fr" gdColumns.xs="1fr">
+    <div fxLayout="row nowrap" fxLayoutGap="10px">
+      <span class="text-1"
+        >{{ officeLocationDispllay(office.officeLocation) }}
+      </span>
+    </div>
+
+    <div fxLayout="row nowrap" fxLayoutGap="10px" *ngIf="office.allowPets">
+      <mat-icon [svgIcon]="icons.PETS"></mat-icon>
+      <span class="text-1">Permite mascotas</span>
+    </div>
+
+    <div fxLayout="row nowrap" fxLayoutGap="10px">
+      <mat-icon [svgIcon]="icons.BATHS"></mat-icon>
+      <span class="text-1"
+        >{{ office.bathNumber }}
+        {{ office.bathNumber != 1 ? 'baños' : 'baño' }}</span
+      >
+    </div>
+
+    <div fxLayout="row nowrap" fxLayoutGap="10px" *ngIf="office.entranceRamp">
+      <mat-icon [svgIcon]="icons.WHEELCHAIR"></mat-icon>
+      <span class="text-1">Rampas de acceso</span>
+    </div>
+  </div>
+
+  <span class="text-1">Electrodomésticos y otros</span>
+
+  <app-checked-list
+    gdColumns="1fr 1fr"
+    gdColumns.xs="1fr"
+    [values]="[
+      {
+        label: 'Aire Acondicionado',
+        value: office.airCondition
+      },
+      {
+        label: 'Plaza de garaje',
+        value: office.parking
+      },
+      {
+        label: 'Luz natural',
+        value: office.naturalLight
+      },
+      { label: 'Wifi', value: office.wifi },
+      {
+        label: 'Elevador',
+        value: office.elevator
+      },
+      {
+        label: 'Sistema de seguridad',
+        value: office.securitySystem
+      },
+      { label: 'Alarma', value: office.alarms },
+      {
+        label: 'Cocina equipada',
+        value: office.kitchen
+      }
+    ]"
+  ></app-checked-list>
+
+  <span class="text-1">Servicios incluidos por Runrún</span>
+
+  <app-checked-list
+    gdColumns="1fr 1fr"
+    gdColumns.xs="1fr"
+    [values]="[
+      {
+        label: 'Limpieza',
+        value: office.cleanService
+      },
+      {
+        label: 'Mantenimiento',
+        value: office.maintainerService
+      },
+      {
+        label: 'Pago de facturas',
+        value: office.billPaymentService
+      },
+      {
+        label: 'Transporte de mudanza',
+        value: office.transportationService
+      }
+    ]"
+  ></app-checked-list>
+</div>

@@ -1,0 +1,50 @@
+<!-- Handle Other user sender -->
+<div
+  *ngIf="!isFromUser; else elseBlock"
+  class="other-message"
+  fxLayout="row nowrap"
+  fxLayoutGap="10px"
+  fxLayoutAlign="start"
+  fxFlexAlign="start"
+  waIntersectionObserver
+  (waIntersectionObservee)="onVisible($event)"
+>
+  <ngx-avatars
+    [src]="sender.avatar"
+    [name]="sender.firstName"
+    [initialsSize]="1"
+    [round]="true"
+    [size]="32"
+    class="avatar"
+    [routerLink]="[userURL, sender.id]"
+  ></ngx-avatars>
+  <div fxLayout="column">
+    <p class="text-1-semibold">{{ text }}</p>
+    <span class="text-2-semibold-darkgray">{{ createdAt | messageTime }}</span>
+  </div>
+</div>
+<ng-template #elseBlock>
+  <div
+    class="user-message"
+    fxLayout="row nowrap"
+    fxLayoutGap="10px"
+    fxLayoutAlign="end"
+    fxFlexAlign="end"
+  >
+    <div fxLayout="column">
+      <p class="text-1-semibold">{{ text }}</p>
+      <span class="text-2-semibold-darkgray">{{
+        createdAt | messageTime
+      }}</span>
+    </div>
+    <ngx-avatars
+      [src]="sender.avatar"
+      [name]="sender.firstName"
+      [initialsSize]="1"
+      [round]="true"
+      [size]="32"
+      class="avatar"
+      [routerLink]="[userURL, sender.id]"
+    ></ngx-avatars>
+  </div>
+</ng-template>

@@ -1,0 +1,19 @@
+@import '../../../../../../styles/constants/colors';
+
+:host {
+  .container {
+    width: 250px;
+    height: 100px;
+  }
+  .info {
+    background-color: $white;
+    border-radius: 3px;
+    padding: 5px;
+  }
+  .photo {
+    width: 120px;
+    height: 100px;
+    border-radius: 3px;
+    cursor: pointer;
+  }
+}

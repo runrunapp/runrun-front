@@ -1,0 +1,184 @@
+<div fxLayout="column" fxLayoutGap="10px">
+  <div gdColumns="1fr 1fr" gdColumns.xs="1fr">
+    <div fxLayout="row nowrap" fxLayoutGap="10px">
+      <mat-icon [svgIcon]="icons.ROOMS"></mat-icon>
+      <span class="text-1"
+        >{{ house.roomNumber }}
+        {{ house.roomNumber != 1 ? 'habitaciones' : 'habitación' }}</span
+      >
+    </div>
+
+    <div fxLayout="row nowrap" fxLayoutGap="10px" *ngIf="house.allowPets">
+      <mat-icon [svgIcon]="icons.PETS"></mat-icon>
+      <span class="text-1">Permite mascotas</span>
+    </div>
+
+    <div fxLayout="row nowrap" fxLayoutGap="10px">
+      <mat-icon [svgIcon]="icons.BATHS"></mat-icon>
+      <span class="text-1"
+        >{{ house.bathNumber }}
+        {{ house.bathNumber != 1 ? 'baños' : 'baño' }}</span
+      >
+    </div>
+
+    <div fxLayout="row nowrap" fxLayoutGap="10px" *ngIf="house.entranceRamp">
+      <mat-icon [svgIcon]="icons.WHEELCHAIR"></mat-icon>
+      <span class="text-1">Rampas de acceso</span>
+    </div>
+  </div>
+
+  <span class="text-1">Electrodomésticos y otros</span>
+
+  <app-checked-list
+    gdColumns="1fr 1fr"
+    gdColumns.xs="1fr"
+    [values]="[
+      { value: house.airCondition, label: 'Aire Acondicionado' },
+      {
+        label: 'Cama',
+        value: house.bed
+      },
+
+      {
+        label: 'Clóset/escaparate',
+        value: house.closet
+      },
+
+      {
+        label: 'Cocina de gas',
+        value: house.gasCooker
+      },
+
+      {
+        label: 'Cocina eléctrica',
+        value: house.electricCooker
+      },
+
+      {
+        label: 'Lavadora',
+        value: house.washingMachine
+      },
+
+      {
+        label: 'Menajes de cocina',
+        value: house.kitchenEquipment
+      },
+      {
+        label: 'Microwave',
+        value: house.microwave
+      },
+
+      {
+        label: 'Refrigerador',
+        value: house.refrigerator
+      },
+      {
+        label: 'Teléfono fijo',
+        value: house.phone
+      },
+      {
+        label: 'Televisor',
+        value: house.tv
+      },
+
+      {
+        label: 'Vajilla',
+        value: house.dishes
+      },
+      {
+        label: 'Ventilador',
+        value: house.fan
+      },
+      {
+        label: 'Wifi',
+        value: house.wifi
+      }
+    ]"
+  ></app-checked-list>
+
+  <span class="text-1">Infraestructura</span>
+
+  <app-checked-list
+    gdColumns="1fr 1fr"
+    gdColumns.xs="1fr"
+    [values]="[
+      {
+        label: 'Agua caliente',
+        value: house.hotWater
+      },
+      {
+        label: 'Azotea libre',
+        value: house.freeRoof
+      },
+      {
+        label: 'Balcón',
+        value: house.balcon
+      },
+      {
+        label: 'Cisterna',
+        value: house.tank
+      },
+      {
+        label: 'Elevador',
+        value: house.elevator
+      },
+      {
+        label: 'Entrada independiente',
+        value: house.independantEntrance
+      },
+      {
+        label: 'Gas licuado',
+        value: house.liquidGas
+      },
+      {
+        label: 'Gas manufacturado',
+        value: house.manufacturedGas
+      },
+      {
+        label: 'Jardín',
+        value: house.garden
+      },
+      {
+        label: 'Piscina',
+        value: house.pool
+      },
+      {
+        label: 'Plaza de garaje',
+        value: house.parking
+      },
+      {
+        label: 'Portero',
+        value: house.portman
+      },
+      {
+        label: 'Tanque independiente',
+        value: house.independantTank
+      }
+    ]"
+  ></app-checked-list>
+
+  <span class="text-1">Servicios incluidos por Runrún</span>
+
+  <app-checked-list
+    gdColumns="1fr 1fr"
+    gdColumns.xs="1fr"
+    [values]="[
+      {
+        label: 'Limpieza',
+        value: house.cleanService
+      },
+      {
+        label: 'Mantenimiento',
+        value: house.maintainerService
+      },
+      {
+        label: 'Pago de facturas',
+        value: house.billPaymentService
+      },
+      {
+        label: 'Transporte de mudanza',
+        value: house.transportationService
+      }
+    ]"
+  ></app-checked-list>
+</div>

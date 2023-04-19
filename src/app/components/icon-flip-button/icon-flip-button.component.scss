@@ -1,0 +1,35 @@
+@import '../../../styles/constants/colors';
+@import '../../../styles/constants/constants';
+
+:host {
+  .container {
+    border: none;
+    border-radius: 18px;
+    padding: 5px 10px;
+    height: 36px;
+    color: $darkgray;
+    ::ng-deep path {
+      fill: $darkgray;
+      stroke: $darkgray;
+    }
+    &:hover {
+      color: $black;
+      ::ng-deep path {
+        fill: $black;
+        stroke: $black;
+      }
+    }
+    &.active {
+      border: none;
+      color: $black;
+      ::ng-deep path {
+        fill: $black;
+        stroke: $black;
+      }
+    }
+    .icon {
+      height: 20px;
+      width: 20px;
+    }
+  }
+}

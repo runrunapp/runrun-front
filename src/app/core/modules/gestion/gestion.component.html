@@ -1,0 +1,33 @@
+<div fxLayout="row" fxLayoutAlign="center" class="page-container">
+  <div
+    fxLayout="column"
+    ngClass.xs="w-100 mx-10"
+    ngClass.gt-xs="wrapper"
+    fxLayoutGap="16px"
+  >
+    <ng-container *ngIf="listingManagers$ | async as listingManagers">
+      <span class="subtitle-1" *ngIf="listingManagers.length > 0; else noData">
+        ARRENDAR
+      </span>
+
+      <app-listing-display-card
+        *ngFor="let manager of listingManagers"
+        [image]="manager.image"
+        [title]="manager.listingName"
+        [status]="manager.state"
+        [visitRequestCount]="manager.visitRequests.length"
+        [propertyType]="propertyTypeDisplay(manager.propertyType)"
+        [planType]="manager.planType"
+        [remainingDaysForPayment]="
+          getRemainingPaymentDays(manager?.currentBooking?.paymentDay)
+        "
+        [routerLink]="['manager', manager.listing]"
+        [id]="manager.listing"
+      ></app-listing-display-card>
+
+      <ng-template #noData>
+        <span class="subtitle-1">No tienes propiedades arrendadas</span>
+      </ng-template>
+    </ng-container>
+  </div>
+</div>

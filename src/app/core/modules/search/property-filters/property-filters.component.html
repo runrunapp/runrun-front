@@ -1,0 +1,149 @@
+<form
+  [formGroup]="formGroup"
+  fxLayout="column"
+  fxLayoutGap="20px"
+  ngClass.xs="mx-10"
+>
+  <div fxLayout="column" fxLayoutGap="10px">
+    <span class="text-1 ml-10">Tipo de inmueble</span>
+    <select class="runrun-select" formControlName="propertyType">
+      <option *ngFor="let option of propertyType" [ngValue]="option.value">
+        {{ option.label }}
+      </option>
+    </select>
+  </div>
+
+  <div fxLayout="column" fxLayoutGap="10px">
+    <div fxLayout="row" fxLayoutGap="10px">
+      <span class="text-1 ml-10">Precio:</span>
+      <mat-chip-list class="currencies-chip-list">
+        <mat-chip
+          class="text-2"
+          [class.active]="formGroup.controls.currency.value === 'CUP'"
+          (click)="onCurrencyChange($event)"
+          >CUP</mat-chip
+        >
+        <mat-chip
+          class="text-2"
+          [class.active]="formGroup.controls.currency.value === 'MLC'"
+          (click)="onCurrencyChange($event)"
+          >MLC</mat-chip
+        >
+        <mat-chip
+          class="text-2"
+          [class.active]="formGroup.controls.currency.value === 'USD'"
+          (click)="onCurrencyChange($event)"
+          >USD</mat-chip
+        >
+        <mat-chip
+          class="text-2"
+          [class.active]="formGroup.controls.currency.value === 'EUR'"
+          (click)="onCurrencyChange($event)"
+          >EUR</mat-chip
+        >
+      </mat-chip-list>
+    </div>
+    <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-between">
+      <input
+        type="number"
+        class="runrun-input runrun-range"
+        formControlName="minPrice"
+        placeholder="Mínimo"
+      />
+      <input
+        type="number"
+        class="runrun-input runrun-range"
+        formControlName="maxPrice"
+        placeholder="Máximo"
+      />
+    </div>
+  </div>
+
+  <div fxLayout="column" fxLayoutGap="10px">
+    <div fxLayout="row" fxLayoutGap="10px">
+      <span class="text-1 ml-10">Superficie (m²)</span>
+    </div>
+    <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-between">
+      <input
+        type="number"
+        class="runrun-input runrun-range"
+        formControlName="minTotalArea"
+        placeholder="Mínimo"
+      />
+      <input
+        type="number"
+        class="runrun-input runrun-range"
+        formControlName="maxTotalArea"
+        placeholder="Máximo"
+      />
+    </div>
+  </div>
+
+  <div fxLayout="column" fxLayoutGap="10px">
+    <div fxLayout="row" fxLayoutGap="10px">
+      <span class="text-1 ml-10">Nivel</span>
+    </div>
+    <app-level-selection
+      [minValue]="-3"
+      [maxValue]="20"
+      [value]="-3"
+      [indeterminateValue]="-3"
+      [displayFn]="displayLevel"
+      formControlName="floorLevel"
+    ></app-level-selection>
+  </div>
+
+  <div fxLayout="column" fxLayoutGap="10px">
+    <div fxLayout="row" fxLayoutGap="10px">
+      <span class="text-1 ml-10">Tiempo de estancia (meses)</span>
+    </div>
+    <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-between">
+      <input
+        type="number"
+        class="runrun-input runrun-range"
+        formControlName="minStay"
+        placeholder="Mínimo"
+      />
+      <input
+        type="number"
+        class="runrun-input runrun-range"
+        formControlName="maxStay"
+        placeholder="Máximo"
+      />
+    </div>
+  </div>
+
+  <button type="button" (click)="resetFilters()" class="reset-btn text-1">
+    Desmarcar filtros
+  </button>
+
+  <!-- <house-filters
+    *ngIf="formState.value.propertyType === 0"
+    [formState]="formState.controls.house"
+    [formStateCommon]="formGroup"
+  ></house-filters>
+
+  <room-filters
+    *ngIf="formState.value.propertyType === 1"
+    [formState]="formState.controls.room"
+    [formStateCommon]="formGroup"
+  ></room-filters>
+
+  <office-filters
+    *ngIf="formState.value.propertyType === 2"
+    [formState]="formState.controls.office"
+    [formStateCommon]="formGroup"
+  ></office-filters>
+
+  <local-filters
+    *ngIf="formState.value.propertyType === 3"
+    [formState]="formState.controls.local"
+    [formStateCommon]="formGroup"
+  ></local-filters>
+
+  <garage-filters
+    *ngIf="formState.value.propertyType === 4"
+    [formState]="formState.controls.garage"
+    [formStateCommon]="formGroup"
+  ></garage-filters> -->
+</form>

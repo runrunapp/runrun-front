@@ -1,0 +1,40 @@
+@import '../../../styles/constants/colors';
+
+:host {
+  .select-panel {
+    background-color: transparent;
+  }
+
+  ::ng-deep .mat-select-value {
+    font-size: 15px;
+    font-family: RFmain-font-Regular, RF main-font;
+  }
+  ::ng-deep .mat-select-arrow {
+    border: none !important;
+    width: 16px !important;
+    height: 24px !important;
+    background-image: url('../../../assets/svg/icons/rightArrow.svg') !important;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transform: rotate(0deg);
+    transition: transform 1s;
+  }
+
+  ::ng-deep .mat-form-field.mat-focused .opened .mat-select-arrow {
+    transform: rotate(90deg);
+  }
+  ::ng-deep .select-form-field {
+    border: none;
+  }
+
+  ::ng-deep .mat-form-field-underline {
+    display: none;
+  }
+
+  ::ng-deep .error {
+    color: $red;
+    .mat-select-arrow {
+      background-image: url('../../../assets/svg/icons/rightArrowRed.svg') !important;
+    }
+  }
+}

@@ -1,0 +1,23 @@
+@import '../../../../styles/constants/colors';
+
+:host {
+  .header {
+    border: none;
+    background-color: transparent;
+  }
+  .add-container {
+    background-color: $gray;
+  }
+
+  mat-expansion-panel {
+    box-shadow: none;
+    background-color: transparent;
+    margin-top: 10px;
+  }
+  .panel-not-opened {
+    background-color: $gray;
+  }
+  .wrapper {
+    width: 520px;
+  }
+}

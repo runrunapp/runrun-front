@@ -1,0 +1,77 @@
+<div class="container" fxLayout="column" *ngIf="listing">
+  <div
+    class="mx-20"
+    fxLayout="column"
+    fxLayoutGap="10px"
+    *ngIf="user$ | async as user"
+  >
+    <div
+      fxLayout="row nowrap"
+      fxLayoutAlign="start start"
+      fxLayoutGap="10px"
+      class="w-100"
+    >
+      <ngx-avatars
+        class="avatar-container"
+        fxLayoutAlign="center center"
+        [src]="user.profile.profilePicture1"
+        [name]="user.firstName"
+        [initialsSize]="1"
+        [round]="true"
+        [size]="76"
+        [routerLink]="[userProfileURL, user_id]"
+      ></ngx-avatars>
+
+      <div fxLayout="column" fxFlex fxLayoutGap="10px">
+        <span class="text-1-semibold" [routerLink]="[userProfileURL, user_id]">
+          {{ user.firstName }} {{ user.lastName }}</span
+        >
+        <div fxLayout="row nowrap" fxLayoutAlign="space-between start">
+          <span class="subtitle-1" [routerLink]="[listingURL, listing_id]">{{
+            message
+          }}</span>
+          <ng-container *ngIf="currentUser$ | async as currentUser">
+            <ng-container *ngIf="!isOwner(currentUser.runroomiePosts)">
+              <mat-icon
+                class="heart"
+                (click)="likePost()"
+                *ngIf="!currentUser.runroomieLikedPosts?.includes(postId)"
+                [svgIcon]="icons.HEART"
+              ></mat-icon>
+              <mat-icon
+                class="heart"
+                *ngIf="currentUser.runroomieLikedPosts?.includes(postId)"
+                [svgIcon]="icons.HEART_FILLED"
+              ></mat-icon>
+            </ng-container>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+    <img
+      class="listing"
+      *ngIf="listing.images[0].image"
+      [src]="listing.images[0].image"
+      [routerLink]="[listingURL, listing_id]"
+    />
+
+    <div
+      fxLayout="row nowrap"
+      fxLayoutAlign="space-between start"
+      class="w-100"
+    >
+      <span class="subtitle-1">{{ listing.title }}</span>
+      <span class="subtitle-1-darkblue"
+        >{{ listing.price }} {{ listing.currency }} / mes</span
+      >
+    </div>
+    <div fxLayout="row nowrap" fxLayoutGap="20px" class="w-100">
+      <span class="text-2-darkgray"
+        >{{ listing.roomNumber }}
+        {{ listing.roomNumber > 1 ? 'habitaciones' : 'habitación' }}</span
+      >
+      <span class="text-2-darkgray">{{ listing.totalArea }}m2</span>
+      <span class="text-2-darkgray">{{ listing.floorLevel }} piso</span>
+    </div>
+  </div>
+</div>

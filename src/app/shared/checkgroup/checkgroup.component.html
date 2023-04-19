@@ -1,0 +1,26 @@
+<form [formGroup]="formGroup" fxLayout="column">
+  <p class="text-1">{{ label }}</p>
+  <!-- <div fxLayout="row wrap" fxLayoutAlign="space-around center"> -->
+  <div
+    gdGap="10px 5px"
+    gdAuto="row dense"
+    [gdColumns.gt-xs]="vertical ? 'repeat(1, 1fr)' : 'repeat(3, 1fr)'"
+    gdColumns.xs="repeat(auto-fill, minmax(200px, 1fr))"
+  >
+    <ng-container *ngFor="let item of values">
+      <label
+        fxLayout="row inline"
+        fxLayoutGap="5px"
+        fxLayoutAlign="start center"
+      >
+        <input
+          class="runrun-checkbox-light"
+          [formControlName]="item.checked"
+          type="checkbox"
+          [value]="item.value"
+        />
+        <span class="runrun-checkbox-label text-1">{{ item.value }}</span>
+      </label>
+    </ng-container>
+  </div>
+</form>

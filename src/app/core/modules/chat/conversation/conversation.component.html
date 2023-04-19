@@ -1,0 +1,95 @@
+<div class="chat-container">
+  <div
+    fxLayout="column"
+    class="container"
+    ngClass.xs="mx-10 w-100"
+    ngClass.gt-xs="w-60"
+    ngClass.gt-sm="w-50"
+    fxLayoutAlign="end"
+  >
+    <ng-container *ngIf="user$ | async as user">
+      <ng-container *ngIf="chatSession$ | async as chatSession">
+        <!-- <div
+          class="conversation-header"
+          fxLayout="row nowrap"
+          fxLayoutGap="30px"
+          fxLayoutAlign="start center"
+        >
+          <img
+            class="avatar"
+            [src]="chatSession.user1.id === user.id ? chatSession.user2.avatar : chatSession.user1.avatar"
+            [routerLink]="[userURL, chatSession.user1.id === user.id ? chatSession.user2.id : chatSession.user1.id]"
+          />
+
+          <span
+            class="main-font-bold-20"
+            [routerLink]="[userURL, chatSession.user1.id === user.id ? chatSession.user2.id : chatSession.user1.id]"
+            >{{chatSession.user1.id === user.id ? chatSession.user2.firstName +
+            ' ' + chatSession.user2.lastName: chatSession.user1.firstName + ' '
+            + chatSession.user1.lastName}}</span
+          >
+        </div> -->
+
+        <div
+          fxLayout="column"
+          fxLayoutGap="10px"
+          *ngIf="messages$ | async as messages"
+          id="messagesContainer"
+        >
+          <app-message
+            [id]="'message-' + message.id"
+            *ngFor="let message of messages"
+            [sender]="
+              message.sender === chatSession.user1.id
+                ? chatSession.user1
+                : chatSession.user2
+            "
+            [receiver]="
+              message.receiver === chatSession.user1.id
+                ? chatSession.user1
+                : chatSession.user2
+            "
+            [text]="message.text"
+            [createdAt]="message.createdAt"
+            [isFromUser]="message.sender === user.id"
+            [read]="message.read"
+            (markAsRead)="onRead(message.id)"
+          >
+          </app-message>
+        </div>
+
+        <div
+          fxLayout="row nowrap"
+          id="msg-form"
+          class="send-message-form"
+          fxLayoutAlign="space-evenly end"
+        >
+          <textarea
+            fxFlex
+            name="message"
+            class="text-1-semibold"
+            form="msg-form"
+            autosize
+            [(ngModel)]="message"
+            [rows]="1"
+            placeholder="Escribe un mensaje"
+            [maxRows]="5"
+            (keyup)="onInput($event)"
+          ></textarea>
+          <button
+            mat-icon-button
+            (click)="
+              onSendMessage(
+                chatSession.user1.id === user.id
+                  ? chatSession.user2.id
+                  : chatSession.user1.id
+              )
+            "
+          >
+            <mat-icon [svgIcon]="icons.MESSAGE"></mat-icon>
+          </button>
+        </div>
+      </ng-container>
+    </ng-container>
+  </div>
+</div>

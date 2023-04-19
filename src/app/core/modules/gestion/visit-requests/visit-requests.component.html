@@ -1,0 +1,22 @@
+<div fxLayout="row" fxLayoutAlign="center" class="page-container">
+  <div
+    fxLayout="column"
+    ngClass.xs="w-100 mx-10"
+    ngClass.gt-xs="w-60"
+    fxLayoutGap="20px"
+  >
+    <span class="title-2"> Solicitudes de visitas </span>
+    <div
+      *ngIf="visitRequests$ | async as visitRequests"
+      fxLayout="row"
+      fxLayoutAlign="center center"
+    >
+      <app-visit-request-card
+        *ngFor="let visitRequest of visitRequests"
+        [visitRequest]="visitRequest"
+        (approve)="onApprove(visitRequest.id)"
+        (reject)="onReject(visitRequest.id)"
+      ></app-visit-request-card>
+    </div>
+  </div>
+</div>

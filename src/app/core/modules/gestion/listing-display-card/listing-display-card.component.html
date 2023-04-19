@@ -1,0 +1,49 @@
+<div class="w-100 container" fxLayout="row nowrap" fxLayoutGap="20px">
+  <img [src]="image" [routerLink]="[urls.profileURL, id]" />
+  <div fxFlex fxLayout="column" fxLayoutAlign="center">
+    <span class="subtitle-1">{{ title }}</span>
+    <div fxLayout="row wrap" fxLayoutGap="5px" fxLayoutAlign="start center">
+      <ng-container *ngIf="is_free; else elseBlock">
+        <a
+          *ngIf="visitRequestCount > 0 && planType === 0"
+          class="text-2-darkgray visit-requests"
+          [routerLink]="[urls.visitRequests, id]"
+          >{{ visitRequestCount }} Solicitudes de visita</a
+        >
+        <span class="rounded-gray text-2">Desocupado</span>
+        <button
+          *ngIf="planType !== 1"
+          [disabled]="planType === 2"
+          class="text-2-semibold-darkgray rounded-gray no-decoration"
+          [routerLink]="[urls.ocupationURL, id]"
+        >
+          Cambiar ocupación
+        </button>
+      </ng-container>
+
+      <ng-template #elseBlock>
+        <span class="rounded-darkgray text-2">{{ propertyType }}</span>
+        <span
+          class="text-2-darkgray payment-day"
+          *ngIf="remainingDaysForPayment"
+          >Próximo pago en {{ remainingDaysForPayment }} día{{
+            remainingDaysForPayment > 1 ? 's' : ''
+          }}
+        </span>
+        <a
+          *ngIf="planType !== 1"
+          class="text-2-semibold-darkgray rounded-gray no-decoration cursor-pointer"
+          (click)="onSetFree($event)"
+          >Marcar como libre</a
+        >
+      </ng-template>
+
+      <button
+        class="text-2-semibold-darkgray rounded-gray no-decoration"
+        [routerLink]="[urls.editListingURL, id]"
+      >
+        Editar
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+<div
+  leaflet
+  class="map-container"
+  [leafletOptions]="options"
+  [leafletLayer]="markers"
+  [(leafletCenter)]="center"
+  (leafletMapReady)="onMapReady($event)"
+></div>

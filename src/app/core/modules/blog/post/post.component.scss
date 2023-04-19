@@ -1,0 +1,22 @@
+:host {
+  .comments-container {
+    min-width: 100%;
+    outline: none;
+    app-comment {
+      min-width: 90%;
+
+    }
+    .comments2-container {
+      padding-left: 30px;
+    }
+    app-comment-input {
+      width: 80%;
+      height: 150px;
+    }
+  }
+  .comment-input {
+    width: 400px;
+    height: 200px;
+  }
+
+}

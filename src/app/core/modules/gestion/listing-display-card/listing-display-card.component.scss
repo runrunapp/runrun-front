@@ -1,0 +1,60 @@
+@import '/src/styles/constants/colors';
+
+:host {
+  .container {
+    padding: 10px;
+    background-color: $white;
+    border-radius: 8px;
+
+    img {
+      border-radius: 8px;
+      aspect-ratio: 3 / 2;
+      height: 60px;
+    }
+    .rounded-gray {
+      margin-top: 5px;
+      border-radius: 10px;
+      background-color: $gray;
+      padding: 0px 5px;
+    }
+    .rounded-darkgray {
+      margin-top: 5px;
+      border-radius: 10px;
+      background-color: $darkgray;
+      color: $white;
+      padding: 0px 5px;
+    }
+    .payment-day {
+      margin-top: 5px;
+      background-color: transparent;
+
+      padding: 0px 5px;
+    }
+    a.visit-requests {
+      margin-top: 5px;
+      background-color: $light-green;
+      border-radius: 10px;
+      padding: 0px 5px;
+
+      line-height: 21px;
+      text-decoration: none;
+      color: $darkgray;
+      &:hover,
+      &:focus {
+        color: $black;
+      }
+    }
+    a.rounded-gray {
+      margin-top: 5px;
+      line-height: 21px;
+      color: $darkgray;
+      &:hover,
+      &:focus {
+        color: $black;
+      }
+    }
+    button {
+      border: none;
+    }
+  }
+}

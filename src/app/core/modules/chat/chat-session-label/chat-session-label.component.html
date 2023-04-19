@@ -1,0 +1,71 @@
+<div
+  fxLayout="row nowrap"
+  fxLayoutGap="10px"
+  [class.not-read]="
+    !lastMessage || (lastMessage.sender === user.id && !lastMessage.read)
+  "
+  class="container"
+>
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <ngx-avatars
+      [src]="user.avatar"
+      [name]="user.firstName"
+      [initialsSize]="1"
+      [round]="true"
+      [size]="32"
+      class="avatar"
+      [routerLink]="[userURL, user.id]"
+    ></ngx-avatars>
+  </div>
+
+  <div
+    fxLayout="column nowrap"
+    fxFlex
+    style="cursor: pointer"
+    [routerLink]="[chatURL, user.id]"
+    fxLayoutAlign="center start"
+    *ngIf="lastMessage; else noLastMessage"
+  >
+    <div fxLayout="row nowrap" fxLayoutGap="10px">
+      <span class="text-2-semibold-darkgray"
+        >{{ user.firstName }} {{ user.lastName }}</span
+      >
+      <span class="text-2-semibold-darkgray">{{
+        lastMessage.createdAt | messageTime
+      }}</span>
+    </div>
+
+    <span
+      class="text-1-semibold"
+      style="white-space: nowrap; text-overflow: ellipsis"
+      >{{ lastMessage.text }}</span
+    >
+    <button
+      class="text-2-semibold badge"
+      *ngIf="lastMessage.sender === user.id && !lastMessage.read"
+    >
+      Responder
+    </button>
+  </div>
+
+  <ng-template #noLastMessage>
+    <div
+      fxLayout="column nowrap"
+      fxFlex
+      style="cursor: pointer"
+      [routerLink]="[chatURL, user.id]"
+      fxLayoutAlign="center start"
+    >
+      <span class="text-2-semibold-darkgray"
+        >{{ user.firstName }} {{ user.lastName }}</span
+      >
+
+      <span
+        class="text-1-semibold"
+        style="white-space: nowrap; text-overflow: ellipsis"
+        >NUEVO CHAT</span
+      >
+      <button class="text-2-semibold badge">Escribir</button>
+    </div>
+  </ng-template>
+</div>

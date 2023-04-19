@@ -1,0 +1,18 @@
+<div
+  gdGap="10px 5px"
+  gdAuto="row dense"
+  [gdColumns]="'repeat(' + columns + ', 1fr)'"
+>
+  <ng-container *ngFor="let item of values; index as index">
+    <label fxLayout="row inline" fxLayoutGap="5px" fxLayoutAlign="start center">
+      <input
+        class="runrun-checkbox-light"
+        [checked]="item.value === value"
+        type="checkbox"
+        [value]="item.value"
+        (change)="onClick(index)"
+      />
+      <span class="runrun-checkbox-label text-1">{{ item.label }}</span>
+    </label>
+  </ng-container>
+</div>

@@ -1,0 +1,17 @@
+@import "../../../styles/constants/colors";
+@import "../../../styles/constants/constants";
+
+:host {
+  button {
+    height: 26px;
+    width: 320px;
+    border: 2px solid $black;
+    border-radius: $small-border-radius;
+    background-color: $white;
+    &.active {
+      background-color: $dark-blue;
+      color: $white;
+      border: none;
+    }
+  }
+}

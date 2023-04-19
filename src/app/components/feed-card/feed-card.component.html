@@ -1,0 +1,48 @@
+<div
+  class="container"
+  fxLayout="column nowrap"
+  fxLayoutGap="10px"
+  *ngIf="listing"
+>
+  <swiper [config]="swiperConfig">
+    <div class="swiper-wrapper" *ngIf="listing.images">
+      <ng-container *ngFor="let img of listing.images; trackBy: trackByIndex">
+        <img class="swiper-slide" *ngIf="img.image" [src]="img.image" />
+      </ng-container>
+    </div>
+    <div class="swiper-pagination"></div>
+
+    <div class="float-label" fxLayoutAlign="center center" fxLayoutGap="10px">
+      <div class="plus-container main-font-semibold-12">
+        <mat-icon
+          class="rplus"
+          *ngIf="listing.planType === 1"
+          [svgIcon]="icons.PLUS"
+        ></mat-icon>
+      </div>
+      <div class="verified-container main-font-semibold-12">
+        <mat-icon svgIcon="verified"></mat-icon>
+      </div>
+    </div>
+  </swiper>
+  <div
+    fxLayout="row nowrap"
+    fxLayoutGap="10px"
+    fxLayoutAlign="space-between"
+    class="mx-20"
+  >
+    <span class="subtitle-1">{{ listing.title }}</span>
+
+    <span class="subtitle-1"
+      >{{ listing.price }} {{ listing.currency }} / mes
+    </span>
+  </div>
+  <div
+    fxLayout="row nowrap"
+    fxLayoutGap="10px"
+    fxLayoutAlign="space-between"
+    class="mx-20"
+  >
+    <!-- <ng-container *ngIf="listing.propertyType === 'house'"> </ng-container> -->
+  </div>
+</div>

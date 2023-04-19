@@ -1,0 +1,121 @@
+<form [formGroup]="form" #ngForm="ngForm" (submit)="onSubmit($event)">
+  <div fxLayout="column" fxLayoutGap="20px">
+    <span class="title-2">2. Características de la habitación</span>
+
+    <div
+      fxLayout="row nowrap"
+      fxLayout.xs="column"
+      fxLayoutAlign="space-between"
+    >
+      <div fxLayout="column" fxLayoutGap="5px">
+        <span class="main-font-semibold-15 ml-10">Tipo de cama</span>
+        <select fxFlex class="runrun-select-light" formControlName="bedType">
+          <option [ngValue]="null">Seleccionar</option>
+          <option *ngFor="let option of bedType" [ngValue]="option.value">
+            {{ option.label }}
+          </option>
+        </select>
+        <mat-error *ngIf="ngForm.submitted && form.controls.bedType.errors">
+          Este campo es requerido
+        </mat-error>
+      </div>
+
+      <div fxLayout="column" fxLayoutGap="5px">
+        <span class="main-font-semibold-15 ml-10">Tipo de baño</span>
+        <select fxFlex class="runrun-select-light" formControlName="bathType">
+          <option [ngValue]="null">Seleccionar</option>
+          <option *ngFor="let option of bathType" [ngValue]="option.value">
+            {{ option.label }}
+          </option>
+        </select>
+        <mat-error *ngIf="ngForm.submitted && form.controls.bathType.errors">
+          Este campo es requerido
+        </mat-error>
+      </div>
+    </div>
+
+    <app-checkgroup
+      label="Comodidades"
+      [formGroup]="comoditiesForm"
+      [values]="[
+        {
+          value: 'Televisor',
+          checked: 'tv'
+        },
+        {
+          value: 'Secadora',
+          checked: 'hairDryer'
+        },
+        {
+          value: 'Mesa de estudio',
+          checked: 'table'
+        },
+        { value: 'Wifi', checked: 'wifi' },
+        {
+          value: 'Agua caliente',
+          checked: 'hotWater'
+        },
+        {
+          value: 'Ventilador',
+          checked: 'fan'
+        },
+        {
+          value: 'Aire Acondicionado',
+          checked: 'airCondition'
+        },
+        {
+          value: 'Refrigerador o minibar',
+          checked: 'fridge'
+        },
+        {
+          value: 'Closet',
+          checked: 'closet'
+        }
+      ]"
+    ></app-checkgroup>
+    <form [formGroup]="formCommon" (ngSubmit)="onSubmit($event)">
+      <div fxLayout="column" fxLayoutGap="5px">
+        <span class="main-font-semibold-15">Descripción adicional</span>
+        <span class="reg-15"
+          >Haz una descripción del inmueble que no haya sido incluida
+          anteriormente</span
+        >
+        <app-textarea-numbered
+          formControlName="details"
+        ></app-textarea-numbered>
+        <span class="reg-15-dimmed">
+          *Los anuncios con comentarios racistas, homófobos y/o discriminatorios
+          serán eliminados.
+        </span>
+        <span class="reg-15-dimmed">
+          *El anuncio deberá escribirse en mayúsculas y minúsculas
+        </span>
+        <span
+          class="error"
+          *ngIf="
+            formCommon.controls.details.dirty &&
+            formCommon.controls.details.invalid
+          "
+        >
+          Este campo no puede estar vacío
+        </span>
+      </div>
+
+      <div fxLayout="row" fxLayoutAlign="center" fxLayoutGap="20px">
+        <button
+          class="text-1 button-variant-filled-gray"
+          type="button"
+          (click)="back.emit()"
+        >
+          Regresar
+        </button>
+        <button
+          class="main-font-semibold-15 button-variant-filled-gray"
+          type="submit"
+        >
+          Continuar
+        </button>
+      </div>
+    </form>
+  </div>
+</form>

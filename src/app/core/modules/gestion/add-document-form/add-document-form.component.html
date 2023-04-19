@@ -1,0 +1,20 @@
+<div fxLayout="column" fxLayoutAlign="center center">
+  <div
+    (click)="onClick()"
+    class="container"
+    fxLayout="column"
+    fxLayoutGap="10px"
+  >
+    <div class="placeholder" fxLayoutAlign="center center">
+      <mat-icon [svgIcon]="icons.ADD"></mat-icon>
+    </div>
+  </div>
+  <div fxLayout="column" fxLayoutAlign="center center">
+    <span class="text-1-semibold"
+      >Aquí puedes subir los documentos en formato .jpg .pdf o .svg</span
+    >
+    <span class="text-21-darkgray"
+      >Puedes configurar la visibilidad de estos documentos</span
+    >
+  </div>
+</div>

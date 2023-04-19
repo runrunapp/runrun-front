@@ -1,0 +1,12 @@
+<div class="wrapper">
+  <mat-calendar
+    [minDate]="minDate"
+    [maxDate]="maxDate"
+    [selected]="selectedDate"
+    (selectedChange)="onSelectedChange($event)"
+    [headerComponent]="headerComponent"
+
+  ></mat-calendar>
+</div>
+
+<!-- [dateClass]="dateClass()" -->

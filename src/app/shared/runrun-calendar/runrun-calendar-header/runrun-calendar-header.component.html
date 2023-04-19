@@ -1,0 +1,11 @@
+<div class="wrapper" fxLayout="row nowrap" fxLayoutAlign="space-between center" (submit)="$event.stopPropagation()" >
+  <button mat-icon-button (click)="previousClicked('month', $event)">
+    <mat-icon>keyboard_arrow_left</mat-icon>
+  </button>
+
+  <span class="typo-4">{{monthYear}}</span>
+
+  <button mat-icon-button (click)="nextClicked('month', $event)">
+    <mat-icon>keyboard_arrow_right</mat-icon>
+  </button>
+</div>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #ebedeb;
+      }
+    </style>
+  </defs>
+  <g id="Group_1289" data-name="Group 1289" transform="translate(-926 -544)">
+    <rect id="Rectangle" class="cls-1" width="36" height="36" rx="8" transform="translate(926 544)"/>
+    <g id="Checkmark" transform="translate(936 552.386)">
+      <path id="Union_20" data-name="Union 20" d="M-9240-226.386v-13h3v13Zm3-2v-6h9v2a4,4,0,0,1-4,4Z" transform="translate(9242 243)"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,29 @@
+<div fxLayout="column">
+  <p class="main-font-semibold-15">{{ label }}</p>
+  <!-- <div fxLayout="row wrap" fxLayoutAlign="space-around center"> -->
+  <div
+    [fxLayout]="vertical ? 'column nowrap' : 'row nowrap'"
+    fxLayoutGap="10px"
+  >
+    <label fxLayout="row inline" fxLayoutGap="5px" fxLayoutAlign="start center">
+      <input
+        class="runrun-checkbox"
+        type="checkbox"
+        [value]="isYes"
+        [checked]="isYes"
+        (change)="onYes()"
+      />
+      <span class="runrun-checkbox-label">{{ yesLabel }}</span>
+    </label>
+    <label fxLayout="row inline" fxLayoutGap="5px" fxLayoutAlign="start center">
+      <input
+        class="runrun-checkbox"
+        type="checkbox"
+        [value]="isNot"
+        [checked]="isNot"
+        (change)="onNot()"
+      />
+      <span class="runrun-checkbox-label">{{ noLabel }}</span>
+    </label>
+  </div>
+</div>

@@ -1,0 +1,56 @@
+@import '../../../../styles/constants/colors';
+:host {
+  .front-start-container {
+    margin: 0px 100px 30px 100px;
+  }
+  .mobile {
+    margin: 0px 10px 30px 10px;
+    padding-bottom: 20px;
+  }
+
+  .background-runroomie {
+    background-color: $yellow;
+  }
+
+  .runroomie-brand {
+    height: calc(100vh - 50px);
+
+    @media screen and (min-width: '320px') {
+      background-image: url('/assets/landing/roomie_desktop.svg');
+      background-size: contain;
+      background-position: center;
+      div {
+        width: 60%;
+      }
+    }
+    @media screen and (min-width: '500px') {
+      background-image: url('/assets/landing/roomie_desktop.svg');
+      background-size: contain;
+      background-position: center;
+      padding: 20px;
+      div {
+        width: 40%;
+      }
+    }
+    background-attachment: local;
+
+    background-repeat: no-repeat;
+
+    background-origin: content-box;
+  }
+
+  .runroomie-logo {
+    width: 300px;
+    height: 75px;
+    transform: scale(1);
+    &:hover {
+      transform: scale(1.2);
+    }
+    transition: transform 0.1s linear;
+  }
+
+  span {
+    margin-bottom: 25vh;
+    width: 350px;
+  }
+}

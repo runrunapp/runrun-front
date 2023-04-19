@@ -1,0 +1,151 @@
+<div fxLayout="column" fxLayoutGap="10px">
+  <div gdColumns="1fr 1fr" gdColumns.xs="1fr">
+    <div fxLayout="row nowrap" fxLayoutGap="10px">
+      <mat-icon [svgIcon]="icons.ROOMS"></mat-icon>
+      <span class="text-1">{{ bedTypeDisplay(room.bedType) }}</span>
+    </div>
+
+    <div fxLayout="row nowrap" fxLayoutGap="10px" *ngIf="room.allowPets">
+      <mat-icon [svgIcon]="icons.PETS"></mat-icon>
+      <span class="text-1">Permite mascotas</span>
+    </div>
+
+    <div fxLayout="row nowrap" fxLayoutGap="10px">
+      <mat-icon [svgIcon]="icons.BATHS"></mat-icon>
+      <span class="text-1">{{ bathTypeDisplay(room.bathType) }}</span>
+    </div>
+
+    <div fxLayout="row nowrap" fxLayoutGap="10px" *ngIf="room.entranceRamp">
+      <mat-icon [svgIcon]="icons.WHEELCHAIR"></mat-icon>
+      <span class="text-1">Rampas de acceso</span>
+    </div>
+  </div>
+
+  <span class="text-1">Comodidades</span>
+
+  <app-checked-list
+    gdColumns="1fr 1fr"
+    gdColumns.xs="1fr"
+    [values]="[
+      {
+        label: 'Televisor',
+        value: room.tv
+      },
+      {
+        label: 'Secadora',
+        value: room.hairDryer
+      },
+      {
+        label: 'Mesa de estudio',
+        value: room.table
+      },
+      { label: 'Wifi', value: room.wifi },
+      {
+        label: 'Agua caliente',
+        value: room.hotWater
+      },
+      {
+        label: 'Ventilador',
+        value: room.fan
+      },
+      {
+        label: 'Aire Acondicionado',
+        value: room.airCondition
+      },
+      {
+        label: 'Refrigerador o minibar',
+        value: room.fridge
+      },
+      {
+        label: 'Closet',
+        value: room.closet
+      }
+    ]"
+  ></app-checked-list>
+
+  <span class="text-1">Infraestructura</span>
+
+  <app-checked-list
+    gdColumns="1fr 1fr"
+    gdColumns.xs="1fr"
+    [values]="[
+      {
+        label: 'Agua caliente',
+        value: room.hotWater
+      },
+      {
+        label: 'Azotea libre',
+        value: room.freeRoof
+      },
+      {
+        label: 'Balcón',
+        value: room.balcon
+      },
+      {
+        label: 'Cisterna',
+        value: room.tank
+      },
+      {
+        label: 'Elevador',
+        value: room.elevator
+      },
+      {
+        label: 'Entrada independiente',
+        value: room.independantEntrance
+      },
+      {
+        label: 'Gas licuado',
+        value: room.liquidGas
+      },
+      {
+        label: 'Gas manufacturado',
+        value: room.manufacturedGas
+      },
+      {
+        label: 'Jardín',
+        value: room.garden
+      },
+      {
+        label: 'Piscina',
+        value: room.pool
+      },
+      {
+        label: 'Plaza de garaje',
+        value: room.parking
+      },
+      {
+        label: 'Portero',
+        value: room.portman
+      },
+      {
+        label: 'Tanque independiente',
+        value: room.independantTank
+      }
+    ]"
+  ></app-checked-list>
+
+  <span class="text-1">Servicios incluidos por Runrún</span>
+
+  <app-checked-list
+    gdColumns="1fr 1fr"
+    gdColumns.xs="1fr"
+    [values]="[
+      {
+        label: 'Limpieza',
+        value: room.cleanService
+      },
+      {
+        label: 'Mantenimiento',
+        value: room.maintainerService
+      },
+      {
+        label: 'Pago de facturas',
+        value: room.billPaymentService
+      },
+      {
+        label: 'Transporte de mudanza',
+        value: room.transportationService
+      }
+    ]"
+  ></app-checked-list>
+</div>

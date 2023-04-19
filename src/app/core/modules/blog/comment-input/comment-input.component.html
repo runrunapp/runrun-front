@@ -1,0 +1,11 @@
+<div fxFill fxLayout="row nowrap" fxLayoutGap="10px" fxLayoutAlign="center end">
+  <textarea
+    class="text-1"
+    placeholder="Dejar un comentario"
+    [(ngModel)]="content"
+    [maxLength]="300"
+  ></textarea>
+  <button fxFlexAlign="end" (click)="onSend()" class="right-arrow-button">
+    →
+  </button>
+</div>

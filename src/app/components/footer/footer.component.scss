@@ -1,0 +1,72 @@
+@import '../../../styles/constants/colors';
+@import '../../../styles/constants/constants';
+
+:host {
+  .footer {
+    padding: 30px 100px;
+
+    @media (max-width: '600px') {
+      padding: 10px;
+    }
+
+    background-color: $black;
+    color: $white;
+
+    ::ng-deep .logo-white > svg path,
+    ::ng-deep .logo-white > svg polygon {
+      fill: $white;
+    }
+
+    & > div {
+      width: 300px;
+    }
+
+    .logo-white {
+      height: 33px;
+      width: 102px;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    input::placeholder {
+      font-family: 'Space Grotesk';
+      font-size: 15px;
+      font-weight: normal;
+      color: $darkgray;
+    }
+    .subscription-input {
+      background-color: $white;
+      border: none;
+      border-radius: $big-border-radius;
+      color: $black;
+      height: 30px;
+      font-family: 'Space Grotesk';
+      font-size: 15px;
+      font-weight: 600;
+      padding: 0 10px;
+    }
+
+    .right-arrow-button {
+      height: 30px;
+      width: 30px;
+      background-color: $gray;
+      color: $white;
+      line-height: 0;
+      font-size: 25px;
+      box-shadow: none !important;
+      ::ng-deep .mat-button-wrapper {
+        padding: 0;
+        line-height: 0;
+      }
+      mat-icon {
+        width: 15px;
+        height: 18px;
+      }
+      ::ng-deep mat-icon svg path {
+        fill: $black;
+      }
+    }
+  }
+}

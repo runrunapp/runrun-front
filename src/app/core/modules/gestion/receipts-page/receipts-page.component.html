@@ -1,0 +1,25 @@
+<div fxLayout="row" fxFill fxLayoutAlign="center" class="mt-30">
+  <div
+    fxLayout="column"
+    ngClass.xs="w-100 mx-10"
+    ngClass.gt-xs="w-60"
+    fxLayoutGap="20px"
+  >
+    <span class="ext-reg-20"> Recibos </span>
+    <div fxLayout="row nowrap" fxLayoutAlign="space-between center">
+      <mat-icon
+        (click)="decreaseDate()"
+        style="transform: rotate(180deg)"
+        [svgIcon]="ICONS.RIGHT_ANCLE"
+      >
+      </mat-icon>
+      <span class="main-font-bold-20">{{
+        capitalize(date | date: 'MMMM YYYY')
+      }}</span>
+      <mat-icon (click)="increaseDate()" [svgIcon]="ICONS.RIGHT_ANCLE">
+      </mat-icon>
+    </div>
+
+    <app-receipt *ngFor="let r of currentReceipts" [receipt]="r"></app-receipt>
+  </div>
+</div>

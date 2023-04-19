@@ -1,0 +1,84 @@
+.runrun-checkbox {
+  .mat-checkbox-frame {
+    border: 2px solid $gray;
+    border-radius: $small-border-radius;
+  }
+  .mat-checkbox-inner-container {
+    width: 26px;
+    height: 26px;
+  }
+  .mat-checkbox-layout .mat-checkbox-label {
+    line-height: 2;
+  }
+  .mat-checkbox {
+    font-family: RFmain-font-Regular, RF main-font;
+    font-size: 15px;
+    color: $black;
+  }
+
+  .mat-checkbox-checked.mat-accent .mat-checkbox-background {
+    content: url('/assets/svg/icons/check.svg');
+  }
+}
+
+input[type='checkbox'].runrun-checkbox {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: $big-border-radius;
+  background: $gray;
+  position: relative;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  &:checked {
+    background-color: $gray;
+  }
+
+  &:checked:after {
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: $big-border-radius;
+    position: absolute;
+    content: url('/assets/svg/icons/check.svg');
+    background: transparent;
+    // Corrects the position of the checkmark
+    top: 0px;
+    left: 0px;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+input[type='checkbox'].runrun-checkbox-light {
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: $big-border-radius;
+  background: $white;
+  position: relative;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+
+  &:checked {
+    background-color: $white;
+  }
+
+  &:checked:after {
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: $big-border-radius;
+    position: absolute;
+    content: url('/assets/svg/icons/check.svg');
+    background: transparent;
+    // Corrects the position of the checkmark
+    top: 0px;
+    left: 0px;
+    right: 0;
+    bottom: 0;
+  }
+}

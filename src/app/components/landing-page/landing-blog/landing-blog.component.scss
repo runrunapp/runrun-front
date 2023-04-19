@@ -1,0 +1,46 @@
+@import '../../../../styles/constants/colors';
+
+// max-width: 500px;
+// margin: 0 10px;
+@media screen and (min-width: '320px') {
+  swiper {
+    width: 100%;
+  }
+  .blog-brand-content {
+    width: 100vw;
+    cursor: pointer;
+  }
+}
+@media screen and (min-width: '800px') {
+  swiper {
+    width: 600px;
+  }
+  .blog-brand-content {
+    width: auto;
+  }
+}
+
+.blog-brand {
+  height: 400px;
+  width: 100%;
+  position: relative;
+}
+
+.blog-brand:before {
+  content: ' ';
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.2;
+  background-image: var(--poster);
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  background-size: cover;
+}
+
+.blog-brand-content {
+  position: relative;
+}

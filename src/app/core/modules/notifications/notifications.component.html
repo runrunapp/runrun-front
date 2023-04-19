@@ -1,0 +1,44 @@
+<div fxLayout="row nowrap" class="page-container" fxLayoutAlign="center">
+  <div
+    fxLayout="column"
+    class="w-40"
+    ngClass.xl="w-50"
+    ngClass.xs="w-100"
+    fxLayoutGap="20px"
+  >
+    <ng-container *ngIf="user$ | async as user">
+      <div
+        class="profile-container"
+        fxLayout="row nowrap"
+        fxLayoutAlign="start center"
+        [routerLink]="[userProfileURL, user.id]"
+      >
+        <div fxLayout="row nowrap" fxLayoutGap="20px" class="profile">
+          <ngx-avatars
+            class="avatar"
+            [src]="user.profile.profilePicture1"
+            [name]="user.firstName"
+            [initialsSize]="1"
+            [round]="false"
+          ></ngx-avatars>
+
+          <div fxLayout="column" fxLayoutGap="5px">
+            <span class="main-font-bold-20"
+              >{{ user.firstName }} {{ user.lastName }}</span
+            >
+            <span class="main-font-reg-15" style="color: gray"
+              >{{ progress(user) }}% del perfil completado</span
+            >
+          </div>
+        </div>
+      </div>
+    </ng-container>
+
+    <span class="main-font-bold-20">Notificaciones</span>
+    <app-notification-panel
+      *ngIf="notifications$ | async as notifications"
+      [notifications]="notifications"
+    >
+    </app-notification-panel>
+  </div>
+</div>

@@ -1,0 +1,21 @@
+<div
+  class="container"
+  fxLayout="row nowrap"
+  fxLayoutAlign="space-between"
+  fxLayoutGap="5px"
+  [routerLink]="[profileURL, id]"
+>
+  <div fxLayout="column" class="info" fxLayoutAlign="space-between">
+    <span class="text-2">{{ title }}</span>
+    <div fxLayout="row nowrap" fxLayoutGap="5px">
+      <span class="text-2-semibold">{{ price }}</span>
+      <span class="text-2">{{ currency }}/mes</span>
+    </div>
+    <div fxLayout="row nowrap" fxLayoutGap="5px">
+      <mat-icon svgIcon="verified"></mat-icon>
+      <mat-icon svgIcon="plus" *ngIf="isPlus"></mat-icon>
+    </div>
+  </div>
+
+  <img *ngIf="image" class="photo" [src]="image" />
+</div>

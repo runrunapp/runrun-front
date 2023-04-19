@@ -1,0 +1,31 @@
+@import 'src/styles/constants/colors';
+
+:host {
+  .currencies-chip-list {
+    ::ng-deep .mat-chip-list-wrapper {
+      height: 20px;
+      flex-wrap: nowrap;
+      margin: 0;
+    }
+    mat-chip {
+      height: 20px;
+      min-height: 20px !important;
+      max-height: 20px;
+      padding: 5px 6px;
+      margin: 3px;
+      &.active {
+        background-color: $black;
+        color: $white;
+      }
+    }
+  }
+
+  .reset-btn {
+    background-color: $black;
+    height: 36px;
+    width: 100%;
+    border: none;
+    border-radius: 8px;
+    color: $white !important;
+  }
+}
